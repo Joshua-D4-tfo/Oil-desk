@@ -1,4 +1,4 @@
-import { computeSignals, BENCHMARKS } from "./engine.js";
+import { computeSignals, BENCHMARKS, crackSeries } from "./engine.js";
 
 // Refresh cadence per source (milliseconds). The CDN caches each endpoint for a similar period.
 const SOURCES = {
@@ -6,6 +6,8 @@ const SOURCES = {
   news: { url: "/api/news", every: 5 * 60_000 },
   curve: { url: "/api/curve", every: 15 * 60_000 },
   fundamentals: { url: "/api/fundamentals", every: 30 * 60_000 },
+  refining: { url: "/api/refining", every: 5 * 60_000 },
+  track: { url: "/api/track", every: 5 * 60_000 },
   analysis: { url: "/api/analysis/brent", every: 15 * 60_000 },
 };
 
@@ -57,8 +59,8 @@ async function refresh(names = Object.keys(SOURCES).filter((n) => n !== "analysi
 // ---------- Rendering ----------
 
 function render() {
-  const { market, curve, fundamentals, news } = state.data;
-  state.signals = computeSignals({ market, curve, fundamentals, news }, Date.now(), state.benchmark);
+  const { market, curve, fundamentals, news, refining } = state.data;
+  state.signals = computeSignals({ market, curve, fundamentals, news, refining }, Date.now(), state.benchmark);
   document.querySelectorAll("#bench-switch .tab").forEach((x) => x.classList.toggle("active", x.dataset.b === state.benchmark));
   document.title = `Oil Desk | ${state.signals.benchmarkName} decision support`;
   $("bench-sub").textContent = `${state.signals.benchmarkName} short-term decision support`;
@@ -71,6 +73,7 @@ function render() {
   renderFundamentals();
   renderSources();
   renderAnalysis();
+  renderTrack();
 }
 
 const ICON = { BUY: "▲", "LEAN BUY": "▲", SELL: "▼", "LEAN SELL": "▼", "NO TRADE": "■", WAIT: "⏸" };
@@ -89,7 +92,7 @@ function renderCard(h, title) {
       <div><div class="k">Target 1 (1R)</div><div class="v">${usd(p.target1)}</div></div>
       <div><div class="k">Target 2 (2R)</div><div class="v">${usd(p.target2)}</div></div>
     </div>
-    <p class="one-liner muted small">Risk ${usd(p.riskPerBbl)} per barrel (${fmt(p.riskPct)}%), sized on ${p.basis}. ${p.active ? "" : "Shown for reference only: no trade is suggested."}</p>` : "";
+    <p class="one-liner muted small">Risk ${usd(p.riskPerBbl)} per barrel (${fmt(p.riskPct)}%), sized on ${p.basis}.${p.sizeMultiplier != null ? ` Volatility-adjusted size: ${Math.round(p.sizeMultiplier * 100)}% of normal.` : ""} ${p.active ? "" : "Shown for reference only: no trade is suggested."}</p>` : "";
   const warn = c.riskEvents.length
     ? `<div class="warn"><span class="ico">⚠</span><span>Event risk inside the holding window: ${c.riskEvents.map((e) => `${esc(e.name)} (${until(e.hoursAway)})`).join("; ")}.</span></div>` : "";
   el.innerHTML = `
@@ -128,9 +131,9 @@ function sparkline(bars, id) {
 }
 const sparkData = {};
 
-function tile(name, val, chgPct, extra, time, sparkBars, id) {
+function tile(name, val, chgPct, extra, time, sparkBars, id, selected = false) {
   const cls = chgPct == null ? "" : chgPct >= 0 ? "up" : "down";
-  return `<div class="tile">
+  return `<div class="tile${selected ? " sel" : ""}">
     <div class="name"><span>${name}</span><span class="muted">${extra || ""}</span></div>
     <div class="val">${val}</div>
     <div class="chg">${chgPct == null ? "&nbsp;" : `<span class="${cls}">${signed(chgPct)}% 24h</span>`}</div>
@@ -149,12 +152,14 @@ function renderTiles() {
   const dxyBars = dxy?.bars || [];
   const dxyChg = dxyBars.length > 24 ? ((dxy.price - dxyBars[dxyBars.length - 24].c) / dxyBars[dxyBars.length - 24].c) * 100 : null;
   const html = [
-    tile("Brent (front month)" + (bk === "brent" ? " • selected" : ""), usd(b?.price), b?.ret24h, "ICE", b ? `Quote ${ago(b.priceTime)} · delayed` : "Unavailable", m?.brent?.data?.bars, "brent"),
-    tile("WTI (front month)" + (bk === "wti" ? " • selected" : ""), usd(w?.price), w?.ret24h, "NYMEX", w ? `Quote ${ago(w.priceTime)} · delayed` : "Unavailable", m?.wti?.data?.bars, "wti"),
+    tile("Brent (front month)", usd(b?.price), b?.ret24h, "ICE", b ? `Quote ${ago(b.priceTime)} · delayed` : "Unavailable", m?.brent?.data?.bars, "brent", bk === "brent"),
+    tile("WTI (front month)", usd(w?.price), w?.ret24h, "NYMEX", w ? `Quote ${ago(w.priceTime)} · delayed` : "Unavailable", m?.wti?.data?.bars, "wti", bk === "wti"),
     tile("Brent minus WTI", s.brentWtiSpread == null ? "n/a" : usd(s.brentWtiSpread), null, "spread", "Wider spread favours US exports", null, "bw"),
     tile(`${BENCHMARKS[bk].name} M1 to M2`, cb ? signed(cb.spread) : "n/a", null, cb ? `${cb.m1.label} / ${cb.m2.label}` : "", cb ? (cb.spread > 0 ? "Backwardation (tight)" : "Contango (loose)") : "Unavailable",
       cb ? cb.history.map((h) => ({ c: h.spread })) : null, "spread"),
     tile("US dollar index", fmt(dxy?.price), dxyChg, "DXY", dxy ? `Quote ${ago(dxy.priceTime)}` : "Unavailable", dxyBars, "dxy"),
+    crackTile(),
+    ovxTile(),
   ].join("");
   $("tiles").innerHTML = html;
 }
@@ -228,7 +233,8 @@ function renderSources() {
   const rows = [];
   const add = (r) => r && rows.push(`<li><span class="${r.ok ? "ok" : "fail"}">${esc(r.source)}</span><span class="muted">${r.ok ? "" : esc(r.error).slice(0, 60)}</span></li>`);
   const { market, curve, fundamentals, news } = state.data;
-  [market?.brent, market?.wti, market?.dxy, curve?.brent, curve?.wti, fundamentals?.eia, fundamentals?.cot].forEach(add);
+  const refining = state.data.refining;
+  [market?.brent, market?.wti, market?.dxy, curve?.brent, curve?.wti, fundamentals?.eia, fundamentals?.cot, refining?.gasoline, refining?.heatingOil, refining?.ovx].forEach(add);
   (news?.feeds || []).forEach(add);
   for (const [n, err] of Object.entries(state.errors)) rows.push(`<li><span class="fail">/api/${esc(n)}</span><span class="muted">${esc(err)}</span></li>`);
   $("sources").innerHTML = rows.join("") || "<li class='muted'>Loading...</li>";
@@ -241,6 +247,71 @@ function renderAnalysis() {
   panel.hidden = false;
   $("ai-meta").textContent = a.error ? "Unavailable this cycle" : `${a.model} · ${ago(a.generatedAt)}`;
   $("ai-text").textContent = a.error ? `The written analysis could not be generated: ${a.error}` : a.text;
+}
+
+function crackTile() {
+  const f = state.signals.factors.find((x) => x.id === "crack");
+  const r = state.data.refining;
+  const crude = state.data.market?.[state.benchmark]?.ok ? state.data.market[state.benchmark].data : null;
+  const cs = crackSeries(crude, r?.gasoline?.ok ? r.gasoline.data : null, r?.heatingOil?.ok ? r.heatingOil.data : null);
+  return tile(`3-2-1 crack vs ${BENCHMARKS[state.benchmark].name}`, f ? usd(f.crack) : "n/a", null, "$/bbl",
+    f ? (f.score > 0.25 ? "Margins strong: supportive" : f.score < -0.25 ? "Margins weak: a drag" : "Margins near average") : "Unavailable",
+    cs ? cs.series : null, "crack");
+}
+
+function ovxTile() {
+  const g = state.signals.regime;
+  const o = state.data.refining?.ovx?.ok ? state.data.refining.ovx.data : null;
+  return tile("Oil volatility (OVX)", g ? fmt(g.ovx, 1) : "n/a", null, "CBOE",
+    g ? `${Math.round(g.percentile6m)}th pct (6m) \u00B7 size ${Math.round(g.sizeMultiplier * 100)}%` : "Unavailable",
+    o ? o.bars : null, "ovx");
+}
+
+const FACTOR_NAMES = { composite: "Composite score", trend: "Short-term trend", momentum: "Momentum", rsi: "RSI", news: "News flow", curve: "Futures curve", inventories: "Inventories", positioning: "Positioning", dollar: "Dollar", crack: "Refining margin" };
+const pct = (x) => (x == null ? "n/a" : `${Math.round(x)}%`);
+
+function renderTrack() {
+  const el = $("track");
+  const t = state.data.track;
+  if (!t || t.empty) {
+    el.innerHTML = `<p class="muted">No track record yet. Once the site is published, a background job logs the signals every 15 minutes. The first simulated trades close within hours; meaningful statistics need a few weeks.</p>`;
+    return;
+  }
+  const bm = t.benchmarks?.[state.benchmark];
+  if (!bm) { el.innerHTML = ""; return; }
+  const name = BENCHMARKS[state.benchmark].name;
+  const col = (h, title) => {
+    const d = bm[h];
+    const s = d.stats;
+    const few = s.trades < 30;
+    const open = d.open ? `<p class="small">Open: <strong>${esc(d.open.label)}</strong> ${d.open.direction} from ${usd(d.open.entry)} (stop ${usd(d.open.stop)}, target ${usd(d.open.target)}), opened ${ago(d.open.opened)}${d.open.markR != null ? `, currently ${signed(d.open.markR)}R` : ""}.</p>` : `<p class="small muted">No simulated trade open.</p>`;
+    const rows = d.recent.slice(0, 10).map((r) => `<tr><td>${dayFmt.format(new Date(r.opened))}</td><td>${esc(r.label)}</td><td class="num">${usd(r.entry)}</td><td>${r.outcome === "target" ? "Target" : r.outcome === "stop" ? "Stop" : "Time exit"}</td><td class="num">${signed(r.r)}R</td></tr>`).join("");
+    return `<div class="track-col">
+      <h3>${title} \u00B7 ${name}</h3>
+      <div class="kpis">
+        <div><div class="k">Closed trades</div><div class="v">${s.trades}</div></div>
+        <div><div class="k">Win rate</div><div class="v">${pct(s.winRate)}</div></div>
+        <div><div class="k">Average</div><div class="v">${s.avgR == null ? "n/a" : signed(s.avgR) + "R"}</div></div>
+        <div><div class="k">Total</div><div class="v">${signed(s.totalR)}R</div></div>
+      </div>
+      ${d.equity.length > 1 ? sparkline(d.equity, "eq-" + h) + `<p class="muted small">Cumulative result in R (multiples of the amount risked per trade).</p>` : ""}
+      <p class="small">Strong signals: ${d.strong.trades} trades, ${pct(d.strong.winRate)} wins, ${d.strong.avgR == null ? "n/a" : signed(d.strong.avgR) + "R"} average. Lean signals: ${d.lean.trades} trades, ${pct(d.lean.winRate)} wins, ${d.lean.avgR == null ? "n/a" : signed(d.lean.avgR) + "R"} average.</p>
+      ${few ? `<p class="small warn-text">Fewer than 30 closed trades: treat these figures as anecdotal, not evidence.</p>` : ""}
+      ${open}
+      ${rows ? `<div class="table-wrap"><table class="factors compact"><thead><tr><th>Opened</th><th>Signal</th><th class="num">Entry</th><th>Outcome</th><th class="num">Result</th></tr></thead><tbody>${rows}</tbody></table></div>` : ""}
+    </div>`;
+  };
+  const factorRows = (h) => bm[h].factors.map((f) => {
+    const cell = (x) => x.n ? `${pct(x.hitRate)} <span class="muted">(${x.n}, ${signed(x.avgRetPct)}%)</span>` : `<span class="muted">none</span>`;
+    return `<tr${f.name === "composite" ? ' class="hl"' : ""}><td>${esc(FACTOR_NAMES[f.name] || f.name)}</td><td class="num">${f.n}</td><td class="num">${f.corr == null ? "n/a" : signed(f.corr)}</td><td>${cell(f.bull)}</td><td>${cell(f.bear)}</td></tr>`;
+  }).join("");
+  const fh = state.horizon;
+  el.innerHTML = `
+    <p class="muted small">Logging since ${t.firstRun ? dayFmt.format(new Date(t.firstRun)) : "n/a"}; last run ${ago(t.lastRun)}. Each simulated trade risks 1R and takes profit at 1R, so the break-even win rate is 50% before trading costs. Only one trade per benchmark and horizon is open at a time.</p>
+    <div class="track-grid">${col("intraday", "Intraday")}${col("swing", "Swing")}</div>
+    <h3 class="sub-h">Factor reliability \u00B7 ${name} \u00B7 ${fh === "intraday" ? "4-hour" : "48-hour"} forward move</h3>
+    <p class="muted small">How often a clearly bullish (score above +0.25) or bearish (below -0.25) reading was followed by a price move in that direction. Hit rate, then (number of readings, average move). Correlation runs from -1 to +1; above about +0.1 with a few hundred readings suggests the factor is genuinely useful. Switch horizon with the tabs in the reasoning panel. ${bm[fh].pending} readings are waiting for their window to pass.</p>
+    ${bm[fh].factors.length ? `<div class="table-wrap"><table class="factors compact"><thead><tr><th>Factor</th><th class="num">Readings</th><th class="num">Correlation</th><th>When bullish</th><th>When bearish</th></tr></thead><tbody>${factorRows(fh)}</tbody></table></div>` : `<p class="muted small">No completed readings yet.</p>`}`;
 }
 
 // ---------- Interaction ----------
@@ -269,6 +340,7 @@ document.querySelectorAll(".tabs .tab[data-h]").forEach((b) => b.addEventListene
   state.horizon = b.dataset.h;
   document.querySelectorAll(".tab[data-h]").forEach((x) => x.classList.toggle("active", x === b));
   renderReasoning();
+  renderTrack();
 }));
 document.querySelectorAll("#news-filter .tab").forEach((b) => b.addEventListener("click", () => {
   state.newsFilter = b.dataset.f;

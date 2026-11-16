@@ -73,7 +73,8 @@ main > *, .two-col > *, .stack > *, .signals > * { min-width: 0; }
 .warn { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--ink-2); background: rgba(250, 178, 25, 0.08); border: 1px solid rgba(250, 178, 25, 0.35); padding: 8px 10px; border-radius: 8px; }
 .warn .ico { color: var(--warning); }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 12px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 10px; }
+.tile.sel { border-color: var(--series); box-shadow: inset 0 0 0 1px var(--series); }
 .tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; position: relative; }
 .tile .name { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
 .tile .val { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
@@ -144,3 +145,15 @@ table.factors td:first-child { font-weight: 500; white-space: nowrap; }
 .tooltip { position: fixed; pointer-events: none; background: var(--surface-2); border: 1px solid var(--border); color: var(--ink); font-size: 12px; padding: 6px 8px; border-radius: 6px; z-index: 50; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .foot { max-width: 1320px; margin: 0 auto; padding: 8px 24px 32px; color: var(--muted); font-size: 12px; }
+
+.track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 18px; margin-top: 8px; }
+.track-col { background: var(--surface-2); border-radius: 8px; padding: 14px; min-width: 0; }
+.track-col h3, .sub-h { font-size: 13px; margin-bottom: 10px; }
+.sub-h { margin-top: 18px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+.kpis .k { font-size: 11px; color: var(--muted); }
+.kpis .v { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.warn-text { color: var(--warning); }
+table.compact td, table.compact th { padding: 6px 8px; }
+table.compact td:nth-child(2), table.compact td:nth-child(3) { min-width: 0; }
+tr.hl td { background: rgba(57, 135, 229, 0.08); font-weight: 500; }

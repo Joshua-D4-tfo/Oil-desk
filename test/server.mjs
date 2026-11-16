@@ -2,9 +2,10 @@
 import http from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
-import { mockMarket, mockCurve, mockFundamentals, mockNews } from "./mock.mjs";
+import { mockMarket, mockCurve, mockFundamentals, mockNews, mockRefining } from "./mock.mjs";
+import { simulate } from "./simulate-track.mjs";
 const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css" };
-const api = { market: mockMarket, curve: mockCurve, fundamentals: mockFundamentals, news: mockNews,
+const api = { refining: mockRefining, track: () => simulate().summary, market: mockMarket, curve: mockCurve, fundamentals: mockFundamentals, news: mockNews,
   analysis: () => ({ enabled: true, model: "mock", generatedAt: Date.now(), text: "Agreement\nThis is placeholder text for the optional Claude analysis panel." }) };
 http.createServer(async (req, res) => {
   const u = new URL(req.url, "http://x");

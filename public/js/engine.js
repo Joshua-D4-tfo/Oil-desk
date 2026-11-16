@@ -7,16 +7,19 @@
 
 // Weights per horizon. They are renormalised over whichever factors have data.
 export const WEIGHTS = {
-  intraday: { trend: 0.24, momentum: 0.18, rsi: 0.08, news: 0.22, curve: 0.10, inventories: 0.06, positioning: 0.04, dollar: 0.08 },
-  swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.16, curve: 0.20, inventories: 0.16, positioning: 0.14, dollar: 0.08 },
+  intraday: { trend: 0.24, momentum: 0.18, rsi: 0.08, news: 0.22, curve: 0.10, inventories: 0.06, positioning: 0.04, dollar: 0.08, crack: 0.05 },
+  swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.16, curve: 0.20, inventories: 0.16, positioning: 0.14, dollar: 0.08, crack: 0.10 },
 };
 
 // WTI is priced at Cushing, Oklahoma, so US inventory data matters more for it than for Brent.
 // These weights replace the defaults when WTI is selected.
 export const WEIGHTS_WTI = {
-  intraday: { trend: 0.24, momentum: 0.18, rsi: 0.08, news: 0.18, curve: 0.10, inventories: 0.10, positioning: 0.04, dollar: 0.08 },
-  swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.14, curve: 0.18, inventories: 0.22, positioning: 0.12, dollar: 0.08 },
+  intraday: { trend: 0.24, momentum: 0.18, rsi: 0.08, news: 0.18, curve: 0.10, inventories: 0.10, positioning: 0.04, dollar: 0.08, crack: 0.05 },
+  swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.14, curve: 0.18, inventories: 0.22, positioning: 0.12, dollar: 0.08, crack: 0.10 },
 };
+
+// Volatility regime. Position size is scaled by OVX_BASELINE / current OVX (never above 100%).
+export const OVX_BASELINE = 35;
 
 export const BENCHMARKS = {
   brent: { key: "brent", name: "Brent", exchange: "ICE", note: "Global seaborne benchmark" },
@@ -382,6 +385,76 @@ function factorNews(newsData, now) {
   };
 }
 
+// ---------- Refining margins and volatility ----------
+
+// 3-2-1 crack spread in $/bbl: (2 x gasoline + 1 x heating oil - 3 x crude) / 3, products converted at 42 gal/bbl.
+export function crackSeries(crudeChart, gasChart, hoChart) {
+  if (!crudeChart?.bars?.length || !gasChart?.bars?.length || !hoChart?.bars?.length) return null;
+  const hourKey = (t) => Math.round(t / 3.6e6);
+  const rb = new Map(gasChart.bars.map((b) => [hourKey(b.t), b.c]));
+  const ho = new Map(hoChart.bars.map((b) => [hourKey(b.t), b.c]));
+  const series = [];
+  for (const b of crudeChart.bars) {
+    const k = hourKey(b.t);
+    if (rb.has(k) && ho.has(k)) series.push({ t: b.t, c: (2 * rb.get(k) * 42 + ho.get(k) * 42 - 3 * b.c) / 3 });
+  }
+  if (series.length < 30) return null;
+  // Use latest quotes for the current value where available.
+  const last = series.at(-1).c;
+  const latest = gasChart.price && hoChart.price && crudeChart.price
+    ? (2 * gasChart.price * 42 + hoChart.price * 42 - 3 * crudeChart.price) / 3
+    : last;
+  return { series, latest };
+}
+
+function factorCrack(market, refining, benchmark) {
+  const crude = market?.[benchmark]?.ok ? market[benchmark].data : null;
+  const gas = refining?.gasoline?.ok ? refining.gasoline.data : null;
+  const ho = refining?.heatingOil?.ok ? refining.heatingOil.data : null;
+  const cs = crackSeries(crude, gas, ho);
+  if (!cs) return null;
+  const vals = cs.series.map((x) => x.c);
+  const mean = vals.reduce((a, v) => a + v, 0) / vals.length;
+  const sd = Math.sqrt(vals.reduce((a, v) => a + (v - mean) ** 2, 0) / vals.length) || 1;
+  const target = cs.series.at(-1).t - 5 * 24 * 3.6e6;
+  let ref = null;
+  for (const x of cs.series) { if (x.t <= target) ref = x; else break; }
+  const chg5 = ref ? cs.latest - ref.c : 0;
+  const z = (cs.latest - mean) / sd;
+  const score = clamp(0.5 * clamp(z / 2) + 0.5 * tanh(chg5 / 2.5));
+  const name = BENCHMARKS[benchmark]?.name || "crude";
+  return {
+    id: "crack", name: `Refining margin (3-2-1 crack vs ${name})`, score,
+    reading: `Crack spread ${usd(cs.latest)}/bbl versus a one-month average of ${usd(mean)} (${signed(z, 1)} standard deviations); ${signed(chg5)} over five days.`,
+    explanation:
+      score > 0.25 ? "Refiners earn more than usual for turning crude into gasoline and diesel, so they run harder and keep bidding for crude. Strong and rising margins tend to lead crude prices higher."
+      : score < -0.25 ? "Refining margins are weak or falling, so refiners have less reason to buy crude and may cut runs. Weak margins tend to lead crude prices lower."
+      : "Refining margins are close to their recent average and give no clear lead on crude demand.",
+    crack: cs.latest,
+  };
+}
+
+export function volRegime(refining) {
+  const o = refining?.ovx?.ok ? refining.ovx.data : null;
+  if (!o || !o.bars?.length || !Number.isFinite(o.price)) return null;
+  const closes = o.bars.map((b) => b.c);
+  const below = closes.filter((c) => c < o.price).length;
+  const pct = Math.min(100, (below / Math.max(closes.length, 1)) * 100);
+  const ref = closes.length > 5 ? closes[closes.length - 6] : closes[0];
+  const chg5Pct = ref ? ((o.price - ref) / ref) * 100 : 0;
+  const sizeMultiplier = Math.max(0.35, Math.min(1, OVX_BASELINE / o.price));
+  const elevated = pct >= 80 || chg5Pct >= 20;
+  return {
+    ovx: o.price, percentile6m: pct, chg5Pct, sizeMultiplier, elevated,
+    convictionMultiplier: elevated ? 0.85 : 1,
+    text:
+      `Oil volatility (OVX) is ${fmt(o.price, 1)}, ${ordinal(Math.round(pct))} percentile of the last six months and ${signed(chg5Pct, 0)}% over five days. ` +
+      (elevated
+        ? `Volatility is elevated, so conviction has been reduced by 15% and position size should be cut to about ${Math.round(sizeMultiplier * 100)}% of normal. Stops are already scaled to recent ranges, but gaps through stops are more likely in this regime.`
+        : `Suggested position size is ${Math.round(sizeMultiplier * 100)}% of normal (normal size assumes OVX of ${OVX_BASELINE}).`),
+  };
+}
+
 // ---------- Composite ----------
 
 function classify(s) {
@@ -392,7 +465,7 @@ function classify(s) {
   return { label: "NO TRADE", tone: "neutral" };
 }
 
-function composite(factors, weights, horizon, tb, events, benchName = "Brent") {
+function composite(factors, weights, horizon, tb, events, benchName = "Brent", regime = null) {
   const used = factors.filter((f) => f && weights[f.id] != null);
   const wSum = used.reduce((s, f) => s + weights[f.id], 0);
   const totalW = Object.values(weights).reduce((s, w) => s + w, 0);
@@ -412,6 +485,7 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent") {
 
   let confidence = 90 * Math.min(1, Math.abs(S) / 0.7) * (0.5 + 0.5 * agreement) * Math.sqrt(coverage);
   if (riskEvents.length) confidence *= 0.7;
+  if (regime) confidence *= regime.convictionMultiplier;
   confidence = Math.round(clamp(confidence, 0, 90));
 
   const cls = classify(S);
@@ -431,6 +505,7 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent") {
       riskPerBbl: dist,
       riskPct: (dist / tb.price) * 100,
       basis: horizon === "intraday" ? "1.5 x 14-hour ATR" : "1.2 x daily ATR",
+      sizeMultiplier: regime ? regime.sizeMultiplier : null,
       active: cls.label !== "NO TRADE",
     };
   }
@@ -439,14 +514,14 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent") {
   const oppose = rows.filter((r) => Math.sign(r.contribution) !== Math.sign(S) && Math.abs(r.contribution) > 0.005);
   const missing = Object.keys(weights).filter((id) => !used.find((f) => f.id === id));
 
-  const reasoning = buildReasoning({ benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb });
+  const reasoning = buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb });
 
   return { horizon, score: S, label: action.label, tone: action.tone, underlying: cls.label, confidence, agreement, coverage, rows, plan, riskEvents, missing, reasoning };
 }
 
-const NAMES = { trend: "short-term trend", momentum: "momentum", rsi: "RSI", news: "news flow", curve: "futures curve", inventories: "inventories", positioning: "positioning", dollar: "dollar" };
+const NAMES = { crack: "refining margins", trend: "short-term trend", momentum: "momentum", rsi: "RSI", news: "news flow", curve: "futures curve", inventories: "inventories", positioning: "positioning", dollar: "dollar" };
 
-function buildReasoning({ benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb }) {
+function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb }) {
   const h = horizon === "intraday" ? "an intraday (holding period of hours)" : "a short swing (holding period of one to five days)";
   const p = [];
   p.push(`For ${h} trade in ${benchName}, the weighted composite score is ${signed(S)} on a scale of -1 to +1, which maps to ${cls.label}. Conviction is ${confidence} on a 0 to 100 scale (capped at 90, because no model reading justifies certainty). It is not a probability of success; it reflects the size of the score, the degree to which factors agree (${Math.round(agreement * 100)}% of the weighted evidence points the same way) and data coverage (${Math.round(coverage * 100)}% of factor weight available).`);
@@ -463,6 +538,7 @@ function buildReasoning({ benchName, horizon, S, cls, action, confidence, agreem
   } else if (plan) {
     p.push(`If taken, a ${plan.direction} from ${usd(plan.entry)} would use a stop at ${usd(plan.stop)} (${plan.basis}, ${fmt(plan.riskPct)}% risk), a first target at ${usd(plan.target1)} (1R) and a second at ${usd(plan.target2)} (2R). The view is invalidated if price reaches the stop or if the ${NAMES[oppose[0]?.id] || "opposing factors"} strengthen further.`);
   }
+  if (regime) p.push(regime.text);
   if (imminent) p.push(`Action is WAIT because "${imminent.name}" is due within two hours. Event releases routinely move crude by more than a full stop distance in minutes; it is better to trade the reaction than to gamble on the number.`);
   else if (riskEvents.length) p.push(`Event risk inside the holding window (${riskEvents.map((e) => e.name).join("; ")}) has reduced confidence by 30%. Consider a smaller size or exiting beforehand.`);
   if (missing.length) p.push(`Not available this refresh: ${missing.map((m) => NAMES[m] || m).join(", ")}. The remaining weights were rescaled, which makes the reading less robust.`);
@@ -472,7 +548,7 @@ function buildReasoning({ benchName, horizon, S, cls, action, confidence, agreem
 
 // ---------- Public entry point ----------
 
-export function computeSignals({ market, curve, fundamentals, news }, nowMs = Date.now(), benchmark = "brent") {
+export function computeSignals({ market, curve, fundamentals, news, refining }, nowMs = Date.now(), benchmark = "brent") {
   if (!BENCHMARKS[benchmark]) benchmark = "brent";
   const now = new Date(nowMs);
   const tbBrent = market?.brent?.ok ? technicals(market.brent.data) : null;
@@ -491,7 +567,9 @@ export function computeSignals({ market, curve, fundamentals, news }, nowMs = Da
     factorInventories(fundamentals),
     factorPositioning(fundamentals),
     factorDollar(market),
+    factorCrack(market, refining, benchmark),
   ].filter(Boolean);
+  const regime = volRegime(refining);
 
   return {
     generatedAt: nowMs,
@@ -501,8 +579,10 @@ export function computeSignals({ market, curve, fundamentals, news }, nowMs = Da
     brentWtiSpread: tbBrent && tbWti ? tbBrent.price - tbWti.price : null,
     factors,
     events,
-    intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name),
-    swing: composite(factors, weights.swing, "swing", tb, events, bench.name),
+    regime,
+    factorScores: Object.fromEntries(factors.map((f) => [f.id, +f.score.toFixed(4)])),
+    intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name, regime),
+    swing: composite(factors, weights.swing, "swing", tb, events, bench.name, regime),
     newsDetail: factors.find((f) => f.id === "news")?.detail || null,
   };
 }

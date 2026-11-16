@@ -82,3 +82,15 @@ export function mockNews() {
   ].join("")}</channel></rss>`;
   return { fetchedAt: Date.now(), feeds: [{ ok: true, source: "mock", count: 10 }], items: parseRss(xml, "Google News: mock") };
 }
+
+export function mockRefining() {
+  const ovx = mockChart("^OVX", 55, 0.0004, 0.02, 21);
+  // Daily bars for OVX: thin the hourly series to one bar per ~day.
+  ovx.bars = ovx.bars.filter((_, i) => i % 23 === 0);
+  return {
+    fetchedAt: Date.now(),
+    gasoline: { ok: true, source: "mock", data: mockChart("RB=F", 3.1, 0.00015, 0.006, 13) },
+    heatingOil: { ok: true, source: "mock", data: mockChart("HO=F", 3.9, 0.0001, 0.006, 17) },
+    ovx: { ok: true, source: "mock", data: ovx },
+  };
+}

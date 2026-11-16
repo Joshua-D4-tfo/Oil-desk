@@ -12,10 +12,10 @@ export default async (req, context) => {
   if (!key) return jsonResponse({ enabled: false, reason: "ANTHROPIC_API_KEY not set" }, 3600);
 
   const origin = new URL(req.url).origin;
-  const [market, curve, fundamentals, news] = await Promise.all(
-    ["market", "curve", "fundamentals", "news"].map((p) => fetchJson(`${origin}/api/${p}`, {}, 20000).catch(() => null))
+  const [market, curve, fundamentals, news, refining] = await Promise.all(
+    ["market", "curve", "fundamentals", "news", "refining"].map((p) => fetchJson(`${origin}/api/${p}`, {}, 20000).catch(() => null))
   );
-  const sig = computeSignals({ market, curve, fundamentals, news }, Date.now(), benchmark);
+  const sig = computeSignals({ market, curve, fundamentals, news, refining }, Date.now(), benchmark);
 
   const factorLines = sig.factors.map((f) => `- ${f.name}: score ${f.score.toFixed(2)}. ${f.reading}`).join("\n");
   const headlines = (sig.newsDetail?.scored || [])
@@ -37,6 +37,8 @@ Rule-based output:
 
 Factor readings:
 ${factorLines}
+
+Volatility regime: ${sig.regime ? sig.regime.text : "OVX unavailable"}
 
 Upcoming events:
 ${ev}
