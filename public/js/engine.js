@@ -11,6 +11,18 @@ export const WEIGHTS = {
   swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.16, curve: 0.20, inventories: 0.16, positioning: 0.14, dollar: 0.08 },
 };
 
+// WTI is priced at Cushing, Oklahoma, so US inventory data matters more for it than for Brent.
+// These weights replace the defaults when WTI is selected.
+export const WEIGHTS_WTI = {
+  intraday: { trend: 0.24, momentum: 0.18, rsi: 0.08, news: 0.18, curve: 0.10, inventories: 0.10, positioning: 0.04, dollar: 0.08 },
+  swing:    { trend: 0.14, momentum: 0.08, rsi: 0.04, news: 0.14, curve: 0.18, inventories: 0.22, positioning: 0.12, dollar: 0.08 },
+};
+
+export const BENCHMARKS = {
+  brent: { key: "brent", name: "Brent", exchange: "ICE", note: "Global seaborne benchmark" },
+  wti: { key: "wti", name: "WTI", exchange: "NYMEX", note: "US crude, priced at Cushing" },
+};
+
 export const THRESHOLDS = { strong: 0.30, lean: 0.12 };
 
 // One-off scheduled events. Add or correct dates here. Times in UTC.
@@ -272,10 +284,13 @@ function factorRsi(tb) {
   };
 }
 
-function factorCurve(curve) {
-  const c = curve?.brent?.ok ? curve.brent.data : curve?.wti?.ok ? curve.wti.data : null;
-  if (!c) return null;
-  const bench = curve?.brent?.ok ? "Brent" : "WTI";
+function factorCurve(curve, benchmark = "brent") {
+  const other = benchmark === "brent" ? "wti" : "brent";
+  const key = curve?.[benchmark]?.ok ? benchmark : curve?.[other]?.ok ? other : null;
+  if (!key) return null;
+  const c = curve[key].data;
+  const bench = BENCHMARKS[key].name;
+  const fallback = key !== benchmark ? `; ${BENCHMARKS[benchmark].name} curve unavailable` : "";
   const spreadPct = (c.spread / c.m1.price) * 100;
   const hist = c.history || [];
   const ref = hist.length > 5 ? hist[hist.length - 6].spread : hist[0]?.spread;
@@ -283,7 +298,7 @@ function factorCurve(curve) {
   const score = clamp(0.5 * clamp(spreadPct / 1.0) + 0.5 * tanh(chg5 / 0.3));
   const structure = c.spread > 0.05 ? "backwardation" : c.spread < -0.05 ? "contango" : "flat";
   return {
-    id: "curve", name: `Futures curve (${bench} M1 to M2)`, score,
+    id: "curve", name: `Futures curve (${bench} M1 to M2${fallback})`, score,
     reading: `${c.m1.label} ${usd(c.m1.price)} versus ${c.m2.label} ${usd(c.m2.price)}: spread ${signed(c.spread)} (${structure}, ${signed(spreadPct)}% of price), ${signed(chg5)} over about five sessions.`,
     explanation:
       structure === "backwardation"
@@ -377,7 +392,7 @@ function classify(s) {
   return { label: "NO TRADE", tone: "neutral" };
 }
 
-function composite(factors, weights, horizon, tb, events) {
+function composite(factors, weights, horizon, tb, events, benchName = "Brent") {
   const used = factors.filter((f) => f && weights[f.id] != null);
   const wSum = used.reduce((s, f) => s + weights[f.id], 0);
   const totalW = Object.values(weights).reduce((s, w) => s + w, 0);
@@ -402,7 +417,7 @@ function composite(factors, weights, horizon, tb, events) {
   const cls = classify(S);
   const action = imminent ? { label: "WAIT", tone: "neutral" } : cls;
 
-  // Trade levels, Brent-based.
+  // Trade levels, based on the selected benchmark.
   let plan = null;
   if (tb && tb.atrH) {
     const dist = horizon === "intraday" ? 1.5 * tb.atrH : 1.2 * (tb.atrD || tb.atrH * 4.5);
@@ -424,17 +439,17 @@ function composite(factors, weights, horizon, tb, events) {
   const oppose = rows.filter((r) => Math.sign(r.contribution) !== Math.sign(S) && Math.abs(r.contribution) > 0.005);
   const missing = Object.keys(weights).filter((id) => !used.find((f) => f.id === id));
 
-  const reasoning = buildReasoning({ horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb });
+  const reasoning = buildReasoning({ benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb });
 
   return { horizon, score: S, label: action.label, tone: action.tone, underlying: cls.label, confidence, agreement, coverage, rows, plan, riskEvents, missing, reasoning };
 }
 
 const NAMES = { trend: "short-term trend", momentum: "momentum", rsi: "RSI", news: "news flow", curve: "futures curve", inventories: "inventories", positioning: "positioning", dollar: "dollar" };
 
-function buildReasoning({ horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb }) {
+function buildReasoning({ benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb }) {
   const h = horizon === "intraday" ? "an intraday (holding period of hours)" : "a short swing (holding period of one to five days)";
   const p = [];
-  p.push(`For ${h} trade, the weighted composite score is ${signed(S)} on a scale of -1 to +1, which maps to ${cls.label}. Conviction is ${confidence} on a 0 to 100 scale (capped at 90, because no model reading justifies certainty). It is not a probability of success; it reflects the size of the score, the degree to which factors agree (${Math.round(agreement * 100)}% of the weighted evidence points the same way) and data coverage (${Math.round(coverage * 100)}% of factor weight available).`);
+  p.push(`For ${h} trade in ${benchName}, the weighted composite score is ${signed(S)} on a scale of -1 to +1, which maps to ${cls.label}. Conviction is ${confidence} on a 0 to 100 scale (capped at 90, because no model reading justifies certainty). It is not a probability of success; it reflects the size of the score, the degree to which factors agree (${Math.round(agreement * 100)}% of the weighted evidence points the same way) and data coverage (${Math.round(coverage * 100)}% of factor weight available).`);
   if (support.length) {
     p.push(`The case rests mainly on ${support.slice(0, 3).map((r) => `${NAMES[r.id] || r.name} (${signed(r.contribution, 3)})`).join(", ")}. ${support[0].explanation}`);
   }
@@ -457,18 +472,22 @@ function buildReasoning({ horizon, S, cls, action, confidence, agreement, covera
 
 // ---------- Public entry point ----------
 
-export function computeSignals({ market, curve, fundamentals, news }, nowMs = Date.now()) {
+export function computeSignals({ market, curve, fundamentals, news }, nowMs = Date.now(), benchmark = "brent") {
+  if (!BENCHMARKS[benchmark]) benchmark = "brent";
   const now = new Date(nowMs);
   const tbBrent = market?.brent?.ok ? technicals(market.brent.data) : null;
   const tbWti = market?.wti?.ok ? technicals(market.wti.data) : null;
+  const tb = benchmark === "wti" ? tbWti : tbBrent;
+  const bench = BENCHMARKS[benchmark];
+  const weights = benchmark === "wti" ? WEIGHTS_WTI : WEIGHTS;
   const events = upcomingEvents(now);
 
   const factors = [
-    factorTrend(tbBrent),
-    factorMomentum(tbBrent),
-    factorRsi(tbBrent),
+    factorTrend(tb),
+    factorMomentum(tb),
+    factorRsi(tb),
     factorNews(news, nowMs),
-    factorCurve(curve),
+    factorCurve(curve, benchmark),
     factorInventories(fundamentals),
     factorPositioning(fundamentals),
     factorDollar(market),
@@ -476,13 +495,14 @@ export function computeSignals({ market, curve, fundamentals, news }, nowMs = Da
 
   return {
     generatedAt: nowMs,
-    benchmark: "Brent",
+    benchmark: bench.key,
+    benchmarkName: bench.name,
     technicals: { brent: tbBrent, wti: tbWti },
     brentWtiSpread: tbBrent && tbWti ? tbBrent.price - tbWti.price : null,
     factors,
     events,
-    intraday: composite(factors, WEIGHTS.intraday, "intraday", tbBrent, events),
-    swing: composite(factors, WEIGHTS.swing, "swing", tbBrent, events),
+    intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name),
+    swing: composite(factors, weights.swing, "swing", tb, events, bench.name),
     newsDetail: factors.find((f) => f.id === "news")?.detail || null,
   };
 }

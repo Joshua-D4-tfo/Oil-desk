@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oil Desk | Brent decision support</title>
+  <title>Oil Desk | Crude decision support</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
@@ -12,8 +12,12 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <div>
         <h1>Oil Desk</h1>
-        <p class="sub">Brent short-term decision support</p>
+        <p class="sub" id="bench-sub">Short-term crude decision support</p>
       </div>
+    </div>
+    <div class="tabs bench-switch" id="bench-switch" role="tablist" aria-label="Benchmark">
+      <button class="tab" data-b="brent" type="button" role="tab">Brent</button>
+      <button class="tab" data-b="wti" type="button" role="tab">WTI (US crude)</button>
     </div>
     <div class="status">
       <span id="clock" class="muted"></span>

@@ -6,7 +6,8 @@ import { computeSignals } from "../../public/js/engine.js";
 
 const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
 
-export default async (req) => {
+export default async (req, context) => {
+  const benchmark = context?.params?.benchmark === "wti" ? "wti" : "brent";
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) return jsonResponse({ enabled: false, reason: "ANTHROPIC_API_KEY not set" }, 3600);
 
@@ -14,7 +15,7 @@ export default async (req) => {
   const [market, curve, fundamentals, news] = await Promise.all(
     ["market", "curve", "fundamentals", "news"].map((p) => fetchJson(`${origin}/api/${p}`, {}, 20000).catch(() => null))
   );
-  const sig = computeSignals({ market, curve, fundamentals, news });
+  const sig = computeSignals({ market, curve, fundamentals, news }, Date.now(), benchmark);
 
   const factorLines = sig.factors.map((f) => `- ${f.name}: score ${f.score.toFixed(2)}. ${f.reading}`).join("\n");
   const headlines = (sig.newsDetail?.scored || [])
@@ -23,9 +24,9 @@ export default async (req) => {
     .map((h) => `- [${h.ageH.toFixed(1)}h ago, ${h.source}] ${h.title} (keyword score ${h.score.toFixed(1)})`)
     .join("\n");
   const ev = sig.events.slice(0, 6).map((e) => `- ${e.name} in ${e.hoursAway.toFixed(1)} hours`).join("\n");
-  const s = (c) => (c ? `${c.label} (score ${c.score.toFixed(2)}, confidence ${c.confidence}%)` : "unavailable");
+  const s = (c) => (c ? `${c.label} (score ${c.score.toFixed(2)}, conviction ${c.confidence}/100)` : "unavailable");
 
-  const prompt = `You are reviewing a rule-based crude oil trading dashboard for a professional who makes short-term trades in Brent (hours to a few days).
+  const prompt = `You are reviewing a rule-based crude oil trading dashboard for a professional who makes short-term trades in ${sig.benchmarkName} crude (hours to a few days). The suggestion below is for ${sig.benchmarkName}.
 
 Current time (UTC): ${new Date().toISOString()}
 Brent: ${sig.technicals.brent?.price ?? "n/a"} | WTI: ${sig.technicals.wti?.price ?? "n/a"}
@@ -60,10 +61,10 @@ Write in formal, direct British English. Use short paragraphs with headed sectio
     const json = await res.json();
     if (!res.ok) throw new Error(json?.error?.message || `HTTP ${res.status}`);
     const text = (json.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
-    return jsonResponse({ enabled: true, model: MODEL, generatedAt: Date.now(), text }, 900);
+    return jsonResponse({ enabled: true, benchmark, model: MODEL, generatedAt: Date.now(), text }, 900);
   } catch (err) {
     return jsonResponse({ enabled: true, error: String(err.message || err), generatedAt: Date.now() }, 120);
   }
 };
 
-export const config = { path: "/api/analysis" };
+export const config = { path: ["/api/analysis", "/api/analysis/:benchmark"] };

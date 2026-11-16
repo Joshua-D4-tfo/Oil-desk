@@ -88,6 +88,8 @@ main > *, .two-col > *, .stack > *, .signals > * { min-width: 0; }
 .tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 3px; border-radius: 8px; }
 .tab { font: inherit; font-size: 12px; color: var(--ink-2); background: transparent; border: 0; padding: 4px 10px; border-radius: 6px; cursor: pointer; }
 .tab.active { background: var(--axis); color: var(--ink); }
+.bench-switch .tab { font-size: 13px; font-weight: 600; padding: 6px 16px; }
+.bench-switch .tab.active { background: var(--series); color: #fff; }
 
 .reasoning p { margin: 0 0 10px; color: var(--ink); max-width: 110ch; }
 .reasoning p:first-child { font-weight: 500; }

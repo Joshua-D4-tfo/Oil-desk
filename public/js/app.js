@@ -1,4 +1,4 @@
-import { computeSignals } from "./engine.js";
+import { computeSignals, BENCHMARKS } from "./engine.js";
 
 // Refresh cadence per source (milliseconds). The CDN caches each endpoint for a similar period.
 const SOURCES = {
@@ -6,10 +6,12 @@ const SOURCES = {
   news: { url: "/api/news", every: 5 * 60_000 },
   curve: { url: "/api/curve", every: 15 * 60_000 },
   fundamentals: { url: "/api/fundamentals", every: 30 * 60_000 },
-  analysis: { url: "/api/analysis", every: 15 * 60_000 },
+  analysis: { url: "/api/analysis/brent", every: 15 * 60_000 },
 };
 
-const state = { data: {}, loadedAt: {}, errors: {}, horizon: "intraday", newsFilter: "all", signals: null };
+const savedBench = (() => { try { return localStorage.getItem("oilDeskBenchmark"); } catch { return null; } })();
+const state = { data: {}, loadedAt: {}, errors: {}, horizon: "intraday", newsFilter: "all", signals: null, benchmark: BENCHMARKS[savedBench] ? savedBench : "brent", analysis: {} };
+const analysisUrl = () => `/api/analysis/${state.benchmark}`;
 const $ = (id) => document.getElementById(id);
 const TZ = "Asia/Dubai";
 
@@ -31,9 +33,12 @@ const until = (h) => (h < 1 ? `in ${Math.max(1, Math.round(h * 60))} min` : h < 
 
 async function load(name) {
   try {
-    const res = await fetch(SOURCES[name].url, { cache: "no-store" });
+    const url = name === "analysis" ? analysisUrl() : SOURCES[name].url;
+    const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    state.data[name] = await res.json();
+    const json = await res.json();
+    if (name === "analysis") state.analysis[url.split("/").pop()] = json;
+    else state.data[name] = json;
     state.loadedAt[name] = Date.now();
     delete state.errors[name];
   } catch (e) {
@@ -53,7 +58,10 @@ async function refresh(names = Object.keys(SOURCES).filter((n) => n !== "analysi
 
 function render() {
   const { market, curve, fundamentals, news } = state.data;
-  state.signals = computeSignals({ market, curve, fundamentals, news });
+  state.signals = computeSignals({ market, curve, fundamentals, news }, Date.now(), state.benchmark);
+  document.querySelectorAll("#bench-switch .tab").forEach((x) => x.classList.toggle("active", x.dataset.b === state.benchmark));
+  document.title = `Oil Desk | ${state.signals.benchmarkName} decision support`;
+  $("bench-sub").textContent = `${state.signals.benchmarkName} short-term decision support`;
   renderCard("intraday", "Intraday (hours)");
   renderCard("swing", "Swing (1 to 5 days)");
   renderTiles();
@@ -87,7 +95,7 @@ function renderCard(h, title) {
   el.innerHTML = `
     <div class="sig-head">
       <div>
-        <div class="sig-title">${title} · Brent</div>
+        <div class="sig-title">${title} · ${state.signals.benchmarkName}</div>
         <div class="badge ${tone}"><span class="ico" aria-hidden="true">${ICON[c.label] || ""}</span>${c.label}</div>
         ${c.label !== c.underlying ? `<div class="underlying">Underlying reading: ${c.underlying}</div>` : ""}
       </div>
@@ -136,14 +144,15 @@ function renderTiles() {
   const m = state.data.market;
   const b = s.technicals.brent, w = s.technicals.wti;
   const dxy = m?.dxy?.ok ? m.dxy.data : null;
-  const cb = state.data.curve?.brent?.ok ? state.data.curve.brent.data : null;
+  const bk = state.benchmark;
+  const cb = state.data.curve?.[bk]?.ok ? state.data.curve[bk].data : null;
   const dxyBars = dxy?.bars || [];
   const dxyChg = dxyBars.length > 24 ? ((dxy.price - dxyBars[dxyBars.length - 24].c) / dxyBars[dxyBars.length - 24].c) * 100 : null;
   const html = [
-    tile("Brent (front month)", usd(b?.price), b?.ret24h, "ICE", b ? `Quote ${ago(b.priceTime)} · delayed` : "Unavailable", m?.brent?.data?.bars, "brent"),
-    tile("WTI (front month)", usd(w?.price), w?.ret24h, "NYMEX", w ? `Quote ${ago(w.priceTime)} · delayed` : "Unavailable", m?.wti?.data?.bars, "wti"),
+    tile("Brent (front month)" + (bk === "brent" ? " • selected" : ""), usd(b?.price), b?.ret24h, "ICE", b ? `Quote ${ago(b.priceTime)} · delayed` : "Unavailable", m?.brent?.data?.bars, "brent"),
+    tile("WTI (front month)" + (bk === "wti" ? " • selected" : ""), usd(w?.price), w?.ret24h, "NYMEX", w ? `Quote ${ago(w.priceTime)} · delayed` : "Unavailable", m?.wti?.data?.bars, "wti"),
     tile("Brent minus WTI", s.brentWtiSpread == null ? "n/a" : usd(s.brentWtiSpread), null, "spread", "Wider spread favours US exports", null, "bw"),
-    tile("Brent M1 to M2", cb ? signed(cb.spread) : "n/a", null, cb ? `${cb.m1.label} / ${cb.m2.label}` : "", cb ? (cb.spread > 0 ? "Backwardation (tight)" : "Contango (loose)") : "Unavailable",
+    tile(`${BENCHMARKS[bk].name} M1 to M2`, cb ? signed(cb.spread) : "n/a", null, cb ? `${cb.m1.label} / ${cb.m2.label}` : "", cb ? (cb.spread > 0 ? "Backwardation (tight)" : "Contango (loose)") : "Unavailable",
       cb ? cb.history.map((h) => ({ c: h.spread })) : null, "spread"),
     tile("US dollar index", fmt(dxy?.price), dxyChg, "DXY", dxy ? `Quote ${ago(dxy.priceTime)}` : "Unavailable", dxyBars, "dxy"),
   ].join("");
@@ -210,8 +219,8 @@ function renderFundamentals() {
       <span class="k">Three-year percentile</span><span class="v">${fmt(c.percentile3y, 0)}</span>
       <span class="k">Three-year range</span><span class="v">${c.min3y.toLocaleString("en-US")} to ${c.max3y.toLocaleString("en-US")}</span></div>`);
   } else parts.push(`<p class="muted small">CFTC positioning unavailable: ${esc(f?.cot?.error || "not loaded")}</p>`);
-  const cb = state.data.curve?.brent?.ok ? state.data.curve.brent.data : null;
-  if (cb) parts.push(`<div class="kv"><h3>Brent curve</h3>${cb.curve.map((k) => `<span class="k">${esc(k.label)}</span><span class="v">${usd(k.price)}</span>`).join("")}</div>`);
+  const cb = state.data.curve?.[state.benchmark]?.ok ? state.data.curve[state.benchmark].data : null;
+  if (cb) parts.push(`<div class="kv"><h3>${BENCHMARKS[state.benchmark].name} curve</h3>${cb.curve.map((k) => `<span class="k">${esc(k.label)}</span><span class="v">${usd(k.price)}</span>`).join("")}</div>`);
   $("fundamentals").innerHTML = parts.join("");
 }
 
@@ -226,7 +235,7 @@ function renderSources() {
 }
 
 function renderAnalysis() {
-  const a = state.data.analysis;
+  const a = state.analysis[state.benchmark];
   const panel = $("ai-panel");
   if (!a || a.enabled === false) { panel.hidden = true; return; }
   panel.hidden = false;
@@ -265,6 +274,13 @@ document.querySelectorAll("#news-filter .tab").forEach((b) => b.addEventListener
   state.newsFilter = b.dataset.f;
   document.querySelectorAll("#news-filter .tab").forEach((x) => x.classList.toggle("active", x === b));
   renderNews();
+}));
+document.querySelectorAll("#bench-switch .tab").forEach((b) => b.addEventListener("click", () => {
+  if (state.benchmark === b.dataset.b) return;
+  state.benchmark = b.dataset.b;
+  try { localStorage.setItem("oilDeskBenchmark", state.benchmark); } catch {}
+  render();
+  if (!state.analysis[state.benchmark]) load("analysis").then(renderAnalysis);
 }));
 $("refresh-btn").addEventListener("click", () => refresh(Object.keys(SOURCES)));
 

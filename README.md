@@ -1,6 +1,6 @@
 # Oil Desk
 
-A Netlify-hosted dashboard that brings together the data needed to decide whether to take a short-term position in Brent crude. It produces a suggestion for two horizons and sets out the full reasoning behind each one.
+A Netlify-hosted dashboard that brings together the data needed to decide whether to take a short-term position in crude oil. A switch at the top of the page selects the benchmark, either **Brent** or **WTI (US crude)**, and the choice is remembered on that device. For the selected benchmark, the page produces a suggestion for two horizons and sets out the full reasoning behind each one.
 
 The two horizons are:
 
@@ -33,6 +33,8 @@ The two horizons are:
 
 Each factor is scored from -1 (bearish) to +1 (bullish). Each score is then multiplied by a horizon-specific weight. The weights are renormalised over whichever factors have data at that moment.
 
+The weights below apply to Brent. WTI is priced at Cushing, Oklahoma, so for WTI the weight on US inventories rises (intraday 10%, swing 22%) at the expense of news flow, the curve and positioning. The exact WTI weights are in `WEIGHTS_WTI` in `public/js/engine.js`.
+
 | Factor | Measure | Intraday weight | Swing weight |
 |---|---|---|---|
 | Short-term trend | Price versus 20-hour EMA; 20-hour EMA versus 50-hour EMA, scaled by ATR | 24% | 14% |
@@ -64,7 +66,7 @@ Stops use 1.5 times the 14-hour ATR for intraday trades and 1.2 times the daily 
 
 All logic sits in `public/js/engine.js`.
 
-- **Weights and thresholds:** edit `WEIGHTS` and `THRESHOLDS` at the top of the file.
+- **Weights and thresholds:** edit `WEIGHTS` (Brent), `WEIGHTS_WTI` and `THRESHOLDS` at the top of the file.
 - **One-off events:** edit `STATIC_EVENTS`. The OPEC+ meeting time is approximate and the FOMC date should be checked against the Federal Reserve calendar.
 - **News rules:** edit `NEWS_RULES`. Each rule is a regular expression with a weight; positive weights are bullish.
 
