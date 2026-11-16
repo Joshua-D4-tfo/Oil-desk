@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oil Desk | Brent decision support</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Oil Desk</h1>
+        <p class="sub">Brent short-term decision support</p>
+      </div>
+    </div>
+    <div class="status">
+      <span id="clock" class="muted"></span>
+      <span id="refresh-state" class="pill">Loading</span>
+      <button id="refresh-btn" class="btn" type="button">Refresh now</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="signals" aria-label="Suggestions">
+      <article class="signal-card" id="card-intraday"><div class="skeleton">Computing intraday view...</div></article>
+      <article class="signal-card" id="card-swing"><div class="skeleton">Computing swing view...</div></article>
+    </section>
+
+    <section class="tiles" id="tiles" aria-label="Prices"></section>
+
+    <section class="panel" aria-labelledby="reasoning-h">
+      <div class="panel-head">
+        <h2 id="reasoning-h">Full reasoning</h2>
+        <div class="tabs" role="tablist">
+          <button role="tab" class="tab active" data-h="intraday" type="button">Intraday</button>
+          <button role="tab" class="tab" data-h="swing" type="button">Swing (1 to 5 days)</button>
+        </div>
+      </div>
+      <div id="reasoning-text" class="reasoning"></div>
+      <div class="table-wrap">
+        <table class="factors">
+          <thead>
+            <tr><th>Factor</th><th>What the data shows</th><th>Why it matters</th><th class="num">Score</th><th class="num">Weight</th><th class="contrib-h">Contribution</th></tr>
+          </thead>
+          <tbody id="factor-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="ai-panel" hidden aria-labelledby="ai-h">
+      <div class="panel-head">
+        <h2 id="ai-h">Second opinion (Claude)</h2>
+        <span id="ai-meta" class="muted small"></span>
+      </div>
+      <div id="ai-text" class="ai-text"></div>
+    </section>
+
+    <div class="two-col">
+      <section class="panel" aria-labelledby="news-h">
+        <div class="panel-head">
+          <h2 id="news-h">News flow</h2>
+          <div class="tabs" role="tablist" id="news-filter">
+            <button class="tab active" data-f="all" type="button">All</button>
+            <button class="tab" data-f="bull" type="button">Bullish</button>
+            <button class="tab" data-f="bear" type="button">Bearish</button>
+            <button class="tab" data-f="event" type="button">Event risk</button>
+          </div>
+        </div>
+        <p class="muted small" id="news-summary"></p>
+        <ul class="news" id="news-list"></ul>
+      </section>
+
+      <div class="stack">
+        <section class="panel" aria-labelledby="events-h">
+          <div class="panel-head"><h2 id="events-h">Upcoming events</h2><span class="muted small">Dubai time</span></div>
+          <ul class="events" id="events-list"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="fund-h">
+          <div class="panel-head"><h2 id="fund-h">Fundamentals</h2></div>
+          <div id="fundamentals"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="src-h">
+          <div class="panel-head"><h2 id="src-h">Data sources</h2></div>
+          <ul class="sources" id="sources"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>Prices from Yahoo Finance are typically delayed by around ten minutes; execute against your broker's live quote. Inventory data updates on Wednesdays and positioning on Fridays, so they inform direction rather than timing. The suggestion is produced by a transparent rule set and is decision support, not financial advice.</p>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
