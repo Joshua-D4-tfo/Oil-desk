@@ -34,6 +34,16 @@ export default async (req) => {
   const closed = updateOpenTrades(state, barsByBenchmark, now);
   const resolved = resolvePending(state, barsByBenchmark, now);
 
+  // Keep the forward returns so they can be exported with the readings (one blob per snapshot day).
+  const byDay = {};
+  for (const r of resolved) (byDay[r.day] ||= []).push(r);
+  for (const [day, list] of Object.entries(byDay)) {
+    const key = `forward/${day}`;
+    const fwd = (await store.get(key, { type: "json" })) || {};
+    for (const r of list) (fwd[r.id] ||= {})[r.horizon] = r.retPct;
+    await store.setJSON(key, fwd);
+  }
+
   // 2. Log fresh signals while the market is open.
   const snaps = [];
   const opened = [];
@@ -60,7 +70,7 @@ export default async (req) => {
   await store.setJSON("state", state);
   await store.setJSON("summary", buildSummary(state, now));
 
-  const result = { ok: true, snapshots: snaps.length, opened: opened.length, closed: closed.length, resolved };
+  const result = { ok: true, snapshots: snaps.length, opened: opened.length, closed: closed.length, resolved: resolved.length };
   console.log("track-logger", JSON.stringify(result));
   return new Response(JSON.stringify(result), { headers: { "Content-Type": "application/json" } });
 };

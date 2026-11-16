@@ -65,6 +65,9 @@ export function maybeOpenTrades(state, sig, nowMs) {
       maxHoldUntil: nowMs + HORIZONS[h].maxHoldH * 3.6e6,
       mfeR: 0,
       maeR: 0,
+      sizeMultiplier: p.sizeMultiplier ?? null,
+      ovx: sig.regime?.ovx ?? null,
+      factorScores: sig.factorScores,
     };
     state.open[key] = trade;
     opened.push(trade);
@@ -134,7 +137,7 @@ function addObservation(agg, benchmark, horizon, name, x, retPct) {
 export function addPending(state, snap) {
   if (!snap.price) return;
   state.pending.push({
-    t: snap.t, benchmark: snap.benchmark, price: snap.price, factorScores: snap.factorScores,
+    id: snap.id, t: snap.t, benchmark: snap.benchmark, price: snap.price, factorScores: snap.factorScores,
     composite: { intraday: snap.intraday?.score ?? null, swing: snap.swing?.score ?? null },
     done: {},
   });
@@ -143,7 +146,7 @@ export function addPending(state, snap) {
 
 // Resolves forward returns for snapshots whose window has passed.
 export function resolvePending(state, barsByBenchmark, nowMs) {
-  let resolved = 0;
+  const resolved = [];
   const keep = [];
   for (const p of state.pending) {
     const bars = barsByBenchmark[p.benchmark];
@@ -161,7 +164,7 @@ export function resolvePending(state, barsByBenchmark, nowMs) {
       for (const [name, x] of Object.entries(p.factorScores || {})) addObservation(state.agg, p.benchmark, h, name, x, retPct);
       if (p.composite[h] != null) addObservation(state.agg, p.benchmark, h, "composite", p.composite[h], retPct);
       p.done[h] = true;
-      resolved++;
+      resolved.push({ id: p.id || `${p.benchmark}-${p.t}`, day: new Date(p.t).toISOString().slice(0, 10), horizon: h, retPct: Math.round(retPct * 10000) / 10000, priceAfter: bar.c });
     }
     const finished = Object.keys(HORIZONS).every((h) => p.done[h]);
     if (!finished) keep.push(p);
@@ -224,4 +227,43 @@ export function buildSummary(state, nowMs) {
     }
   }
   return out;
+}
+
+// ---------- CSV export ----------
+
+export const FACTOR_IDS = ["trend", "momentum", "rsi", "news", "curve", "inventories", "positioning", "dollar", "crack"];
+
+const csvCell = (v) => {
+  if (v == null || (typeof v === "number" && !Number.isFinite(v))) return "";
+  const s = typeof v === "number" ? String(Math.round(v * 1e4) / 1e4) : String(v);
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+};
+const iso = (t) => (t ? new Date(t).toISOString().replace(".000Z", "Z") : "");
+export const toCsv = (header, rows) => [header.join(","), ...rows.map((r) => r.map(csvCell).join(","))].join("\r\n") + "\r\n";
+
+export function tradesCsv(state) {
+  const header = ["trade_id", "benchmark", "horizon", "status", "label", "strength", "direction", "score", "conviction",
+    "opened_utc", "entry", "stop", "target", "risk_per_bbl", "closed_utc", "exit", "outcome", "result_r", "mark_r",
+    "max_favourable_r", "max_adverse_r", "hours_held", "size_multiplier", "ovx", ...FACTOR_IDS.map((f) => `f_${f}`)];
+  const all = [...state.closed.map((t) => ["closed", t]), ...Object.values(state.open || {}).filter(Boolean).map((t) => ["open", t])];
+  const rows = all.map(([status, t]) => [
+    t.id, t.benchmark, t.horizon, status, t.label, t.strength, t.direction, t.score, t.conviction,
+    iso(t.opened), t.entry, t.stop, t.target, t.risk, iso(t.closed), t.exit, t.outcome, t.r, t.markR,
+    t.mfeR, t.maeR, t.closed ? Math.round(((t.closed - t.opened) / 3.6e6) * 10) / 10 : "",
+    t.sizeMultiplier, t.ovx, ...FACTOR_IDS.map((f) => t.factorScores?.[f]),
+  ]);
+  return toCsv(header, rows);
+}
+
+export function readingsCsv(snapshots, fwdById) {
+  const header = ["snapshot_id", "time_utc", "benchmark", "price", "ovx",
+    "intraday_label", "intraday_score", "intraday_conviction", "swing_label", "swing_score", "swing_conviction",
+    ...FACTOR_IDS.map((f) => `f_${f}`), "fwd_4h_return_pct", "fwd_48h_return_pct"];
+  const rows = snapshots.map((s) => {
+    const f = fwdById[s.id] || {};
+    return [s.id, iso(s.t), s.benchmark, s.price, s.ovx,
+      s.intraday?.label, s.intraday?.score, s.intraday?.conviction, s.swing?.label, s.swing?.score, s.swing?.conviction,
+      ...FACTOR_IDS.map((id) => s.factorScores?.[id]), f.intraday, f.swing];
+  });
+  return toCsv(header, rows);
 }

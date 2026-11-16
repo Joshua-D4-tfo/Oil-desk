@@ -7,6 +7,8 @@ export function simulate(hours = 400) {
   const full = mockMarket(), curve = mockCurve(), fundamentals = mockFundamentals(), news = mockNews(), refining = mockRefining();
   const end = full.brent.data.bars.at(-1).t;
   const state = emptyState();
+  const snapshots = [];
+  const fwd = {};
   state.firstRun = end - hours * 3.6e6;
   const cut = (chart, t) => { const bars = chart.bars.filter((b) => b.t <= t); return { ...chart, bars, price: bars.at(-1)?.c, priceTime: bars.at(-1)?.t }; };
   for (let t = end - hours * 3.6e6; t <= end; t += 3.6e6) {
@@ -15,16 +17,17 @@ export function simulate(hours = 400) {
     const ref = { ...refining, gasoline: { ok: true, data: cut(refining.gasoline.data, t) }, heatingOil: { ok: true, data: cut(refining.heatingOil.data, t) } };
     const bars = { brent: market.brent.data.bars, wti: market.wti.data.bars };
     updateOpenTrades(state, bars, t);
-    resolvePending(state, bars, t);
+    for (const r of resolvePending(state, bars, t)) (fwd[r.id] ||= {})[r.horizon] = r.retPct;
     for (const bm of ["brent", "wti"]) {
       const sig = computeSignals({ market, curve, fundamentals, news: { items: [] }, refining: ref }, t, bm);
       const snap = snapshotFromSignals(sig, t);
       addPending(state, snap);
+      snapshots.push(snap);
       maybeOpenTrades(state, sig, t);
     }
     state.runs++; state.lastRun = t;
   }
-  return { state, summary: buildSummary(state, end) };
+  return { state, snapshots, fwd, summary: buildSummary(state, end) };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

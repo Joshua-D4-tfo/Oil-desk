@@ -307,7 +307,7 @@ function renderTrack() {
   }).join("");
   const fh = state.horizon;
   el.innerHTML = `
-    <p class="muted small">Logging since ${t.firstRun ? dayFmt.format(new Date(t.firstRun)) : "n/a"}; last run ${ago(t.lastRun)}. Each simulated trade risks 1R and takes profit at 1R, so the break-even win rate is 50% before trading costs. Only one trade per benchmark and horizon is open at a time.</p>
+    <p class="muted small">Logging since ${t.firstRun ? dayFmt.format(new Date(t.firstRun)) : "n/a"}; last run ${ago(t.lastRun)}. Each simulated trade risks 1R and takes profit at 1R, so the break-even win rate is 50% before trading costs. Only one trade per benchmark and horizon is open at a time. To review the weights, download both CSV files and share them with Claude.</p>
     <div class="track-grid">${col("intraday", "Intraday")}${col("swing", "Swing")}</div>
     <h3 class="sub-h">Factor reliability \u00B7 ${name} \u00B7 ${fh === "intraday" ? "4-hour" : "48-hour"} forward move</h3>
     <p class="muted small">How often a clearly bullish (score above +0.25) or bearish (below -0.25) reading was followed by a price move in that direction. Hit rate, then (number of readings, average move). Correlation runs from -1 to +1; above about +0.1 with a few hundred readings suggests the factor is genuinely useful. Switch horizon with the tabs in the reasoning panel. ${bm[fh].pending} readings are waiting for their window to pass.</p>

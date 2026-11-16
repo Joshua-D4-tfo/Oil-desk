@@ -56,7 +56,10 @@
     <section class="panel" aria-labelledby="track-h">
       <div class="panel-head">
         <h2 id="track-h">Track record</h2>
-        <a class="small muted" href="/api/track/trades" target="_blank" rel="noopener">Download all trades (JSON)</a>
+        <div class="downloads">
+          <a class="btn" href="/api/export/trades.csv" download>Download trades (CSV)</a>
+          <a class="btn" href="/api/export/readings.csv" download>Download signal readings (CSV)</a>
+        </div>
       </div>
       <div id="track"></div>
     </section>

@@ -157,3 +157,5 @@ table.factors td:first-child { font-weight: 500; white-space: nowrap; }
 table.compact td, table.compact th { padding: 6px 8px; }
 table.compact td:nth-child(2), table.compact td:nth-child(3) { min-width: 0; }
 tr.hl td { background: rgba(57, 135, 229, 0.08); font-weight: 500; }
+.downloads { display: flex; gap: 8px; flex-wrap: wrap; }
+.downloads .btn { text-decoration: none; display: inline-block; }

@@ -90,7 +90,12 @@ A scheduled function (`track-logger`) runs every 15 minutes on the published sit
 
 Because each trade risks 1R to make 1R, the break-even win rate is 50% before spreads and commissions. Treat fewer than 30 closed trades as anecdotal.
 
-Every closed trade can be downloaded as JSON from `/api/track/trades`.
+Two CSV downloads sit at the top of the Track record panel. They open in Excel and are the files to share for a weighting review:
+
+- **Trades** (`/api/export/trades.csv`): every simulated trade, closed and open, with entry, stop, target, outcome, result in R, the best and worst excursion in R, hours held, volatility-adjusted size, OVX, and every factor score at the moment the trade opened.
+- **Signal readings** (`/api/export/readings.csv`): every 15-minute snapshot for both benchmarks, with each factor score, the composite scores and labels, and the price move over the following 4 and 48 hours. The forward-move columns stay blank until the window has passed.
+
+The readings file is the better basis for re-weighting, because it covers every reading rather than only those that triggered a trade. Raw JSON of all trades is also available at `/api/track/trades`.
 
 Scheduled functions only run on the published production deploy, and the hourly price data limits how precisely intraday stop and target hits can be timed.
 
