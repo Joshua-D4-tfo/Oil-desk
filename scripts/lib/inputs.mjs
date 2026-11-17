@@ -34,7 +34,7 @@ async function stocktwits(symbol, since) {
     messages: msgs.length,
     bullish: msgs.filter((m) => tag(m) === "Bullish").length,
     bearish: msgs.filter((m) => tag(m) === "Bearish").length,
-    samples: msgs.slice(0, 12).map((m) => ({ tag: tag(m), text: String(m.body || "").replace(/\s+/g, " ").slice(0, 220) })),
+    samples: msgs.slice(0, 8).map((m) => ({ tag: tag(m), text: String(m.body || "").replace(/\s+/g, " ").slice(0, 220) })),
   };
 }
 
@@ -47,7 +47,7 @@ async function reddit(since) {
     .filter((d) => d && d.created_utc * 1000 >= since)
     .map((d) => ({ subreddit: d.subreddit, title: d.title, score: d.score, comments: d.num_comments, url: `https://www.reddit.com${d.permalink}` }))
     .sort((a, b) => b.score + b.comments - (a.score + a.comments))
-    .slice(0, 20);
+    .slice(0, 12);
 }
 
 function pctChange(bars, hours, price) {
@@ -92,7 +92,7 @@ export async function gatherInputs(nowMs = Date.now()) {
 
   const headlines = (n?.items || [])
     .filter((i) => !i.published || i.published >= since)
-    .slice(0, 70)
+    .slice(0, 40)
     .map((i) => ({ title: i.title, source: i.source, published: i.published ? new Date(i.published).toISOString() : null, url: i.link }));
 
   return {

@@ -28,7 +28,7 @@ Cover the last 24 hours (since the previous briefing). Include every development
 Do not pad and do not omit. A quiet day may have three items and a busy day twelve or more. If an item updates something in the previous briefing, say precisely what changed.
 
 PROCESS
-Search thoroughly before writing: wire services, official sites (opec.org, iea.org, eia.gov, government statements), shipping and tanker-tracking reports, bank and consultancy analyst views, and at least one search for public or retail sentiment on oil (for example forum, social or investor-community discussion). Check the most important items against a second source.
+You have a limited number of searches, so make each one count. Start from the supplied headlines, which already point to most of the day's stories. Use broad queries that cover several angles at once (for example "oil prices OPEC Hormuz today"), then targeted searches to verify the most important items against a second source and to fill gaps the headlines miss: official sites (opec.org, iea.org, eia.gov, government statements), shipping and tanker-tracking reports, and analyst views. Spend one search on public or retail sentiment on oil. Do not repeat near-identical searches.
 
 ${STYLE}
 

@@ -48,15 +48,22 @@ export function searchUrls(blocks) {
 export async function askClaude({ key, model, system, user, maxTokens = 16000, webSearch = null }) {
   if (!key) throw new Error("ANTHROPIC_API_KEY is not set");
   const tools = webSearch ? [{ type: "web_search_20250305", name: "web_search", max_uses: webSearch.maxUses ?? 12 }] : undefined;
-  const messages = [{ role: "user", content: user }];
+  // Prompt caching: the system prompt and the long input are cached, and during web search the API
+  // caches the conversation up to the latest search results, so each research step re-reads earlier
+  // material at the cached rate instead of the full input price.
+  const cache = { type: "ephemeral" };
+  const systemBlocks = [{ type: "text", text: system, cache_control: cache }];
+  const messages = [{ role: "user", content: [{ type: "text", text: user, cache_control: cache }] }];
   const allBlocks = [];
-  let usage = { input_tokens: 0, output_tokens: 0, web_search_requests: 0 };
+  let usage = { input_tokens: 0, output_tokens: 0, cache_write_tokens: 0, cache_read_tokens: 0, web_search_requests: 0 };
   let last;
   for (let round = 0; round < 6; round++) {
-    last = await post({ model, max_tokens: maxTokens, system, messages, ...(tools ? { tools } : {}) }, key);
+    last = await post({ model, max_tokens: maxTokens, system: systemBlocks, messages, ...(tools ? { tools } : {}) }, key);
     allBlocks.push(...(last.content || []));
     usage.input_tokens += last.usage?.input_tokens || 0;
     usage.output_tokens += last.usage?.output_tokens || 0;
+    usage.cache_write_tokens += last.usage?.cache_creation_input_tokens || 0;
+    usage.cache_read_tokens += last.usage?.cache_read_input_tokens || 0;
     usage.web_search_requests += last.usage?.server_tool_use?.web_search_requests || 0;
     if (last.stop_reason !== "pause_turn") break;
     // Continue the paused research turn by sending the partial assistant response back as-is.

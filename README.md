@@ -123,7 +123,7 @@ The **Daily briefing** tab, reachable directly at `/#briefing`, shows a research
 
 To use a different model, add a repository *variable* (not a secret) called `BRIEFING_MODEL`. The default is `claude-sonnet-5-5`.
 
-**Cost.** Each run is one research call with up to 15 web searches and one consensus call. Web search is billed per search on top of tokens, so check usage in the Claude Console after the first few days.
+**Cost.** Each run is one research call (up to 9 web searches by default) and one consensus call. Prompt caching is on, so earlier search results are re-read at the cached rate during research. Web search is billed per search on top of tokens. The run log and each briefing's `meta.tokens` field record input, cache and output tokens, so cost can be checked against the Claude Console. To change the number of searches, add a repository variable `BRIEFING_SEARCHES` (for example 6 to save more, or 12 for more depth).
 
 ## 7. Limitations
 

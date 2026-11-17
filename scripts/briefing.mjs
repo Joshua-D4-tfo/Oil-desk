@@ -23,6 +23,8 @@ import { DATA_SOURCES } from "./lib/prompts.mjs";
 
 const KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.BRIEFING_MODEL || "claude-sonnet-5-5";
+// Web searches per briefing. Fewer searches cost less; 9 still covers the major stories well.
+const SEARCHES = Number(process.env.BRIEFING_SEARCHES) || 9;
 const FORCE = process.env.FORCE === "1" || process.env.FORCE === "true";
 // Test hook: lets the offline test inject fake Claude responses.
 const ask = globalThis.__askClaudeOverride || askClaude;
@@ -44,8 +46,8 @@ async function main() {
     const previous = previousDate ? await readBriefing(previousDate) : null;
 
     console.log(`Researching with ${MODEL}...`);
-    const res = await ask({ key: KEY, model: MODEL, system: DAILY_SYSTEM, user: dailyUser(inputs, previous, longDate(today)), maxTokens: 32000, webSearch: { maxUses: 15 } });
-    console.log(`Claude: stop=${res.stopReason}, searches=${res.usage.web_search_requests}, tokens in=${res.usage.input_tokens} out=${res.usage.output_tokens}, urls seen=${res.urls.length}`);
+    const res = await ask({ key: KEY, model: MODEL, system: DAILY_SYSTEM, user: dailyUser(inputs, previous, longDate(today)), maxTokens: 32000, webSearch: { maxUses: SEARCHES } });
+    console.log(`Claude: stop=${res.stopReason}, searches=${res.usage.web_search_requests}, tokens: input ${res.usage.input_tokens}, cache write ${res.usage.cache_write_tokens}, cache read ${res.usage.cache_read_tokens}, output ${res.usage.output_tokens}; urls seen=${res.urls.length}`);
 
     try {
       if (res.stopReason === "max_tokens") throw new Error("research output was truncated");
@@ -74,7 +76,7 @@ async function main() {
         generatedAt: now,
         model: res.model,
         searches: res.usage.web_search_requests,
-        tokens: { input: res.usage.input_tokens, output: res.usage.output_tokens },
+        tokens: { input: res.usage.input_tokens, cacheWrite: res.usage.cache_write_tokens, cacheRead: res.usage.cache_read_tokens, output: res.usage.output_tokens },
         verification,
         prices: { brent: pick(inputs.prices.brent), wti: pick(inputs.prices.wti) },
         sentimentData: {
