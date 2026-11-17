@@ -99,7 +99,33 @@ The readings file is the better basis for re-weighting, because it covers every 
 
 Scheduled functions only run on the published production deploy, and the hourly price data limits how precisely intraday stop and target hits can be timed.
 
-## 6. Limitations
+## 6. Daily briefing
+
+The **Daily briefing** tab, reachable directly at `/#briefing`, shows a research briefing written each morning, a weekly and a monthly consensus, a scorecard of past verdicts and a 60-day archive.
+
+**How it is produced.** A GitHub Action (`.github/workflows/daily-briefing.yml`) runs `scripts/briefing.mjs` every day at 05:45 Dubai time. GitHub Actions is used rather than Netlify because the research takes a few minutes, and Netlify's scheduled functions stop after 30 seconds. Each run goes through these steps:
+
+1. **Gathers inputs.** These are the dashboard's own prices, curve, inventories, positioning, refining margin, volatility and headlines, plus public sentiment from StockTwits (bullish and bearish tags on USO and WTI futures) and Reddit.
+2. **Researches the last 24 hours.** Claude does this with live web search, under strict evidence rules:
+   - Every development must cite a source.
+   - Every development is labelled **Confirmed** (a primary source, or two or more independent reputable outlets), **Reported** (one reputable outlet) or **Unconfirmed**.
+   - Facts and analysis are kept in separate fields.
+   - Public sentiment is reported separately as opinion.
+3. **Verifies sources mechanically.** Any cited link that does not match a page retrieved during the research, or a supplied headline, is removed. An item left without a source is downgraded to Unconfirmed, and data releases or analyst views without a source are dropped. The briefing's footer reports these counts.
+4. **Rebuilds the consensus.** The weekly and monthly consensus is rebuilt from all stored briefings, together with the price path and the verdict scorecard.
+5. **Writes the output.** It writes `public/briefings/<date>.json`, `consensus.json`, `index.json`, a Word document for the day and a rolling Word archive (`public/briefings/docs/`), then commits them. Netlify redeploys automatically.
+6. **Deletes old briefings.** Briefings and documents older than 60 days are removed.
+
+**Setup (once).**
+1. In the GitHub repository, go to **Settings > Secrets and variables > Actions > New repository secret** and add `ANTHROPIC_API_KEY`. Optionally add `EIA_API_KEY` as well, so the briefing includes inventory data.
+2. Web search must be enabled for your organisation in the Claude Console.
+3. To produce the first briefing immediately, open **Actions > Daily oil briefing > Run workflow**. Tick "Regenerate" to rewrite today's briefing.
+
+To use a different model, add a repository *variable* (not a secret) called `BRIEFING_MODEL`. The default is `claude-sonnet-5-5`.
+
+**Cost.** Each run is one research call with up to 15 web searches and one consensus call. Web search is billed per search on top of tokens, so check usage in the Claude Console after the first few days.
+
+## 7. Limitations
 
 - Yahoo Finance futures quotes are delayed by roughly ten minutes, and the endpoint is unofficial and occasionally rate-limits cloud servers. The data sources panel shows when a source has failed, and the engine continues with the remaining factors. Execute against your broker's live quote.
 - Inventories update weekly (Wednesday) and positioning weekly (Friday, covering Tuesday's data). They set direction, not timing.
@@ -107,10 +133,12 @@ Scheduled functions only run on the published production deploy, and the hourly 
 - CFTC positioning covers WTI. ICE publishes Brent positioning separately and it is not included.
 - This is decision support built on a transparent rule set. It is not financial advice.
 
-## 7. Local preview with mock data
+## 8. Local preview with mock data
 
 ```
 node test/server.mjs     # then open http://localhost:8888
 node test/run.mjs        # prints every factor, the reasoning and the trade plan to the console
 node test/simulate-track.mjs   # replays the track-record logic over mock prices
+# Briefing pipeline with a fake Claude (run in a scratch copy, as it writes to public/briefings):
+node test/briefing-test.mjs
 ```

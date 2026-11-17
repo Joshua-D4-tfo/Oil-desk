@@ -354,6 +354,24 @@ document.querySelectorAll("#bench-switch .tab").forEach((b) => b.addEventListene
   render();
   if (!state.analysis[state.benchmark]) load("analysis").then(renderAnalysis);
 }));
+// ---------- Views: dashboard and daily briefing ----------
+let briefingLoaded = false;
+async function setView(view) {
+  const isBrief = view === "briefing";
+  $("view-dashboard").hidden = isBrief;
+  $("view-briefing").hidden = !isBrief;
+  $("bench-switch").hidden = isBrief;
+  document.querySelectorAll("#view-switch .tab").forEach((x) => x.classList.toggle("active", x.dataset.view === view));
+  if (location.hash !== (isBrief ? "#briefing" : "")) history.replaceState(null, "", isBrief ? "#briefing" : location.pathname);
+  if (isBrief && !briefingLoaded) {
+    briefingLoaded = true;
+    const { initBriefing } = await import("./briefing.js");
+    await initBriefing();
+  }
+}
+document.querySelectorAll("#view-switch .tab").forEach((b) => b.addEventListener("click", () => setView(b.dataset.view)));
+if (location.hash === "#briefing") setView("briefing");
+
 $("refresh-btn").addEventListener("click", () => refresh(Object.keys(SOURCES)));
 
 // ---------- Schedule ----------

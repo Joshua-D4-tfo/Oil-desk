@@ -15,6 +15,10 @@
         <p class="sub" id="bench-sub">Short-term crude decision support</p>
       </div>
     </div>
+    <div class="tabs view-switch" id="view-switch" role="tablist" aria-label="View">
+      <button class="tab active" data-view="dashboard" type="button" role="tab">Dashboard</button>
+      <button class="tab" data-view="briefing" type="button" role="tab">Daily briefing</button>
+    </div>
     <div class="tabs bench-switch" id="bench-switch" role="tablist" aria-label="Benchmark">
       <button class="tab" data-b="brent" type="button" role="tab">Brent</button>
       <button class="tab" data-b="wti" type="button" role="tab">WTI (US crude)</button>
@@ -26,7 +30,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="view-dashboard">
     <section class="signals" aria-label="Suggestions">
       <article class="signal-card" id="card-intraday"><div class="skeleton">Computing intraday view...</div></article>
       <article class="signal-card" id="card-swing"><div class="skeleton">Computing swing view...</div></article>
@@ -103,6 +107,13 @@
           <ul class="sources" id="sources"></ul>
         </section>
       </div>
+    </div>
+  </main>
+
+  <main id="view-briefing" hidden>
+    <div class="briefing-grid">
+      <div id="briefing-main"><div class="panel muted">Loading briefing...</div></div>
+      <aside id="briefing-side" class="stack"></aside>
     </div>
   </main>
 

@@ -159,3 +159,59 @@ table.compact td:nth-child(2), table.compact td:nth-child(3) { min-width: 0; }
 tr.hl td { background: rgba(57, 135, 229, 0.08); font-weight: 500; }
 .downloads { display: flex; gap: 8px; flex-wrap: wrap; }
 .downloads .btn { text-decoration: none; display: inline-block; }
+
+/* ---------- Daily briefing ---------- */
+.view-switch .tab { font-size: 13px; font-weight: 600; padding: 6px 14px; }
+[hidden] { display: none !important; }
+.briefing-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 1050px) { .briefing-grid { grid-template-columns: 1fr; } }
+.briefing { line-height: 1.6; }
+.briefing p { max-width: 95ch; margin: 0 0 10px; }
+.b-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.b-date { font-size: 20px; margin-top: 2px; }
+.b-prices { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; font-variant-numeric: tabular-nums; margin: 4px 0 12px; }
+.b-headline { font-size: 17px; font-weight: 600; color: var(--ink); }
+.verdict { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; margin: 14px 0 6px; border-left: 4px solid var(--axis); }
+.verdict.bull { border-left-color: var(--good); }
+.verdict.bear { border-left-color: var(--critical); }
+.v-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+.v-dir { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.sec { font-size: 15px; margin: 22px 0 10px; padding-top: 12px; border-top: 1px solid var(--grid); }
+.dev { padding: 12px 0 14px; border-bottom: 1px solid var(--grid); }
+.dev:last-of-type { border-bottom: 0; }
+.dev h3 { font-size: 15px; margin: 6px 0 6px; }
+.dev .why { color: var(--ink-2); }
+.dev-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.dchip, .vchip, .tagx { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+.dchip.bull { background: rgba(12, 163, 12, 0.16); color: #7fdc7f; }
+.dchip.bear { background: rgba(208, 59, 59, 0.18); color: #f19a9a; }
+.dchip.neutral { background: var(--axis); color: var(--ink-2); }
+.vchip { border: 1px solid var(--border); color: var(--ink-2); }
+.vchip.ver-ok { border-color: rgba(12, 163, 12, 0.5); }
+.vchip.ver-un { border-color: rgba(250, 178, 25, 0.6); color: var(--warning); }
+.tagx { font-weight: 500; color: var(--muted); border: 1px solid var(--border); text-transform: none; }
+.tagx.upd { color: var(--series); border-color: var(--series); }
+.srcs { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.srcs a { color: var(--ink-2); }
+.li { padding: 6px 0 10px; border-bottom: 1px solid var(--grid); }
+.sentiment { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; border: 1px dashed var(--border); }
+.sentiment ul, .watch, .cons ul { margin: 6px 0 10px; padding-left: 18px; }
+.foot-note { margin-top: 18px; }
+.cons h2 { font-size: 15px; }
+.cons-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.cons p { margin: 0 0 8px; }
+.small-meter { height: 22px; margin: 2px 0 8px; }
+.small-meter .track { top: 8px; }
+.small-meter .mid { top: 3px; height: 16px; }
+.small-meter .marker { top: 1px; height: 20px; }
+.drv { margin: 6px 0; }
+.drv-h { font-size: 12px; font-weight: 600; }
+.drv.pos .drv-h { color: #7fdc7f; }
+.drv.neg .drv-h { color: #f19a9a; }
+.ok-mark { color: #7fdc7f; font-size: 12px; }
+.bad-mark { color: #f19a9a; font-size: 12px; }
+.archive { list-style: none; padding: 0; margin: 0; max-height: 420px; overflow-y: auto; }
+.archive li { display: grid; grid-template-columns: 92px 1fr auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--grid); font-size: 12px; }
+.archive li button { font: inherit; font-size: 12px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; cursor: pointer; }
+.archive li.active button { border-color: var(--series); background: rgba(57, 135, 229, 0.15); }
+.arch-h { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
