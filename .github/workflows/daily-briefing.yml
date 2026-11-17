@@ -23,16 +23,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Check for Anthropic key
+        id: key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::notice::Skipped: add the ANTHROPIC_API_KEY repository secret to enable the daily briefing."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.key.outputs.ok == 'true'
 
       - uses: actions/setup-node@v4
+        if: steps.key.outputs.ok == 'true'
         with:
           node-version: 20
           cache: npm
 
       - run: npm ci
+        if: steps.key.outputs.ok == 'true'
 
       - name: Write briefing
+        if: steps.key.outputs.ok == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
@@ -41,6 +57,7 @@ jobs:
         run: node scripts/briefing.mjs
 
       - name: Commit and push
+        if: steps.key.outputs.ok == 'true'
         run: |
           git config user.name "oil-desk-briefing"
           git config user.email "actions@users.noreply.github.com"
