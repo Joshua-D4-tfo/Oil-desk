@@ -1,0 +1,479 @@
+{
+ "date": "2026-11-17",
+ "headline": "Brent has slid to about $91.7 as surplus expectations outweigh a fresh run of Hormuz tanker attacks, so the next 24 hours turn on whether Iran's two-day reopening plan gains traction or the attacks begin to cut physical flows.",
+ "overview": "Brent is at $91.70 and WTI at $84.98, both down about 4.1% over 24 hours and down 16% and 18% respectively over 30 days. Brent closed at $95.84 on Friday and $92.44 on Monday. <cite index=\"14-1\">Reuters reported that oil settled more than 3% lower on Monday as signs of recovering Hormuz flows reinforced surplus expectations, even though fresh tanker incidents underscored risks to Middle East exports.</cite> <cite index=\"10-3\">The IEA said on Friday that the market will return to surplus in the fourth quarter as Middle East exports recover faster than demand.</cite> That surplus narrative has dominated for now, while attacks on shipping, Houthi gains in Yemen and Iranian strikes on Bahrain have not produced a lasting rally.",
+ "developments": [
+  {
+   "title": "Further tanker attacks in the Strait of Hormuz; Iran says four vessels hit mines in 24 hours",
+   "category": "Geopolitics & shipping",
+   "summary": "UKMTO reported two tanker attacks in the strait on Monday 16 November. <cite index=\"68-3\">Both caused engine-room fires and one vessel was left disabled.</cite> <cite index=\"68-4,68-6\">The later incident, at about 1900 UTC and seven nautical miles north of Khasab, Oman, left the crew safe, with the extent of damage unknown.</cite> <cite index=\"70-12\">UKMTO did not identify the vessel or the attacker, and the link to Iran's mine claim has not been independently confirmed.</cite> <cite index=\"7-8\">Iran's Army said a further tanker with its navigation systems switched off struck a naval mine in a prohibited zone east of the strait.</cite> <cite index=\"70-1\">Iran described this as its fourth tanker strike in 24 hours.</cite> A tracker site, which is lower-quality evidence, <cite index=\"7-7\">cited an IMF PortWatch count of 3 transits on 8 November against a pre-crisis baseline of 85 per day.</cite>",
+   "why_it_matters": "The attack on a vessel in the narrowest part of the strait is the clearest threat to flows this week. The price reaction so far has been small because reported barrels lost are small and the IEA says exports are recovering, apparently through transponder-off crossings. If insurers or owners pull back from the Oman-side route, the risk premium would rebuild quickly, probably by several dollars within a session.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "UKMTO Reports Two Tanker Attacks in Strait of Hormuz",
+     "publisher": "gCaptain",
+     "url": "https://gcaptain.com/ukmto-reports-two-tanker-attacks-in-strait-of-hormuz/"
+    },
+    {
+     "title": "Iran says 4th tanker hit in 24 hours as UKMTO reports Hormuz attack near Oman",
+     "publisher": "investingLive",
+     "url": "https://investinglive.com/commodities/iran-says-4th-tanker-hit-in-24-hours-as-ukmto-reports-hormuz-attack-near-oman"
+    },
+    {
+     "title": "Oil tanker burns in Strait of Hormuz after hitting mine",
+     "publisher": "Mehr News Agency",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOS2JwTU5jT3ptNm9RUmhBRXRLWXBGclUxUWFaRDlaM2p2amVvZml3UjFfVXlsdnBFU01idjRFeFExT0xhRWEyWkl6UE9ZM1g3akttSU1ROENTUW04WjZQNXFYUjEtemlMbkd3c0lqdzJmaUVObllHNFJkcXc3VTRBWmR6VVdCcjJWOERhdklGbkF4M1FfQ0E?oc=5"
+    },
+    {
+     "title": "Strait of Hormuz Live Tracker & Monitor",
+     "publisher": "straits.live",
+     "url": "https://straits.live/"
+    }
+   ]
+  },
+  {
+   "title": "IEA sees a Q4 2026 surplus; Gulf exports recovering",
+   "category": "Inventories & data",
+   "summary": "In its November report on 13 November, <cite index=\"88-1,88-2\">the IEA said Q4 supply would average 105 million bpd, 1.7 million bpd above demand, reversing its earlier forecast of a deficit.</cite> <cite index=\"84-9\">It sees 2026 demand falling 2.7 million bpd to 102.3 million bpd, then rebounding by 2 million bpd in 2027.</cite> <cite index=\"87-5\">The 2027 surplus is put at 3.8 million bpd.</cite> <cite index=\"84-3\">A further 71 million barrels of emergency stocks, including 15 million barrels of diesel, are to be made available by end-February.</cite> <cite index=\"86-10\">The agency said downside risks to its forecast persist because attacks on shipping undermine maritime security.</cite> The report is from Friday but remains the main cited driver of Tuesday's decline.",
+   "why_it_matters": "A balance moving from deficit to a 1.7 million bpd surplus removes the case for a sustained physical premium and shifts the focus to inventory rebuilding. The effect is persistent rather than a one-day event, but it depends on exports holding up under continued attacks.",
+   "direction": "bearish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "World oil market is returning to surplus as Gulf exports recover, IEA says",
+     "publisher": "Reuters via BOE Report",
+     "url": "https://boereport.com/2026/11/13/world-oil-market-is-returning-to-surplus-as-gulf-exports-recover-iea-says/"
+    },
+    {
+     "title": "IEA sees world oil market returning to surplus in Q4 2026",
+     "publisher": "Baird Maritime",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/iea-sees-world-oil-market-returning-to-surplus-in-q4-2026"
+    },
+    {
+     "title": "IEA forecasts global oil surplus in late 2026",
+     "publisher": "Shafaq News",
+     "url": "https://shafaq.com/en/Economy/IEA-forecasts-global-oil-surplus-in-late-2026"
+    },
+    {
+     "title": "Oil prices slip as IEA sees first supply surplus since Iran war began",
+     "publisher": "Quartz",
+     "url": "https://qz.com/oil-prices-slip-iea-supply-surplus-iran-war-111626"
+    }
+   ]
+  },
+  {
+   "title": "Houthis advance towards Aden after Saudi-backed forces leave the Bab el-Mandeb coast",
+   "category": "Geopolitics & shipping",
+   "summary": "<cite index=\"49-3\">The Yemeni government said on Sunday it was withdrawing from areas near the Bab el-Mandeb Strait to concentrate on defending Aden.</cite> <cite index=\"49-4\">Five Yemeni military sources said on Monday that Houthi fighters had reached Khor Omairh, about 62 miles west of Aden.</cite> <cite index=\"48-5\">A maritime security assessment cited by OilPrice said Houthi control of the coast between Bab el-Mandeb and Aden would present a major increase in the threat to merchant shipping.</cite> I found no report of a new Houthi attack on a tanker in the last 24 hours.",
+   "why_it_matters": "The Red Sea route via Yanbu is the main Saudi alternative to Hormuz. <cite index=\"53-4\">Riyadh increasingly relies on the Bab al-Mandeb waterway for oil exports.</cite> The threat is to Saudi barrels and to a second chokepoint rather than a realised loss, so the effect stays latent unless attacks on Red Sea tankers resume.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Saudi-backed forces retreat to defend Aden as Houthis seize more ground in Yemen",
+     "publisher": "NBC News",
+     "url": "https://www.nbcnews.com/world/yemen/yemen-houthi-rebels-saudi-arabia-backed-forces-retreat-aden-rcna609670"
+    },
+    {
+     "title": "Houthi Advance Puts Saudi Crude Exports at Risk",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Energy/Energy-General/Houthi-Advance-Puts-Saudi-Crude-Exports-at-Risk.html"
+    }
+   ]
+  },
+  {
+   "title": "Iran's two-day Hormuz plan backed by regional bloc; Vance rules out a 'forever war'",
+   "category": "Geopolitics & shipping",
+   "summary": "<cite index=\"103-2\">Iranian Foreign Minister Araghchi said on Monday that a 10-nation regional bloc had backed Tehran's plan to reopen Hormuz under an initial ceasefire.</cite> <cite index=\"135-7\">Tehran has demanded the release of frozen assets, sanctions relief and an end to the US naval blockade of Iranian ports in exchange.</cite> <cite index=\"133-1\">Iran said on 11 November that the strait will not reopen until the US meets its seven conditions.</cite> <cite index=\"76-3\">US Vice President Vance said in a Fox News interview that Trump would not allow the conflict to become a forever war.</cite> <cite index=\"76-5\">He did not set a withdrawal date.</cite> <cite index=\"104-9\">Araghchi is due to visit Oman on Tuesday.</cite> I found no US acceptance of the plan.",
+   "why_it_matters": "These are diplomatic signals with no agreed terms. They support the view that the US is looking for an exit, which trims the tail risk of renewed strikes. A formal reopening would remove the remaining Hormuz premium, but the Iranian conditions are stringent and unaccepted.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Live Updates: Iran says no U.N. inspections of damaged nuclear sites until war is permanently ended",
+     "publisher": "CBS News",
+     "url": "https://www.cbsnews.com/live-updates/iran-war-us-nuclear-oil-strait-of-hormuz/"
+    },
+    {
+     "title": "Regional bloc backs Iran's two-day Hormuz reopening plan, Araghchi says",
+     "publisher": "TRT World",
+     "url": "https://www.trtworld.com/article/1aa5e8cc0211"
+    },
+    {
+     "title": "Iran denies talks with US, says Hormuz will stay shut until demands are met",
+     "publisher": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/11/11/iran-denies-talks-with-us-says-hormuz-will-stay-shut-until-demands-are-met"
+    },
+    {
+     "title": "Vance says Trump will avoid 'forever war' in Iran",
+     "publisher": "IANS via HiIndia",
+     "url": "https://hiindia.com/vance-says-trump-will-avoid-forever-war-in-iran"
+    },
+    {
+     "title": "Oil falls after US dismisses prospect of 'forever war' with Iran",
+     "publisher": "Arabian Gulf Business Insight (AGBI)",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPQWJnQmxZa2gwZVVTV3JKejRFd09uSkVsX0Z0RHpDUUxtWW1sQXJ3c1hXN21DeW5nRHlSVWJpRzlZbGl0OWI1VHZMUTUwR2xUVkpfa1E3T25sZ210cjg0Mm9qeHExaFZKcFBudm1ITFduNFdwelg2dm1xYVNuVlZrcFJoWVdYSXc0Z1A2TGN4TVlwU1NpU1o4WXZqR1MyUnhyc0EtZDk2dw?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "Iranian drone strikes on Bahrain base; unverified Iranian drone claims; third US carrier arrives",
+   "category": "Geopolitics & shipping",
+   "summary": "<cite index=\"103-1\">The IRGC said its forces carried out a drone attack on a US radar system at a base in Bahrain on Sunday.</cite> <cite index=\"104-4\">Bahrain said it intercepted and destroyed several Iranian aerial attacks, the first such interceptions since September.</cite> Iranian outlets also said the army shot down a US MQ-1 drone, and the IRGC said it seized a US drone near Hormuz (Iranian state-linked claims, not confirmed by the US in the material I found). CNBC's headline reports that a third US carrier has arrived, stoking concerns about renewed conflict with Iran.",
+   "why_it_matters": "Direct Iranian fire on US-hosted bases, plus a larger US naval presence, raises the chance of a resumption of strikes, which was the main upside risk to prices earlier this month. Markets have so far treated these as contained incidents, so the premium effect is modest unless damage or casualties follow.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Anti-Houthi forces retreat in Yemen as Iran strikes Bahrain in attack on U.S. base",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
+    },
+    {
+     "title": "Third U.S. carrier arrives, stoking concerns about renewed conflicts with Iran",
+     "publisher": "CNBC",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9QemdsV2FWUHQ2dVJCOXJBN21EUUIyazhEMjFaLVNickZFalVGS0JXNkpnWGZTeUdmd09CSjdUWnR2M0l3Y1FMTEI3ZlgydTRpY1NhUVdTSFNlYW9URWQwb1ZncTNIRm1BZVJRRk5qQVHSAXZBVV95cUxNeExueUJISjdkcldnanBSTUFFUU9MMXY2MzNjZkc1TzFjWGw3dmJnYnRKWUpCT19DRm56UUFLOVRueFoxVXFOWXgzVVJQUm0wUzJGZnFzWWtwZURDbFdPZEFURUlrSENDV1FmWXF2MUhBXzNUQnh3?oc=5"
+    },
+    {
+     "title": "Iranian Army Shoots Down MQ-1 Drone Over Strait of Hormuz",
+     "publisher": "WANA News Agency",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQcDJTRXBBTy1PRWh5NzNKcWtkV2h4LURPTHpGdTNSNlB6Q0R3LVdyLXlIT09melVjTlAxN0hyQ3hqOFRJUTdXSFByWWY2Sm0tOE5oQW9SU3UwMUdfeHJrcG9RSFVzbGh6Z2hEbi1VMm0wMGM1RFRIcXlqeGlJdTVSMDlTRQ?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "OPEC holds capacity-review meeting ahead of 29 November ministerial",
+   "category": "OPEC+",
+   "summary": "<cite index=\"32-1\">OPEC held an online meeting on Monday to discuss its review of maximum sustainable production capacity of members and the wider OPEC+ group, according to its official X page.</cite> <cite index=\"32-3\">Secretary General Haitham Al Ghais called it a historic milestone.</cite> <cite index=\"28-3\">OPEC did not disclose specific decisions or conclusions.</cite> <cite index=\"28-6,28-7\">OPEC+ held December targets on 1 November and has about 2 million bpd of restrictions in place through end-2026 that need a decision.</cite> <cite index=\"32-3\">OPEC+ ministers will meet on 29 November to decide 2027 output policy.</cite>",
+   "why_it_matters": "The capacity numbers will determine how 2027 quotas are allocated, with an IEA-projected 2027 surplus of 3.8 million bpd in the background. No decision is due today, so the effect is on positioning and leaks about quota size rather than on barrels.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "OPEC officials meet to discuss oil production capacity review",
+     "publisher": "Reuters via BOE Report",
+     "url": "https://boereport.com/2026/11/16/opec-officials-meet-to-discuss-oil-production-capacity-review/"
+    },
+    {
+     "title": "OPEC+ capacity review could reshape global oil production limits",
+     "publisher": "Oil & Gas 360",
+     "url": "https://www.oilandgas360.com/opec-capacity-review-could-reshape-global-oil-production-limits/"
+    }
+   ]
+  },
+  {
+   "title": "US SPR falls to 276.4 million barrels, lowest since August 1982",
+   "category": "Inventories & data",
+   "summary": "<cite index=\"11-6,11-7\">Reuters reported, citing Department of Energy data, that SPR crude stocks fell to 276.4 million barrels last week, the lowest since August 1982, as part of a US agreement to release 172 million barrels.</cite> The EIA series supplied to me shows 279.5 million barrels for the week to 6 November, so the two figures are probably different weeks. The IEA's Birol is also reported (by EnergyNow, headline only) as saying a second coordinated stock release is not being discussed.",
+   "why_it_matters": "SPR releases are adding barrels now, which has supported the surplus narrative, but a depleted reserve leaves less of a policy backstop if Hormuz flows fall again. The latter only matters in an escalation scenario.",
+   "direction": "neutral",
+   "impact": "low",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Oil slips on supply surplus outlook despite Gulf tensions",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://www.investing.com/news/commodities-news/oil-slips-on-supply-surplus-outlook-despite-gulf-tensions-5031433"
+    },
+    {
+     "title": "Strategic Petroleum Reserve (SPR) Current Level",
+     "publisher": "World Oil Monitor",
+     "url": "https://worldoilmonitor.com/strategic-petroleum-reserve"
+    },
+    {
+     "title": "IEA's BIROL: Not Discussing a Second Release of Strategic Oil Reserves",
+     "publisher": "EnergyNow.com",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQcjlVQXIyUzJxcEJXOWZSaW9OU3hWY1lVQi13eGJGTjRMQTZSU19lUFVuSHZqWlVyZXI3T0ZVdmZUdGUwMzNYVFZjZHVSbl9ITUJLalNGSFJtN0hJX3ZZOVUyT3c3SDNhWHNfeXJiaFdCdVpFb1FQWXJjRFF4MkVsaUo2YlVxUEhfQTBsNGZCSV9WOVBYZnNZU18yWUs5aTNX?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "China: October crude imports at seven-month high, but refinery runs fell and stockpiling resumed",
+   "category": "Demand",
+   "summary": "<cite index=\"93-4\">China imported 41.94 million tonnes of crude in October (9.88 million bpd), up 9.4% per day from September, according to customs data.</cite> <cite index=\"96-9\">Refinery throughput slipped about 2% to roughly 13.7 million bpd.</cite> <cite index=\"96-3\">Reuters columnist Clyde Russell estimates that China added close to 490,000 bpd to stockpiles, reversing a September draw.</cite> <cite index=\"96-10\">Fuel exports fell to about 5.2 million tonnes from about 7.2 million in September.</cite>",
+   "why_it_matters": "Rising imports with falling runs means barrels are going into storage rather than being consumed, which is consistent with a looser crude balance. Lower Chinese product exports are mildly supportive of cracks.",
+   "direction": "bearish",
+   "impact": "low",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "China crude oil imports hit seven-month high in October",
+     "publisher": "Baird Maritime",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/china-crude-oil-imports-hit-seven-month-high-in-october"
+    },
+    {
+     "title": "China resumes crude stockpiling, leaving room for fuel exports at 3 times prewar margins",
+     "publisher": "investingLive",
+     "url": "https://investinglive.com/commodities/china-resumes-crude-stockpiling-leaving-room-for-fuel-exports-at-3-times-prewar-margins"
+    }
+   ]
+  },
+  {
+   "title": "Product cracks compress while diesel stays the IEA's main concern",
+   "category": "Refining & products",
+   "summary": "The dashboard shows the crack spread at $33.30 per barrel against a one-month average of $40.41, which is 3.1 standard deviations below average and down $5.05 over five days. <cite index=\"90-3\">The IEA said severe tightness in product supply, especially diesel, remains the overriding concern even as crude swings to surplus.</cite> The EIA data supplied show US distillate stocks rose 4.07 million barrels in the week to 6 November against a five-year average change of -1.69 million.",
+   "why_it_matters": "Falling cracks reduce the incentive for refiners to run hard and bid for crude, which weighs on crude over days. The diesel tightness flagged by the IEA suggests the crack move may overshoot, so it is a modest two-way risk.",
+   "direction": "bearish",
+   "impact": "low",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Oil Swings Back to Surplus, Diesel Doesn't",
+     "publisher": "Energy News Beat",
+     "url": "https://energynewsbeat.co/crude-oil/oil-swings-back-to-surplus-diesel-doesnt/"
+    }
+   ]
+  }
+ ],
+ "data_releases": [
+  {
+   "name": "IEA Oil Market Report, November (13 Nov)",
+   "result": "Q4 2026 supply 105 million bpd, 1.7 million bpd above demand; 2027 surplus 3.8 million bpd.",
+   "vs_expectation": "Reverses the prior forecast of a Q4 deficit.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "World oil market is returning to surplus as Gulf exports recover, IEA says",
+     "publisher": "Reuters via BOE Report",
+     "url": "https://boereport.com/2026/11/13/world-oil-market-is-returning-to-surplus-as-gulf-exports-recover-iea-says/"
+    }
+   ]
+  },
+  {
+   "name": "US DOE Strategic Petroleum Reserve stocks",
+   "result": "276.4 million barrels, lowest since August 1982.",
+   "vs_expectation": "No consensus available; the drawdown follows the 172 million barrel release programme.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Oil slips on supply surplus outlook despite Gulf tensions",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://www.investing.com/news/commodities-news/oil-slips-on-supply-surplus-outlook-despite-gulf-tensions-5031433"
+    }
+   ]
+  },
+  {
+   "name": "China customs crude imports, October",
+   "result": "9.88 million bpd, highest since March.",
+   "vs_expectation": "No consensus available; still 13.3% below a year earlier.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "China crude oil imports hit seven-month high in October",
+     "publisher": "Baird Maritime",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/china-crude-oil-imports-hit-seven-month-high-in-october"
+    }
+   ]
+  }
+ ],
+ "analyst_views": [
+  {
+   "who": "Tim Waterer, KCM Trade",
+   "view": "Supply has caught up with demand and may now exceed it, which is the main factor weighing on prices. The geopolitical premium has not gone but is taking a back seat.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil slips on supply surplus outlook despite Gulf tensions",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://www.investing.com/news/commodities-news/oil-slips-on-supply-surplus-outlook-despite-gulf-tensions-5031433"
+    },
+    {
+     "title": "Oil slips on supply surplus outlook despite Gulf tensions",
+     "publisher": "Reuters via Yahoo Finance",
+     "url": "https://finance.yahoo.com/energy/articles/oil-slips-supply-surplus-outlook-013927034.html"
+    }
+   ]
+  },
+  {
+   "who": "ANZ analysts",
+   "view": "Concerns are easing as flows pick up, but the market's resilience is severely stressed, and supply, inventories, refining and effective spare capacity are vulnerable.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Oil slips as recovering Mideast exports blunt Gulf tensions",
+     "publisher": "Reuters via Yahoo Finance",
+     "url": "https://finance.yahoo.com/energy/articles/oil-slips-supply-surplus-outlook-013927034.html"
+    }
+   ]
+  },
+  {
+   "who": "Dennis Kissler, BOK Financial",
+   "view": "Elevated tensions seem to be the new norm, but global supplies look relatively stable and US output is near record.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil settles lower as recovering Middle East exports bolster surplus outlook",
+     "publisher": "Reuters via Yahoo Finance",
+     "url": "https://finance.yahoo.com/energy/articles/oil-prices-fall-expectations-coming-020042042.html"
+    }
+   ]
+  },
+  {
+   "who": "US EIA, November Short-Term Energy Outlook (10 Nov; inputs finalised 5 Nov)",
+   "view": "Brent to average about $100 in November and December and $97 for 2026, falling to $86 in 2027 as inventories rebuild. This sits well above the current $91.70 and predates the latest sell-off, so it is a stale anchor for the next few days.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "EIA forecasts $100 Brent in fourth quarter",
+     "publisher": "Petroleum News",
+     "url": "https://www.petroleumnews.com/story/2026/11/15/finance/eia-forecasts-100-brent-in-fourth-quarter/50516.html"
+    },
+    {
+     "title": "November 2026 Short-Term Energy Outlook",
+     "publisher": "US EIA",
+     "url": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf"
+    }
+   ]
+  },
+  {
+   "who": "Jorge Leon, Rystad Energy (as cited by House of Saud)",
+   "view": "The 29 November ministerial is the much more important test, and the 2027 output decision is an extremely difficult call.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Saudi Capacity Audit 2026: 1.37M Bpd Gap Before OPEC+ Vote",
+     "publisher": "House of Saud",
+     "url": "https://houseofsaud.com/saudi-capacity-audit-1-37m-bpd-gap-opec-nov29/"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "mixed",
+  "summary": "Retail commentary on StockTwits is thin and tilts slightly bearish on USO, with several posters pointing to the sell-off as evidence that the earlier rally was fake. A few bullish posters cite the Gulf conflict and the SPR low. This is opinion and does not by itself confirm any development. Its mild bearish lean agrees with the price action and the IEA surplus view, but the sample is small. Reddit data was unavailable and my retail-forum search returned nothing usable.",
+  "evidence": [
+   "StockTwits USO (30 hours): 30 posts, 6 tagged bullish, 11 tagged bearish, 13 untagged.",
+   "StockTwits CL_F (30 hours): 6 posts, 3 tagged bullish, 1 tagged bearish.",
+   "Bearish USO posters argue the sell-off shows the earlier move was not backed by changed fundamentals; one bullish poster cites the SPR falling to the lowest since 1982.",
+   "Several bearish posts call for $120 to $125, which conflicts with the price action and the surplus data, so they carry little weight.",
+   "Reddit: unavailable."
+  ],
+  "sources": []
+ },
+ "watch_today": [
+  {
+   "item": "Araghchi visit to Oman and any US response to the two-day Hormuz plan",
+   "when_utc": "during the day",
+   "why": "A US acceptance or a rejection would move the Hormuz risk premium more than any data release."
+  },
+  {
+   "item": "UKMTO and insurer notices on the Khasab incident and further Hormuz attacks",
+   "when_utc": "during the day",
+   "why": "Confirmation of a mine as the cause, or war-risk cover being withdrawn, would test the surplus narrative."
+  },
+  {
+   "item": "Houthi advance towards Aden and any Red Sea tanker attack",
+   "when_utc": "during the day",
+   "why": "Attacks near Bab el-Mandeb would threaten Saudi Yanbu exports."
+  },
+  {
+   "item": "API weekly inventory estimate",
+   "when_utc": "2026-11-17T21:30:00Z",
+   "why": "A third consecutive build in crude or distillates would reinforce the surplus reading."
+  },
+  {
+   "item": "EIA Weekly Petroleum Status Report",
+   "when_utc": "2026-11-18T15:30:00Z",
+   "why": "Confirms or contradicts API, and updates the SPR drawdown and distillate stocks."
+  },
+  {
+   "item": "OPEC+ ministerial meeting on 2027 framework (leaks beforehand)",
+   "when_utc": "2026-11-29T12:00:00Z",
+   "why": "Capacity-based quota allocation against a projected 2027 surplus is the next major supply-policy event."
+  }
+ ],
+ "verdict": {
+  "direction": "bearish",
+  "strength": -1,
+  "reasoning": "The strongest bearish argument is the IEA's move to a 1.7 million bpd Q4 surplus and Reuters-reported evidence that Gulf exports are recovering. The market has repeatedly sold tanker-attack headlines over the past week, and the US data show product stock builds. The strongest bullish argument is the cluster of Hormuz attacks, including one in the narrowest part of the strait, together with Houthi gains near Bab el-Mandeb and Iranian strikes on a US base. Brent's front spread of $2.45 over the second month also points to some physical tightness, and speculative positioning is at the 12th percentile of three years, which limits further liquidation. For the next 24 hours I give the edge to the bearish side, but only weakly: the price has already fallen about 4%, the dashboard rule-based signals are no-trade for Brent, and a confirmed loss of Hormuz or Red Sea flows would reverse the bias quickly."
+ },
+ "meta": {
+  "generatedAt": 1794893652742,
+  "model": "claude-sonnet-5-5",
+  "searches": 15,
+  "tokens": {
+   "input": 393717,
+   "output": 22239
+  },
+  "verification": {
+   "kept": 36,
+   "removed": 0,
+   "removedUrls": [],
+   "downgraded": [
+    "data_releases: EIA Weekly Petroleum Status Report (week to 6 Nov, from supplied dashboard data)",
+    "data_releases: CFTC positioning (as of 10 Nov, from supplied dashboard data)"
+   ]
+  },
+  "prices": {
+   "brent": {
+    "price": 91.7,
+    "priceTime": 1794892797000,
+    "chg24hPct": -4.149679361271253,
+    "chg7dPct": 0.22953562261873595,
+    "chg30dPct": -16.293932044277923
+   },
+   "wti": {
+    "price": 84.98,
+    "priceTime": 1794893030000,
+    "chg24hPct": -4.129060711699255,
+    "chg7dPct": -1.2319861741610525,
+    "chg30dPct": -18.02045437215958
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 30,
+     "bullish": 6,
+     "bearish": 11
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 6,
+     "bullish": 3,
+     "bearish": 1
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: failed",
+    "Google News: OPEC+: 44",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 33",
+    "Google News: Russia and China oil: 40",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}

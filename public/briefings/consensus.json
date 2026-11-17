@@ -1,0 +1,160 @@
+{
+ "date": "2026-11-17",
+ "generatedAt": 1794893830083,
+ "model": "claude-sonnet-5-5",
+ "week": {
+  "direction": "bearish",
+  "strength": -1,
+  "confidence": "low",
+  "summary": "The view rests on a single briefing, dated 17 November, so confidence is low and no trend can be inferred. That briefing leans weakly bearish with Brent at $91.7 per barrel. The main support is confirmed: the IEA's November report puts the Q4 2026 surplus at 1.7 million bpd, and Gulf exports are recovering. Against this, confirmed Hormuz tanker attacks and Houthi advances near Bab el-Mandeb keep a geopolitical premium in place. The briefing says the market has repeatedly sold attack headlines over the past week, but the supplied price data contain only one observation, so that claim cannot be checked here.",
+  "bullish_drivers": [
+   {
+    "driver": "Confirmed further tanker attacks in the Strait of Hormuz, with Iran saying four vessels hit mines in 24 hours (high impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Confirmed Houthi advance towards Aden after Saudi-backed forces left the Bab el-Mandeb coast (medium impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Brent front spread of $2.45 over the second month, signalling some physical tightness, and speculative positioning at the 12th percentile of three years, which limits further liquidation.",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "The US EIA November outlook of about $100 for Brent in November and December, although the briefing treats it as stale because it predates the sell-off.",
+    "dates": [
+     "2026-11-17"
+    ]
+   }
+  ],
+  "bearish_drivers": [
+   {
+    "driver": "IEA November report: Q4 2026 supply of 105 million bpd, 1.7 million bpd above demand, with a 2027 surplus of 3.8 million bpd (confirmed, high impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Gulf exports recovering, and Iran's two-day Hormuz reopening plan backed by a regional bloc (confirmed, medium impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Compressing product cracks, US product stock builds and China's resumed stockpiling with lower refinery runs (low impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   }
+  ],
+  "narrative_shift": "No shift can be measured with one briefing. The briefing itself describes a market in which surplus expectations have taken priority over geopolitical headlines, with the premium receding rather than gone.",
+  "price_vs_evidence": "Brent has fallen about 4% to $91.7, which fits the bearish balance of confirmed evidence, led by the IEA surplus. Prices have not responded to the attack headlines, which suggests the risk premium was already priced in or that the market is waiting for physical flow losses. The briefing's cautious sizing reflects low speculative length and the size of the move already made. There is no next-day price yet, so the verdict cannot be scored.",
+  "key_risks": [
+   "Confirmed loss of Hormuz or Red Sea flows, rather than attacks alone.",
+   "Failure of Iran's two-day reopening plan.",
+   "Escalation involving US forces, including the Iranian strikes on a Bahrain base and the arrival of a third US carrier (both only reported).",
+   "Houthi control of the Aden area and the Bab el-Mandeb approach."
+  ],
+  "what_would_change_it": "Evidence that the attacks are cutting physical Gulf or Red Sea exports, or a widening of the front spread above $2.45, would turn the view neutral or bullish. A sustained move back towards the EIA's $100 anchor would also challenge it. Confirmed reopening progress and further export recovery would strengthen the bearish case."
+ },
+ "month": {
+  "direction": "bearish",
+  "strength": -1,
+  "confidence": "low",
+  "summary": "The monthly view is identical to the weekly one because only one briefing, dated 17 November, exists for the whole period. It points to a mildly bearish balance, with Brent at $91.7. The IEA's projected surplus of 1.7 million bpd in Q4 and 3.8 million bpd in 2027 is the main structural argument. Geopolitical risk in Hormuz and Bab el-Mandeb remains active and could override it. The 29 November OPEC ministerial is flagged as an important test, and Rystad calls the 2027 output decision extremely difficult. Confidence is low because there is no month of evidence to compare.",
+  "bullish_drivers": [
+   {
+    "driver": "Persistent Hormuz tanker attacks and mine incidents, which sustain a risk premium (confirmed, high impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Houthi gains near Bab el-Mandeb, adding a second chokepoint risk.",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "US SPR at 276.4 million barrels, the lowest since August 1982, which reduces the policy buffer (labelled neutral and low impact).",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Low speculative positioning and a $2.45 front spread, suggesting limited room for further selling.",
+    "dates": [
+     "2026-11-17"
+    ]
+   }
+  ],
+  "bearish_drivers": [
+   {
+    "driver": "IEA projections of a 1.7 million bpd Q4 surplus and a 3.8 million bpd 2027 surplus.",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "Recovering Gulf exports and regional backing for Iran's reopening plan.",
+    "dates": [
+     "2026-11-17"
+    ]
+   },
+   {
+    "driver": "China's refinery runs falling and stockpiling resuming despite a seven-month high in October imports of 9.88 million bpd.",
+    "dates": [
+     "2026-11-17"
+    ]
+   }
+  ],
+  "narrative_shift": "None can be identified, as there are no earlier briefings. The one persistent theme the briefing reports is that the market has sold attack headlines for roughly a week. The ANZ and Rystad comments imply that supply resilience and OPEC policy are the next issues.",
+  "price_vs_evidence": "No monthly price path is supplied, since the first and last Brent values are both $91.7. The recent 4% decline is consistent with the confirmed surplus evidence. The gap between the price and the EIA's $100 forecast reflects the forecast's timing, which predates the sell-off. No meaningful month-long divergence can be assessed.",
+  "key_risks": [
+   "Physical disruption in Hormuz or the Red Sea.",
+   "An OPEC decision on 29 November that is more restrictive than expected.",
+   "Diesel tightness, which the IEA flags as its main concern.",
+   "US-Iran escalation."
+  ],
+  "what_would_change_it": "A hawkish outcome from the 29 November OPEC ministerial, or confirmed disruption to Gulf or Red Sea flows, would change the view. A rise in Brent towards $100 would show the market rejecting the surplus narrative. Further IEA or other data confirming the surplus, together with durable reopening of Hormuz, would deepen the bearish stance."
+ },
+ "stats": {
+  "week": {
+   "briefings": 1,
+   "directionalVerdicts": 0,
+   "correct": 0,
+   "hitRatePct": null,
+   "neutralVerdicts": 0,
+   "avgStrength": -1,
+   "brentFirst": 91.7,
+   "brentLast": 91.7
+  },
+  "month": {
+   "briefings": 1,
+   "directionalVerdicts": 0,
+   "correct": 0,
+   "hitRatePct": null,
+   "neutralVerdicts": 0,
+   "avgStrength": -1,
+   "brentFirst": 91.7,
+   "brentLast": 91.7
+  },
+  "scorecard": [
+   {
+    "date": "2026-11-17",
+    "verdict": "bearish",
+    "strength": -1,
+    "brentAtBriefing": 91.7,
+    "brentNext": null,
+    "changePct": null,
+    "hit": null
+   }
+  ]
+ }
+}
