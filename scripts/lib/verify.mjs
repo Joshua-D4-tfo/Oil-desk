@@ -64,3 +64,24 @@ export function validateBriefing(b) {
   else b.verdict.strength = Math.max(-2, Math.min(2, Math.round(Number(b.verdict.strength) || 0)));
   return errs;
 }
+
+// Claude's web search can leave citation markup (for example <cite index="3-1">...</cite>) in text.
+// The briefing cites sources in its own fields, so strip any markup from every string.
+export function stripMarkup(value) {
+  if (typeof value === "string") {
+    return value
+      .replace(/<\/?(?:antml:)?cite\b[^>]*>/gi, "")
+      .replace(/<\/?[a-z][a-z0-9:_-]*(?:\s[^<>]*)?>/gi, "")
+      .replace(/\u2014/g, ", ")
+      .replace(/[ \t]{2,}/g, " ")
+      .replace(/\s+([,.;:])/g, "$1")
+      .trim();
+  }
+  if (Array.isArray(value)) return value.map(stripMarkup);
+  if (value && typeof value === "object") {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) out[k] = k === "url" ? v : stripMarkup(v);
+    return out;
+  }
+  return value;
+}

@@ -15,10 +15,11 @@ import { join } from "node:path";
 import { gatherInputs } from "./lib/inputs.mjs";
 import { askClaude, extractJson } from "./lib/claude.mjs";
 import { DAILY_SYSTEM, dailyUser, CONSENSUS_SYSTEM, consensusUser, REPAIR_SYSTEM } from "./lib/prompts.mjs";
-import { verifySources, validateBriefing } from "./lib/verify.mjs";
+import { verifySources, validateBriefing, stripMarkup } from "./lib/verify.mjs";
 import { verdictScorecard, summarise } from "./lib/scorecard.mjs";
 import { ensureDirs, listDates, readBriefing, writeJson, loadAll, applyRetention, dubaiDate, longDate, DOCS, RETENTION_DAYS } from "./lib/store.mjs";
 import { dailyDocx, archiveDocx } from "./lib/docx.mjs";
+import { DATA_SOURCES } from "./lib/prompts.mjs";
 
 const KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.BRIEFING_MODEL || "claude-sonnet-5-5";
@@ -57,10 +58,11 @@ async function main() {
       console.log(`Repair: stop=${fix.stopReason}, tokens in=${fix.usage.input_tokens} out=${fix.usage.output_tokens}`);
       briefing = extractJson(fix.text);
     }
+    briefing = stripMarkup(briefing);
     const errs = validateBriefing(briefing);
     if (errs.length) throw new Error(`Briefing failed validation: ${errs.join("; ")}`);
 
-    const allowed = [...res.urls.map((u) => u.url), ...inputs.headlines.map((h) => h.url), ...(inputs.sentiment.reddit || []).map((r) => r.url)];
+    const allowed = [...res.urls.map((u) => u.url), ...inputs.headlines.map((h) => h.url), ...(inputs.sentiment.reddit || []).map((r) => r.url), ...Object.values(DATA_SOURCES)];
     const verification = verifySources(briefing, allowed);
     console.log(`Verification: kept ${verification.kept}, removed ${verification.removed}, downgraded ${verification.downgraded.length}`);
     if (verification.removed) console.log("Removed URLs:", verification.removedUrls.join(" | "));
@@ -100,7 +102,7 @@ async function main() {
   let consensus = null;
   try {
     const res = await ask({ key: KEY, model: MODEL, system: CONSENSUS_SYSTEM, user: consensusUser(all, stats, longDate(today)), maxTokens: 8000 });
-    consensus = { date: today, generatedAt: Date.now(), model: res.model, ...extractJson(res.text), stats };
+    consensus = { date: today, generatedAt: Date.now(), model: res.model, ...stripMarkup(extractJson(res.text)), stats };
   } catch (e) {
     console.error("Consensus failed:", e.message);
     const prior = await import("node:fs/promises").then((fs) => fs.readFile(new URL("../public/briefings/consensus.json", import.meta.url), "utf8")).then(JSON.parse).catch(() => null);
