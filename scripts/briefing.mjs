@@ -14,7 +14,7 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { gatherInputs } from "./lib/inputs.mjs";
 import { askClaude, extractJson } from "./lib/claude.mjs";
-import { DAILY_SYSTEM, dailyUser, CONSENSUS_SYSTEM, consensusUser } from "./lib/prompts.mjs";
+import { DAILY_SYSTEM, dailyUser, CONSENSUS_SYSTEM, consensusUser, REPAIR_SYSTEM } from "./lib/prompts.mjs";
 import { verifySources, validateBriefing } from "./lib/verify.mjs";
 import { verdictScorecard, summarise } from "./lib/scorecard.mjs";
 import { ensureDirs, listDates, readBriefing, writeJson, loadAll, applyRetention, dubaiDate, longDate, DOCS, RETENTION_DAYS } from "./lib/store.mjs";
@@ -43,10 +43,20 @@ async function main() {
     const previous = previousDate ? await readBriefing(previousDate) : null;
 
     console.log(`Researching with ${MODEL}...`);
-    const res = await ask({ key: KEY, model: MODEL, system: DAILY_SYSTEM, user: dailyUser(inputs, previous, longDate(today)), maxTokens: 16000, webSearch: { maxUses: 15 } });
+    const res = await ask({ key: KEY, model: MODEL, system: DAILY_SYSTEM, user: dailyUser(inputs, previous, longDate(today)), maxTokens: 32000, webSearch: { maxUses: 15 } });
     console.log(`Claude: stop=${res.stopReason}, searches=${res.usage.web_search_requests}, tokens in=${res.usage.input_tokens} out=${res.usage.output_tokens}, urls seen=${res.urls.length}`);
 
-    briefing = extractJson(res.text);
+    try {
+      if (res.stopReason === "max_tokens") throw new Error("research output was truncated");
+      briefing = extractJson(res.text);
+    } catch (e) {
+      // Repair: rewrite the draft as complete, valid JSON. No web search, so no new sources can be
+      // introduced, and the link verification below still applies to whatever is cited.
+      console.warn(`Draft could not be used (${e.message}); asking Claude to rewrite it as complete JSON...`);
+      const fix = await ask({ key: KEY, model: MODEL, system: REPAIR_SYSTEM, user: `${DAILY_SYSTEM.slice(DAILY_SYSTEM.indexOf("OUTPUT"))}\n\nDRAFT (may be cut off part-way):\n${res.text}`, maxTokens: 32000 });
+      console.log(`Repair: stop=${fix.stopReason}, tokens in=${fix.usage.input_tokens} out=${fix.usage.output_tokens}`);
+      briefing = extractJson(fix.text);
+    }
     const errs = validateBriefing(briefing);
     if (errs.length) throw new Error(`Briefing failed validation: ${errs.join("; ")}`);
 

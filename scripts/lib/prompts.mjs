@@ -138,3 +138,6 @@ ${JSON.stringify(briefings.slice(7, 31).map(brief), null, 1)}
 
 Write the weekly and monthly consensus.`;
 }
+
+export const REPAIR_SYSTEM = `You are given a draft oil-market briefing that was cut off or is not valid JSON, together with the required output structure. Rewrite it as one complete, valid JSON object in that structure, wrapped in <json></json> tags.
+Rules: use only facts and source URLs that appear in the draft; never add new facts or URLs; copy URLs exactly. If the last development was cut off before its sources, omit that development. Keep the wording of complete items. Complete the verdict from the developments if it was cut off. Never use em dashes.`;
