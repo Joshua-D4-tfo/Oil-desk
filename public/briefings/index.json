@@ -1,9 +1,19 @@
 {
- "updatedAt": 1794893830237,
- "latest": "2026-11-17",
+ "updatedAt": 1794992417442,
+ "latest": "2026-11-18",
  "retentionDays": 60,
  "archiveDocx": "docs/oil-briefing-archive.docx",
  "briefings": [
+  {
+   "date": "2026-11-18",
+   "headline": "Brent is trading near $91 as a 5.28 million barrel API crude build outweighs a new ADNOC vessel attack in Hormuz and US-Iran strikes across the Gulf, so today's EIA report and the Trump-Xi-Putin summit are the next tests.",
+   "verdict": {
+    "direction": "bearish",
+    "strength": -1
+   },
+   "developments": 8,
+   "docx": "docs/oil-briefing-2026-11-18.docx"
+  },
   {
    "date": "2026-11-17",
    "headline": "Brent has slid to about $91.7 as surplus expectations outweigh a fresh run of Hormuz tanker attacks, so the next 24 hours turn on whether Iran's two-day reopening plan gains traction or the attacks begin to cut physical flows.",

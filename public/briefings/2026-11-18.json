@@ -1,0 +1,474 @@
+{
+ "date": "2026-11-18",
+ "headline": "Brent is trading near $91 as a 5.28 million barrel API crude build outweighs a new ADNOC vessel attack in Hormuz and US-Iran strikes across the Gulf, so today's EIA report and the Trump-Xi-Putin summit are the next tests.",
+ "overview": "Brent January settled at $93.14 on Tuesday (+0.76%) and WTI at $86.01 (+0.34%), supported by tanker attacks in Hormuz and Iranian drone strikes on Bahrain. Prices fell in Asia after API data showed a 5.28 million barrel US crude build against an expected small draw. Reuters-based reports had Brent January near $92.5 and WTI near $84.8 early in the session. The supplied quotes at 08:47 UTC show January Brent at $91.33 and December WTI at $83.81, so the market kept falling even after an ADNOC vessel attack was reported. Note that the headline prices supplied (Brent $88.69, WTI $82.64) match the second-month contracts, so the quoted 24-hour falls of 4.0% and 3.5% partly reflect a contract mismatch. On the front months, Brent is about 1.9% and WTI about 2.6% below Tuesday's settlements (my calculation).",
+ "developments": [
+  {
+   "title": "ADNOC L&S vessel attacked in Strait of Hormuz; one crew member missing, 11 injured",
+   "category": "Geopolitics & shipping",
+   "summary": "ADNOC Logistics & Services said one of its vessels was attacked while transiting the Strait of Hormuz on the evening of 17 November. One crew member is missing and 11 are injured, and the remaining crew were evacuated. Search and rescue operations are under way. The company statement, carried by WAM, did not say who carried out the attack or what type of vessel was hit. Bloomberg, via a Rigzone-based summary, described an intraday Brent swing of about $3 on Tuesday on new ship attacks.",
+   "why_it_matters": "A single logistics vessel does not remove barrels, but a second consecutive session of attacks on UAE-linked shipping raises war-risk costs and the chance that operators hold back cargoes. The market has so far faded these headlines unless loadings or transits fall, so the effect is likely a floor under prices rather than a rally.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Gulf Crisis Deepens: Iran Targets Bahrain, ADNOC Vessel Attacked, US Responds with Strikes",
+     "publisher": "Gulf News",
+     "url": "https://gulfnews.com/world/mena/middle-east-war-iran-attacks-bahrain-kuwait-drone-threats-keep-gulf-on-high-alert-as-us-hits-irans-qeshm-1.500751444"
+    },
+    {
+     "title": "ADNOC L&S vessel attacked while transiting Strait of Hormuz",
+     "publisher": "Emirates 24|7",
+     "url": "https://www.emirates247.com/uae/adnoc-ls-vessel-attacked-while-transiting-strait-of-hormuz/7911"
+    },
+    {
+     "title": "UAE company says vessel attacked while transiting Strait of Hormuz",
+     "publisher": "Anadolu Agency (A News)",
+     "url": "https://www.anews.com.tr/middle-east/2026/11/18/uae-company-says-vessel-attacked-while-transiting-strait-of-hormuz"
+    },
+    {
+     "title": "Brent Crude Price $92.61: API Build, Fed Minutes Today",
+     "publisher": "FinanceFeeds",
+     "url": "https://financefeeds.com/brent-crude-oil-price-92-61-wednesday-us-stock-build-fed-minutes-bull-96-bear-88"
+    }
+   ]
+  },
+  {
+   "title": "US strikes IRGC missile site on Qeshm; Gulf states intercept Iranian and Houthi missiles and drones",
+   "category": "Geopolitics & shipping",
+   "summary": "A US military official said US jets hit an IRGC missile launch site on Qeshm Island on Tuesday, describing it as self-defence after Iranian drones were launched at a US facility in Bahrain. Iranian officials confirmed explosions on the island but said no critical infrastructure was damaged. On Wednesday, Bahrain and Kuwait said they had intercepted Iranian attacks, and Reuters reported that Gulf states had downed Iranian and Houthi missiles and drones. Bahrain said it had repelled Iranian air attacks three times this week. Diplomacy continues through Qatar and Oman.",
+   "why_it_matters": "The exchanges are on the Hormuz shoreline and against US bases, not against export terminals, so no barrels have been removed. The risk is a miscalculation that hits Gulf energy infrastructure, which would reprice the curve quickly. The Jan-Feb Brent spread of $2.64 shows the market still pays for prompt barrels. I found no new reporting on the two-day Hormuz reopening plan from the previous briefing.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Gulf states intercept Iranian missiles after US Qeshm strike",
+     "publisher": "Israel Hayom (citing Reuters)",
+     "url": "https://www.israelhayom.com/2026/11/18/gulf-states-intercept-iran-houthi-missiles"
+    },
+    {
+     "title": "Live Updates: Iran ramps up retaliation against U.S. in Gulf countries following strikes on Qeshm island",
+     "publisher": "CBS News",
+     "url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+    },
+    {
+     "title": "US fighter jets strike Iranian missile site on Qeshm Island after attack in Bahrain",
+     "publisher": "Ynetnews",
+     "url": "https://www.ynetnews.com/article/sji00aq5cmx"
+    },
+    {
+     "title": "Iran attacks US bases in Gulf countries despite diplomatic efforts",
+     "publisher": "Rappler",
+     "url": "https://www.rappler.com/world/middle-east/iran-attacks-us-bases-gulf-countries-despite-diplomatic-efforts-november-2026/"
+    }
+   ]
+  },
+  {
+   "title": "API reports a 5.28 million barrel US crude build and a large gasoline build",
+   "category": "Inventories & data",
+   "summary": "The API estimated that US crude inventories rose by 5.28 million barrels in the week to 13 November, against an expected draw of about 500,000 barrels per Trading Economics. Gasoline rose by 5.12 million barrels and distillates by 351,000 barrels. Cushing fell by 1.69 million barrels. The Brent-WTI gap widened to its largest in more than two weeks, and Sparta Commodities' June Goh said WTI arbitrage to Asia and northwest Europe remains shut.",
+   "why_it_matters": "Two consecutive large crude builds (9.0 million barrels the week before) and a big gasoline build point to weak export pull and soft refined-product demand. This weighs more on WTI than on Brent. The API figure is an industry estimate and often differs from the EIA print due at 15:30 UTC.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "API Shows Substantial Crude Oil, Gasoline Inventory Builds",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/API-Shows-Substantial-Crude-Oil-Gasoline-Inventory-Builds.html"
+    },
+    {
+     "title": "API reports another rise in US crude stocks",
+     "publisher": "Engine / Trading Economics",
+     "url": "https://www.engine.online/news/api-reports-another-rise-in-us-crude-stocks-trading-economics-843a"
+    },
+    {
+     "title": "Oil prices fall as higher US crude stocks temper supply risks",
+     "publisher": "Rallies.ai (citing Reuters)",
+     "url": "https://rallies.ai/news/oil-prices-fall-as-higher-us-crude-stocks-temper-supply-risks-7830cf7961614d28"
+    },
+    {
+     "title": "API Shows Substantial Crude Oil, Gasoline Inventory Builds",
+     "publisher": "Yahoo Finance",
+     "url": "https://finance.yahoo.com/energy/articles/api-shows-substantial-crude-oil-215800093.html"
+    }
+   ]
+  },
+  {
+   "title": "Hormuz throughput recovering but still fragile",
+   "category": "Geopolitics & shipping",
+   "summary": "An article attributes to a US source (the name is truncated in the retrieved text) that Hormuz oil flows rose 78% in the third quarter to 9.1 million barrels per day, still well below a year earlier. ANZ said throughput is only about 49% of pre-war levels, with more exports forced onto alternative routes. LSEG vessel data suggest flows cannot yet normalise under current conditions. Reuters reported on Monday that six tankers caught fire in mine incidents on Sunday and Monday.",
+   "why_it_matters": "The surplus case rests on Gulf exports recovering, but flows at about half of pre-war levels leave the market exposed to any further attack. The attacks so far have slowed the recovery rather than reversed it, which explains why prices fall on data and bounce on incidents.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Oil prices swing as vessel attacks reported around Hormuz",
+     "publisher": "TT News",
+     "url": "https://www.ttnews.com/articles/oil-prices-vessel-attacks"
+    },
+    {
+     "title": "Brent Settles at $93.14 as Hormuz Tanker Attacks Offset Surplus Fears",
+     "publisher": "BigGo Finance",
+     "url": "https://finance.biggo.com/news/fb107718-2833-4dbb-98cf-1ca40b6ef331"
+    },
+    {
+     "title": "Oil falls as recovering Middle East exports bolster surplus outlook",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/16/oil-prices-brent-wti-latest.html"
+    }
+   ]
+  },
+  {
+   "title": "Houthis hold Bab el-Mandeb coast; coalition reports intercepting a Houthi cruise missile aimed at Riyadh",
+   "category": "Geopolitics & shipping",
+   "summary": "Saudi-backed southern forces said on Sunday they had redeployed from Dhubab and the Bab el-Mandeb area to defend Aden, leaving the Houthis in control of the coastline. NBC reported that the Houthis have fired ballistic missiles at Saudi airports and oil facilities since the Yemen war restarted. Gulf News' live blog carried a headline that the coalition intercepted a Houthi cruise missile aimed at Riyadh. A WTOP headline says Saudi-backed forces launched a major attack on the Houthis, but I could not retrieve the article to verify it.",
+   "why_it_matters": "Houthi control of the strait's Yemeni shore adds tail risk to Saudi Red Sea exports from Yanbu, which have grown in importance while Hormuz is impaired. No tanker disruption at Bab el-Mandeb is reported yet, so the effect is on the risk premium only.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Saudi-backed forces retreat to defend Aden as Houthis seize more ground in Yemen",
+     "publisher": "NBC News",
+     "url": "https://www.nbcnews.com/world/yemen/yemen-houthi-rebels-saudi-arabia-backed-forces-retreat-aden-rcna609670"
+    },
+    {
+     "title": "Saudi-backed forces retreat from Bab al-Mandab as Houthis gain ground",
+     "publisher": "Middle East Eye",
+     "url": "https://www.middleeasteye.net/news/saudi-backed-forces-retreat-bab-al-mandab-houthis-gain-ground"
+    },
+    {
+     "title": "Gulf Crisis Deepens: Iran Targets Bahrain, ADNOC Vessel Attacked, US Responds with Strikes",
+     "publisher": "Gulf News",
+     "url": "https://gulfnews.com/world/mena/middle-east-war-iran-attacks-bahrain-kuwait-drone-threats-keep-gulf-on-high-alert-as-us-hits-irans-qeshm-1.500751444"
+    },
+    {
+     "title": "Saudi-backed forces launch major attack on Houthis, and other Mideast news",
+     "publisher": "WTOP News",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNVnFpT0U2Qm9hRzlxcGo5ejU4MGExLXF5XzRzTFUwSjUzQ3BoTGVENDlxaXNkaXZSRnJVd2tud0ZRa2dLUmxLOHoyZVlhdVhrVkRmcGZEYi1fbjBSM2lOQzZvaXBZVmJFdzhCSDNtNmhGbkNod0hTX1ktaXh0V2MtRzhMUVg1ZXhTcGFtTGJ1ZTlHU29zRHBTdlVzSGdGeXg5dkZIR2xJOXhGbERS?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "Trump-Xi-Putin summit in Shenzhen on Thursday, with Iran and Hormuz on the agenda",
+   "category": "Geopolitics & shipping",
+   "summary": "China confirmed on Monday that Xi Jinping will meet Vladimir Putin and Donald Trump in Shenzhen on Thursday, the first meeting of the three leaders. The White House said it intends to prioritise nuclear non-proliferation and the Middle East war. Qatar is still trying to negotiate an interim deal to restore Hormuz traffic, and Trump has said renewed US strikes on Iran are highly unlikely if talks progress. An Indian market commentator quoted by Zee Business expects restraint around the summit, which is opinion.",
+   "why_it_matters": "A visible Chinese or Russian role in a Hormuz framework would cut the risk premium and add to the surplus narrative. A failed summit, or an escalation during it, would do the opposite. Today's Gulf strikes show the diplomatic and military tracks are running in parallel.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "China confirms Xi-Trump-Putin historic summit. What will be on the agenda?",
+     "publisher": "CNBC",
+     "url": "https://cnbc.com/2026/11/16/trump-xi-putin-ukraine-nuclear-tariffs-russia-iran-.html"
+    },
+    {
+     "title": "With shifting Iran rhetoric following U.S. elections, Trump leaves Middle East in limbo about path ahead",
+     "publisher": "PBS NewsHour",
+     "url": "https://www.pbs.org/newshour/world/with-shifting-iran-rhetoric-following-u-s-elections-trump-leaves-middle-east-in-limbo-about-path-ahead"
+    },
+    {
+     "title": "Can oil hold near $92-93 as US-Iran tensions rise?",
+     "publisher": "Zee Business",
+     "url": "https://www.zeebiz.com/market-news/news-can-oil-hold-near-92-93-as-us-iran-tensions-rise-4-things-indian-investors-must-know-405707"
+    }
+   ]
+  },
+  {
+   "title": "US equities weak: S&P 500 at lowest close since July",
+   "category": "Macro",
+   "summary": "CNBC's 17 November market report headline cited a Dow fall of more than 800 points and the lowest S&P 500 close since July. Treasury yields were little changed. The Fed's October minutes (meeting of 27-28 October) are due at 14:00 ET today.",
+   "why_it_matters": "Risk-off equity trading adds to demand-side caution for oil. A hawkish reading of the minutes would support the dollar and add pressure. The report did not state the cause of the equity fall, so the link to oil is indirect.",
+   "direction": "bearish",
+   "impact": "low",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Stock market news for Nov. 17, 2026",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/16/stock-market-today-live-updates.html"
+    },
+    {
+     "title": "Fed Minutes: Release Dates, Time and What to Watch",
+     "publisher": "CME Group",
+     "url": "https://www.cmelitegroup.com/knowledge-hub/fed-minutes/"
+    }
+   ]
+  },
+  {
+   "title": "Ukrainian drones reportedly hit Afipsky and Ilsky refineries in Krasnodar",
+   "category": "Refining & products",
+   "summary": "Drones attacked the Afipsky and Ilsky refineries in Krasnodar Krai overnight on 18 November. The regional operational headquarters said fires broke out at two enterprises from falling drone debris and four people were injured. Ukrainian monitoring channels reported both refineries hit. No verified evidence of damage to processing units has been published. Their combined nameplate capacity is about 12.9 million tonnes a year, roughly 260,000 barrels per day (my conversion).",
+   "why_it_matters": "Refinery outages cut Russian product output and exports, which supports diesel and gasoline cracks. They slightly raise Russian crude available for export, so the net effect on crude is small. Outage duration is unknown until damage is confirmed.",
+   "direction": "neutral",
+   "impact": "low",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Drones attack Afipsky and Ilsky oil refineries in Russia",
+     "publisher": "Ukrinform",
+     "url": "https://www.ukrinform.net/rubric-ato/4185869-drones-attack-afipsky-and-ilsky-oil-refineries-in-russia-media-reports.html"
+    },
+    {
+     "title": "2 Russian oil refineries reportedly targeted in overnight drone attack on Krasnodar Krai",
+     "publisher": "Kyiv Independent via Yahoo News",
+     "url": "https://www.yahoo.com/news/world/articles/2-russian-oil-refineries-reportedly-045650034.html"
+    },
+    {
+     "title": "Krasnodar refineries reportedly hit; four injured, Russian officials say",
+     "publisher": "Streamline Feed",
+     "url": "https://streamlinefeed.co.ke/news/krasnodar-refineries-reportedly-hit-four-injured-russian-officials-say"
+    }
+   ]
+  }
+ ],
+ "data_releases": [
+  {
+   "name": "API weekly crude inventory estimate (week to 13 November)",
+   "result": "Crude +5.28 million barrels; gasoline +5.12 million; distillates +351,000; Cushing -1.69 million. Prior week crude +9.0 million.",
+   "vs_expectation": "Expected a crude draw of about 500,000 barrels (Trading Economics). Large miss, bearish.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "API Shows Substantial Crude Oil, Gasoline Inventory Builds",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/API-Shows-Substantial-Crude-Oil-Gasoline-Inventory-Builds.html"
+    },
+    {
+     "title": "API reports another rise in US crude stocks",
+     "publisher": "Engine / Trading Economics",
+     "url": "https://www.engine.online/news/api-reports-another-rise-in-us-crude-stocks-trading-economics-843a"
+    },
+    {
+     "title": "API Shows Substantial Crude Oil, Gasoline Inventory Builds",
+     "publisher": "Yahoo Finance",
+     "url": "https://finance.yahoo.com/energy/articles/api-shows-substantial-crude-oil-215800093.html"
+    }
+   ]
+  },
+  {
+   "name": "EIA Weekly Petroleum Status Report, latest published (week to 6 November)",
+   "result": "Commercial crude 414.4 million barrels (+4.66 million, against a five-year average change of +5.46 million). Distillates 103.3 million (+4.07 million, against -1.69 million). Gasoline 210.8 million (+1.80 million). Cushing 27.4 million (+0.11 million). SPR 279.5 million (-2.65 million).",
+   "vs_expectation": "Distillate and gasoline builds were well above the five-year seasonal pattern. Crude was close to normal. The next report is due today at 15:30 UTC.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Weekly Petroleum Status Report",
+     "publisher": "US Energy Information Administration",
+     "url": "https://www.eia.gov/petroleum/supply/weekly/"
+    }
+   ]
+  },
+  {
+   "name": "CFTC Commitments of Traders (as of 10 November)",
+   "result": "Managed money net long 25,714 contracts, up 3,986 on the week, at the 11.6th percentile of the past three years.",
+   "vs_expectation": "No consensus supplied. Positioning is light, which limits the scope for further long liquidation and leaves room for short-covering on a geopolitical shock.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Commitments of Traders",
+     "publisher": "CFTC",
+     "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    }
+   ]
+  }
+ ],
+ "analyst_views": [
+  {
+   "who": "Goldman Sachs (note of 15 November, reported by CNBC)",
+   "view": "Middle East supply and oil demand have adapted well to shipping risks and higher prices. Goldman expects Brent to average $88 a barrel in 2027 and to ease to $78 by end-2027 as supply returns to surplus.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil falls as recovering Middle East exports bolster surplus outlook",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/16/oil-prices-brent-wti-latest.html"
+    }
+   ]
+  },
+  {
+   "who": "Ryan McKay, TD Securities",
+   "view": "Some risk premium should be priced back into crude as tensions grow, and flow data show a notable reduction in volumes in recent weeks.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "Oil prices swing as vessel attacks reported around Hormuz",
+     "publisher": "TT News",
+     "url": "https://www.ttnews.com/articles/oil-prices-vessel-attacks"
+    }
+   ]
+  },
+  {
+   "who": "ANZ and PVM (via BigGo summary of Tuesday's session)",
+   "view": "ANZ warned that the recovery in Hormuz flows is fragile, at about 49% of pre-war throughput. PVM's Tamas Varga said Brent is trading in a range.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Brent Settles at $93.14 as Hormuz Tanker Attacks Offset Surplus Fears",
+     "publisher": "BigGo Finance",
+     "url": "https://finance.biggo.com/news/fb107718-2833-4dbb-98cf-1ca40b6ef331"
+    }
+   ]
+  },
+  {
+   "who": "Sparta Commodities (June Goh) and LSEG analysts",
+   "view": "WTI arbitrage trades to Asia and northwest Europe remain shut and US Gulf Coast stock builds add pressure. LSEG vessel data suggest Hormuz flows cannot yet normalise despite alternative routes.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil prices fall as higher US crude stocks temper supply risks",
+     "publisher": "Rallies.ai (citing Reuters)",
+     "url": "https://rallies.ai/news/oil-prices-fall-as-higher-us-crude-stocks-temper-supply-risks-7830cf7961614d28"
+    }
+   ]
+  },
+  {
+   "who": "BMI analysts (reported by CNBC)",
+   "view": "The recovery of OPEC+ export flows remains fragile because regional supply is highly vulnerable to fresh disruptions.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "Oil falls as recovering Middle East exports bolster surplus outlook",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/16/oil-prices-brent-wti-latest.html"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "bearish",
+  "summary": "Retail commentary is thin and leans bearish. StockTwits tags on USO were 10 bearish against 3 bullish in 30 hours, from only 30 posts, several of which were unrelated political posts. The few bullish posts argue that US-Iran escalation will resume. Reddit data was unavailable. The lean agrees with the API build and the downtrend, but the sample is too small to carry weight.",
+  "evidence": [
+   "StockTwits USO: 30 posts, 3 tagged bullish, 10 tagged bearish, the rest untagged.",
+   "StockTwits CL_F: 3 posts, 1 bullish, 0 bearish; one post cites support at $84.75 and resistance at $87.21.",
+   "A bullish USO post argues the US and Iran are too far up the escalation ladder for the war not to resume.",
+   "Retail technical ideas on TradingView describe WTI rejected near $89 with a bearish bias, while others look for a rebound from the $83.50 to $84.50 support area.",
+   "Reddit: unavailable."
+  ],
+  "sources": [
+   {
+    "title": "USOIL Price Chart - WTI Crude Oil",
+    "publisher": "TradingView",
+    "url": "https://www.tradingview.com/symbols/USOIL/"
+   }
+  ]
+ },
+ "watch_today": [
+  {
+   "item": "EIA Weekly Petroleum Status Report",
+   "when_utc": "2026-11-18T15:30:00.000Z",
+   "why": "Tests the API build. Watch crude, gasoline and distillate changes against the five-year averages, Cushing, SPR draws and exports, which indicate whether the WTI arbitrage is open."
+  },
+  {
+   "item": "FOMC minutes of the 27-28 October meeting",
+   "when_utc": "2026-11-18T19:00:00.000Z",
+   "why": "A broker preview says the committee held at 3.75-4.00% with two dissents in favour of a hike. A hawkish record would strengthen the dollar and weigh on oil."
+  },
+  {
+   "item": "Trump, Xi and Putin summit in Shenzhen (APEC)",
+   "when_utc": "during the day",
+   "why": "Thursday meeting confirmed by China. Any Hormuz or Iran framework would cut the risk premium. Escalation around it would add to it."
+  },
+  {
+   "item": "Hormuz incidents and Gulf air defence activity",
+   "when_utc": "during the day",
+   "why": "Further vessel attacks, outcome of the ADNOC search and rescue, and any strike on energy infrastructure are the main upside risks."
+  },
+  {
+   "item": "Damage assessments at Afipsky and Ilsky refineries",
+   "when_utc": "during the day",
+   "why": "Confirmed unit damage would support product cracks."
+  }
+ ],
+ "verdict": {
+  "direction": "bearish",
+  "strength": -1,
+  "reasoning": "The strongest bearish argument is inventory and balance evidence: a second large API crude build, a 5.12 million barrel gasoline build, a shut WTI export arbitrage, Goldman's surplus call and a market that has already fallen about 18% in 30 days. The dashboard rules also show sell signals on intraday and lean sell for WTI swing. The strongest bullish argument is the escalation: an ADNOC vessel attack with a missing crew member, US strikes on Qeshm, Iranian and Houthi launches at Gulf states, Houthi control of the Bab el-Mandeb coast and Hormuz throughput at only about half of pre-war levels. Light positioning (11.6th percentile) and a steep Jan-Feb Brent backwardation of $2.64 mean a shock can reverse prices quickly. For the next 24 hours I give the edge to the bearish side, because the market has repeatedly sold on stock data despite similar incidents, but only modestly. Today's EIA print and the Shenzhen summit could move that balance either way, and a hit on Gulf export infrastructure would override it. Today's quoted price falls are also exaggerated by a contract mismatch in the supplied data."
+ },
+ "meta": {
+  "generatedAt": 1794992257524,
+  "model": "claude-sonnet-5-5",
+  "searches": 9,
+  "tokens": {
+   "input": 8,
+   "cacheWrite": 96545,
+   "cacheRead": 93529,
+   "output": 18870
+  },
+  "verification": {
+   "kept": 38,
+   "removed": 1,
+   "removedUrls": [
+    "https://stocktwits.com/news/equity/markets/oil-prices-fall-iran-tensions-opec-exxon-chevron/cNbXuQRR9h6"
+   ],
+   "downgraded": []
+  },
+  "prices": {
+   "brent": {
+    "price": 88.69,
+    "priceTime": 1794991648000,
+    "chg24hPct": -4.015153100230016,
+    "chg7dPct": -4.387669299805673,
+    "chg30dPct": -18.475963550303195
+   },
+   "wti": {
+    "price": 82.64,
+    "priceTime": 1794991654000,
+    "chg24hPct": -3.4692215736212053,
+    "chg7dPct": -4.495549328757871,
+    "chg30dPct": -18.81324368139007
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 30,
+     "bullish": 3,
+     "bearish": 10
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 3,
+     "bullish": 1,
+     "bearish": 0
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: 100",
+    "Google News: OPEC+: 48",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 37",
+    "Google News: Russia and China oil: 53",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}
