@@ -76,13 +76,13 @@ function render() {
   renderTrack();
 }
 
-const ICON = { BUY: "▲", "LEAN BUY": "▲", SELL: "▼", "LEAN SELL": "▼", "NO TRADE": "■", WAIT: "⏸" };
+const ICON = { BUY: "▲", "LEAN BUY": "▲", SELL: "▼", "LEAN SELL": "▼", "NO TRADE": "■", WAIT: "⏸", "OUTSIDE HOURS": "☾", "TOO LATE": "⏱" };
 
 function renderCard(h, title) {
   const c = state.signals[h];
   const el = $(`card-${h}`);
   if (!c) { el.innerHTML = `<div class="skeleton">Waiting for price data. If this persists, check the data sources panel.</div>`; return; }
-  const tone = c.label === "WAIT" ? "wait" : c.tone;
+  const tone = ["WAIT", "TOO LATE"].includes(c.label) ? "wait" : c.tone;
   const pos = ((c.score + 1) / 2) * 100;
   const p = c.plan;
   const planHtml = p ? `
@@ -92,7 +92,7 @@ function renderCard(h, title) {
       <div><div class="k">Target 1 (1R)</div><div class="v">${usd(p.target1)}</div></div>
       <div><div class="k">Target 2 (2R)</div><div class="v">${usd(p.target2)}</div></div>
     </div>
-    <p class="one-liner muted small">Risk ${usd(p.riskPerBbl)} per barrel (${fmt(p.riskPct)}%), sized on ${p.basis}.${p.sizeMultiplier != null ? ` Volatility-adjusted size: ${Math.round(p.sizeMultiplier * 100)}% of normal.` : ""} ${p.active ? "" : "Shown for reference only: no trade is suggested."}</p>` : "";
+    <p class="one-liner muted small">Risk ${usd(p.riskPerBbl)} per barrel (${fmt(p.riskPct)}%), sized on ${p.basis}.${p.closeBy && c.window?.inWindow ? ` Close by 23:59 Dubai (${Math.floor(p.minutesLeft / 60)} h ${p.minutesLeft % 60} min left).` : ""}${p.sizeMultiplier != null ? ` Volatility-adjusted size: ${Math.round(p.sizeMultiplier * 100)}% of normal.` : ""} ${p.active ? "" : "Shown for reference only: no trade is suggested."}</p>` : "";
   const warn = c.riskEvents.length
     ? `<div class="warn"><span class="ico">⚠</span><span>Event risk inside the holding window: ${c.riskEvents.map((e) => `${esc(e.name)} (${until(e.hoursAway)})`).join("; ")}.</span></div>` : "";
   el.innerHTML = `

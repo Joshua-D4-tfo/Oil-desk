@@ -16,7 +16,7 @@ export const HORIZONS = {
   swing: { forwardH: 48, maxHoldH: 120 },
 };
 export const FACTOR_THRESHOLD = 0.25;
-const TRADEABLE = new Set(["BUY", "LEAN BUY", "SELL", "LEAN SELL"]);
+const TRADEABLE = new Set(["BUY", "LEAN BUY", "SELL", "LEAN SELL"]); // OUTSIDE HOURS, TOO LATE, WAIT and NO TRADE never open trades
 const MAX_CLOSED = 600;
 const MAX_PENDING = 2000;
 
@@ -63,7 +63,8 @@ export function maybeOpenTrades(state, sig, nowMs) {
       target: p.target1,
       risk: p.riskPerBbl,
       opened: nowMs,
-      maxHoldUntil: nowMs + HORIZONS[h].maxHoldH * 3.6e6,
+      // Intraday trades must be closed by the end of the trading window (23:59 Dubai).
+      maxHoldUntil: h === "intraday" && p.closeBy ? Math.min(p.closeBy, nowMs + HORIZONS[h].maxHoldH * 3.6e6) : nowMs + HORIZONS[h].maxHoldH * 3.6e6,
       mfeR: 0,
       maeR: 0,
       sizeMultiplier: p.sizeMultiplier ?? null,
@@ -83,6 +84,11 @@ export function evaluateTrade(trade, bars, nowMs) {
   const after = bars.filter((b) => b.t > trade.opened);
   let mfe = trade.mfeR || 0, mae = trade.maeR || 0;
   for (const b of after) {
+    // Past the deadline: closed at the first available price at or after it.
+    if (b.t >= trade.maxHoldUntil) {
+      const r = (dir * (b.o - trade.entry)) / trade.risk;
+      return { ...trade, mfeR: r2(mfe), maeR: r2(mae), closed: b.t, exit: b.o, outcome: "time", r: r2(r) };
+    }
     const fav = dir > 0 ? (b.h - trade.entry) / trade.risk : (trade.entry - b.l) / trade.risk;
     const adv = dir > 0 ? (b.l - trade.entry) / trade.risk : (trade.entry - b.h) / trade.risk;
     mfe = Math.max(mfe, fav);
@@ -91,10 +97,6 @@ export function evaluateTrade(trade, bars, nowMs) {
     const hitTarget = dir > 0 ? b.h >= trade.target : b.l <= trade.target;
     if (hitStop) return { ...trade, mfeR: r2(mfe), maeR: r2(mae), closed: b.t, exit: trade.stop, outcome: "stop", r: -1 };
     if (hitTarget) return { ...trade, mfeR: r2(mfe), maeR: r2(mae), closed: b.t, exit: trade.target, outcome: "target", r: 1 };
-    if (b.t >= trade.maxHoldUntil) {
-      const r = (dir * (b.c - trade.entry)) / trade.risk;
-      return { ...trade, mfeR: r2(mfe), maeR: r2(mae), closed: b.t, exit: b.c, outcome: "time", r: r2(r) };
-    }
   }
   // Still open: mark to market.
   const last = after.at(-1) || bars.at(-1);

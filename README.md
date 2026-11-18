@@ -65,6 +65,13 @@ The composite score maps to a label as follows:
 
 Conviction combines three things: the size of the score, how far the factors agree, and data coverage. It is capped at 90 and is reduced by 30% when a high-impact event falls inside the holding window. It is not a probability of success.
 
+**Trading window (intraday).** Intraday suggestions follow a trading window of **08:00 to 23:59 Dubai time** (`TRADING_WINDOW` in `public/js/engine.js`). The card behaves as follows:
+- **Outside the window:** it shows **OUTSIDE HOURS**.
+- **In the last 30 minutes:** it shows **TOO LATE**.
+- **When a trade is suggested:** it states the time left before every intraday position must be closed at 23:59.
+
+Closing by 23:59 avoids Capital.com's overnight funding, which is charged at 02:00 Dubai at about 0.011% of the position's value per night. The simulated track record follows the same rule: intraday trades open only inside the window and are closed at the first price at or after 23:59. The swing view is not restricted.
+
 The intraday label switches to **WAIT** when a high-impact release, such as the EIA report or an OPEC+ meeting, is less than two hours away.
 
 Stops use 1.5 times the 14-hour ATR for intraday trades and 1.2 times the daily ATR for swing trades. Targets sit at 1R and 2R.

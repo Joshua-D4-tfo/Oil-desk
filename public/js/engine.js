@@ -31,6 +31,22 @@ export const BENCHMARKS = {
 // curve, positioning and refining margin scored mainly on change rather than level.
 export const ENGINE_VERSION = 2;
 
+// Your intraday trading window, in Dubai time (UTC+4, no daylight saving). New intraday trades are
+// only suggested inside it, and every intraday position must be closed by the end time. Overnight
+// funding is charged at 02:00 Dubai, so closing by 23:59 avoids it.
+export const TRADING_WINDOW = { startMin: 8 * 60, endMin: 23 * 60 + 59, lastEntryBufferMin: 30, label: "08:00 to 23:59 Dubai" };
+
+export function windowState(nowMs = Date.now()) {
+  const DUBAI = 4 * 3.6e6;
+  const dayStart = Math.floor((nowMs + DUBAI) / 864e5) * 864e5 - DUBAI; // today's 00:00 Dubai, in UTC ms
+  const minute = Math.floor((nowMs - dayStart) / 6e4);
+  const closeBy = dayStart + TRADING_WINDOW.endMin * 6e4;
+  const opensAt = minute < TRADING_WINDOW.startMin ? dayStart + TRADING_WINDOW.startMin * 6e4 : dayStart + 864e5 + TRADING_WINDOW.startMin * 6e4;
+  const inWindow = minute >= TRADING_WINDOW.startMin && minute < TRADING_WINDOW.endMin;
+  const minutesLeft = inWindow ? Math.round((closeBy - nowMs) / 6e4) : 0;
+  return { inWindow, minutesLeft, closeBy, opensAt, tooLate: inWindow && minutesLeft < TRADING_WINDOW.lastEntryBufferMin };
+}
+
 export const THRESHOLDS = { strong: 0.30, lean: 0.12 };
 
 // One-off scheduled events. Add or correct dates here. Times in UTC.
@@ -502,7 +518,7 @@ function classify(s) {
   return { label: "NO TRADE", tone: "neutral" };
 }
 
-function composite(factors, weights, horizon, tb, events, benchName = "Brent", regime = null) {
+function composite(factors, weights, horizon, tb, events, benchName = "Brent", regime = null, nowMs = Date.now()) {
   const used = factors.filter((f) => f && weights[f.id] != null);
   const wSum = used.reduce((s, f) => s + weights[f.id], 0);
   const totalW = Object.values(weights).reduce((s, w) => s + w, 0);
@@ -526,7 +542,10 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
   confidence = Math.round(clamp(confidence, 0, 90));
 
   const cls = classify(S);
-  const action = imminent ? { label: "WAIT", tone: "neutral" } : cls;
+  const win = horizon === "intraday" ? windowState(nowMs) : null;
+  let action = imminent ? { label: "WAIT", tone: "neutral" } : cls;
+  if (win && !win.inWindow) action = { label: "OUTSIDE HOURS", tone: "neutral" };
+  else if (win && win.tooLate) action = { label: "TOO LATE", tone: "neutral" };
 
   // Trade levels, based on the selected benchmark.
   let plan = null;
@@ -543,7 +562,9 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
       riskPct: (dist / tb.price) * 100,
       basis: horizon === "intraday" ? "1.5 x 14-hour ATR" : "1.2 x daily ATR",
       sizeMultiplier: regime ? regime.sizeMultiplier : null,
-      active: cls.label !== "NO TRADE",
+      active: cls.label !== "NO TRADE" && !(win && (!win.inWindow || win.tooLate)),
+      closeBy: win ? win.closeBy : null,
+      minutesLeft: win ? win.minutesLeft : null,
     };
   }
 
@@ -551,14 +572,14 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
   const oppose = rows.filter((r) => Math.sign(r.contribution) !== Math.sign(S) && Math.abs(r.contribution) > 0.005);
   const missing = Object.keys(weights).filter((id) => !used.find((f) => f.id === id));
 
-  const reasoning = buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb });
+  const reasoning = buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win });
 
-  return { horizon, score: S, label: action.label, tone: action.tone, underlying: cls.label, confidence, agreement, coverage, rows, plan, riskEvents, missing, reasoning };
+  return { horizon, score: S, label: action.label, tone: action.tone, underlying: cls.label, confidence, agreement, coverage, rows, plan, riskEvents, missing, reasoning, window: win };
 }
 
 const NAMES = { crack: "refining margins", trend: "short-term trend", momentum: "momentum", rsi: "RSI", news: "news flow", curve: "futures curve", inventories: "inventories", positioning: "positioning", dollar: "dollar" };
 
-function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb }) {
+function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win }) {
   const h = horizon === "intraday" ? "an intraday (holding period of hours)" : "a short swing (holding period of one to five days)";
   const p = [];
   p.push(`For ${h} trade in ${benchName}, the weighted composite score is ${signed(S)} on a scale of -1 to +1, which maps to ${cls.label}. Conviction is ${confidence} on a 0 to 100 scale (capped at 90, because no model reading justifies certainty). It is not a probability of success; it reflects the size of the score, the degree to which factors agree (${Math.round(agreement * 100)}% of the weighted evidence points the same way) and data coverage (${Math.round(coverage * 100)}% of factor weight available).`);
@@ -576,6 +597,14 @@ function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence
     p.push(`If taken, a ${plan.direction} from ${usd(plan.entry)} would use a stop at ${usd(plan.stop)} (${plan.basis}, ${fmt(plan.riskPct)}% risk), a first target at ${usd(plan.target1)} (1R) and a second at ${usd(plan.target2)} (2R). The view is invalidated if price reaches the stop or if the ${NAMES[oppose[0]?.id] || "opposing factors"} strengthen further.`);
   }
   if (regime) p.push(regime.text);
+  if (win && !win.inWindow) {
+    const t = new Date(win.opensAt + 4 * 3.6e6).toISOString().slice(11, 16);
+    p.push(`Action is OUTSIDE HOURS: your trading window is ${TRADING_WINDOW.label}, so no new intraday trade is suggested now. The window reopens at ${t} Dubai. The reading above is shown for information only.`);
+  } else if (win && win.tooLate) {
+    p.push(`Action is TOO LATE: only ${win.minutesLeft} minutes remain before every intraday position must be closed at 23:59 Dubai, which is too little time for the target to be reached. Overnight funding is charged at 02:00 Dubai.`);
+  } else if (win && cls.label !== "NO TRADE") {
+    p.push(`Any intraday position must be closed by 23:59 Dubai (${Math.floor(win.minutesLeft / 60)} h ${win.minutesLeft % 60} min from now), whether or not the stop or target has been reached.`);
+  }
   if (imminent) p.push(`Action is WAIT because "${imminent.name}" is due within two hours. Event releases routinely move crude by more than a full stop distance in minutes; it is better to trade the reaction than to gamble on the number.`);
   else if (riskEvents.length) p.push(`Event risk inside the holding window (${riskEvents.map((e) => e.name).join("; ")}) has reduced confidence by 30%. Consider a smaller size or exiting beforehand.`);
   if (missing.length) p.push(`Not available this refresh: ${missing.map((m) => NAMES[m] || m).join(", ")}. The remaining weights were rescaled, which makes the reading less robust.`);
@@ -619,8 +648,8 @@ export function computeSignals({ market, curve, fundamentals, news, refining }, 
     regime,
     engineVersion: ENGINE_VERSION,
     factorScores: Object.fromEntries(factors.map((f) => [f.id, +f.score.toFixed(4)])),
-    intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name, regime),
-    swing: composite(factors, weights.swing, "swing", tb, events, bench.name, regime),
+    intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name, regime, nowMs),
+    swing: composite(factors, weights.swing, "swing", tb, events, bench.name, regime, nowMs),
     newsDetail: factors.find((f) => f.id === "news")?.detail || null,
   };
 }
