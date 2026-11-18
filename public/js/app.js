@@ -101,6 +101,7 @@ function renderCard(h, title) {
         <div class="sig-title">${title} · ${state.signals.benchmarkName}</div>
         <div class="badge ${tone}"><span class="ico" aria-hidden="true">${ICON[c.label] || ""}</span>${c.label}</div>
         ${c.label !== c.underlying ? `<div class="underlying">Underlying reading: ${c.underlying}</div>` : ""}
+        ${h === "intraday" ? primePill(state.signals.prime) : ""}
       </div>
       <div class="conviction"><div class="big">${c.confidence}</div><div class="lbl">conviction / 100</div></div>
     </div>
@@ -113,6 +114,16 @@ function renderCard(h, title) {
     ${planHtml}
     ${warn}
     <p class="one-liner">${esc(c.reasoning[1] || "")}</p>`;
+}
+
+function primePill(p) {
+  if (!p) return "";
+  const eia = p.eiaToday ? ` EIA report at ${p.eiaToday} Dubai today.` : "";
+  if (p.active) {
+    return `<div class="prime on" title="Oil moves most relative to the spread in these hours (two years of Capital.com 15-minute prices).${eia}"><span class="dot" aria-hidden="true"></span>Prime hours: ${esc(p.current.name)}, ${p.current.from} to ${p.current.to} Dubai (${p.current.minutesLeft} min left)${eia ? ` · EIA ${p.eiaToday}` : ""}</div>`;
+  }
+  const when = p.next ? `next: ${esc(p.next.name)} from ${p.next.from}` : p.tradingDay ? "none left today" : "none today (weekend)";
+  return `<div class="prime off" title="Prime hours today: ${p.windows.map((w) => `${w.name} ${w.from} to ${w.to}`).join(", ")} Dubai.${eia}"><span class="dot" aria-hidden="true"></span>Off-peak · ${when}${eia ? ` · EIA ${p.eiaToday}` : ""}</div>`;
 }
 
 function sparkline(bars, id) {

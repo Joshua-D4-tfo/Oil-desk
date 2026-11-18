@@ -47,6 +47,49 @@ export function windowState(nowMs = Date.now()) {
   return { inWindow, minutesLeft, closeBy, opensAt, tooLate: inWindow && minutesLeft < TRADING_WINDOW.lastEntryBufferMin };
 }
 
+// Prime hours: when oil moves most relative to the spread (measured on two years of Capital.com
+// 15-minute prices). Defined in London and New York local time so daylight saving is handled
+// automatically: London 08:00-10:00 (European open) and New York 08:00-12:00 (US data, the NYMEX
+// open and, on Wednesdays, the 10:30 EIA report). In Dubai winter time these are 12:00-14:00 and
+// 17:00-21:00; during US and UK summer time each starts an hour earlier.
+export const PRIME_SESSIONS = [
+  { name: "London open", tz: "Europe/London", fromMin: 8 * 60, toMin: 10 * 60 },
+  { name: "US session", tz: "America/New_York", fromMin: 8 * 60, toMin: 12 * 60 },
+];
+
+function tzOffsetMin(tz, ms) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: tz, hour12: false, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+    .formatToParts(new Date(ms)).map((x) => [x.type, x.value]));
+  const asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+  return Math.round((asUtc - ms) / 6e4 / 15) * 15;
+}
+
+const hhmm = (min) => `${String(Math.floor(((min % 1440) + 1440) % 1440 / 60)).padStart(2, "0")}:${String(((min % 60) + 60) % 60).padStart(2, "0")}`;
+
+export function primeHours(nowMs = Date.now()) {
+  const DUBAI = 240;
+  const dayStart = Math.floor((nowMs + DUBAI * 6e4) / 864e5) * 864e5 - DUBAI * 6e4;
+  const minute = Math.floor((nowMs - dayStart) / 6e4);
+  const weekday = new Date(nowMs + DUBAI * 6e4).getUTCDay(); // 0 Sunday ... 6 Saturday, Dubai date
+  const tradingDay = weekday >= 1 && weekday <= 5;
+  const windows = PRIME_SESSIONS.map((s) => {
+    const off = tzOffsetMin(s.tz, nowMs);
+    return { name: s.name, from: s.fromMin - off + DUBAI, to: s.toMin - off + DUBAI };
+  });
+  const current = tradingDay ? windows.find((w) => minute >= w.from && minute < w.to) : null;
+  const next = tradingDay ? windows.find((w) => minute < w.from) : null;
+  const nyOff = tzOffsetMin("America/New_York", nowMs);
+  const eia = weekday === 3 ? hhmm(10 * 60 + 30 - nyOff + DUBAI) : null;
+  return {
+    active: !!current,
+    current: current ? { name: current.name, from: hhmm(current.from), to: hhmm(current.to), minutesLeft: current.to - minute } : null,
+    next: next ? { name: next.name, from: hhmm(next.from), to: hhmm(next.to) } : null,
+    windows: windows.map((w) => ({ name: w.name, from: hhmm(w.from), to: hhmm(w.to) })),
+    tradingDay,
+    eiaToday: eia,
+  };
+}
+
 export const THRESHOLDS = { strong: 0.30, lean: 0.12 };
 
 // One-off scheduled events. Add or correct dates here. Times in UTC.
@@ -646,6 +689,7 @@ export function computeSignals({ market, curve, fundamentals, news, refining }, 
     factors,
     events,
     regime,
+    prime: primeHours(nowMs),
     engineVersion: ENGINE_VERSION,
     factorScores: Object.fromEntries(factors.map((f) => [f.id, +f.score.toFixed(4)])),
     intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name, regime, nowMs),

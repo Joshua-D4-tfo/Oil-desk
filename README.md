@@ -72,6 +72,8 @@ Conviction combines three things: the size of the score, how far the factors agr
 
 Closing by 23:59 avoids Capital.com's overnight funding, which is charged at 02:00 Dubai at about 0.011% of the position's value per night. The simulated track record follows the same rule: intraday trades open only inside the window and are closed at the first price at or after 23:59. The swing view is not restricted.
 
+**Prime hours marker.** The intraday card shows a green **Prime hours** marker during the London open (08:00 to 10:00 London time) and the US session (08:00 to 12:00 New York time). These are when oil moves most relative to the spread, measured on two years of Capital.com 15-minute prices. In Dubai winter time they are 12:00 to 14:00 and 17:00 to 21:00; during UK and US summer time each starts an hour earlier, and the marker adjusts automatically. Outside them the card shows "Off-peak" and the next prime window. On Wednesdays it also shows the EIA report time in Dubai time. Edit `PRIME_SESSIONS` in `public/js/engine.js` to change them.
+
 The intraday label switches to **WAIT** when a high-impact release, such as the EIA report or an OPEC+ meeting, is less than two hours away.
 
 Stops use 1.5 times the 14-hour ATR for intraday trades and 1.2 times the daily ATR for swing trades. Targets sit at 1R and 2R.
