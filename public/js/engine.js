@@ -26,6 +26,11 @@ export const BENCHMARKS = {
   wti: { key: "wti", name: "WTI", exchange: "NYMEX", note: "US crude, priced at Cushing" },
 };
 
+// Bump when factor definitions change, so the track record can separate results by model version.
+// v2 (18 Nov 2026): news averaged across headlines and checked against price reaction;
+// curve, positioning and refining margin scored mainly on change rather than level.
+export const ENGINE_VERSION = 2;
+
 export const THRESHOLDS = { strong: 0.30, lean: 0.12 };
 
 // One-off scheduled events. Add or correct dates here. Times in UTC.
@@ -184,11 +189,18 @@ export function scoreNews(items, now = Date.now()) {
   });
   const recent = scored.filter((s) => s.ageH <= 24);
   const net = scored.reduce((sum, s) => sum + s.weighted, 0);
+  // Average over relevant headlines (those matching at least one rule), weighted by recency, so twenty
+  // stories about the same event count as one strong signal rather than twenty.
+  const relevant = scored.filter((s) => s.hits.length && s.decay > 0);
+  const weightSum = relevant.reduce((sum, s) => sum + s.decay, 0);
+  const avg = weightSum ? relevant.reduce((sum, s) => sum + s.score * s.decay, 0) / weightSum : 0;
   const tagTotals = {};
   for (const s of scored) for (const h of s.hits) tagTotals[h.tag] = (tagTotals[h.tag] || 0) + h.w * s.decay;
   return {
     scored,
     net,
+    avg,
+    effectiveCount: weightSum,
     recentCount: recent.length,
     bullishCount: recent.filter((s) => s.score > 0.5).length,
     bearishCount: recent.filter((s) => s.score < -0.5).length,
@@ -298,19 +310,20 @@ function factorCurve(curve, benchmark = "brent") {
   const hist = c.history || [];
   const ref = hist.length > 5 ? hist[hist.length - 6].spread : hist[0]?.spread;
   const chg5 = ref != null ? c.spread - ref : 0;
-  const score = clamp(0.5 * clamp(spreadPct / 1.0) + 0.5 * tanh(chg5 / 0.3));
+  // Scored mainly on change: a steady backwardation is already in the price, while a widening or
+  // narrowing spread is new information about physical tightness.
+  const score = clamp(0.2 * clamp(spreadPct / 1.5) + 0.8 * tanh(chg5 / 0.3));
   const structure = c.spread > 0.05 ? "backwardation" : c.spread < -0.05 ? "contango" : "flat";
   return {
     id: "curve", name: `Futures curve (${bench} M1 to M2${fallback})`, score,
     reading: `${c.m1.label} ${usd(c.m1.price)} versus ${c.m2.label} ${usd(c.m2.price)}: spread ${signed(c.spread)} (${structure}, ${signed(spreadPct)}% of price), ${signed(chg5)} over about five sessions.`,
     explanation:
-      structure === "backwardation"
-        ? (chg5 >= 0
-          ? "Prompt barrels are trading at a premium and that premium is widening. This is the physical market signalling tightness, which is the most reliable bullish confirmation available."
-          : "Prompt barrels still trade at a premium, but the premium is narrowing. The market is tight but loosening, so the bullish signal is fading.")
-        : structure === "contango"
-          ? "Later-dated barrels are dearer than prompt barrels, meaning supply is ample and storage is being rewarded. This is a bearish structure."
-          : "The curve is flat, which gives no clear structural signal.",
+      (Math.abs(chg5) < 0.1
+        ? `The spread is broadly unchanged over five sessions, so the ${structure} is already reflected in the price and this factor carries little new information.`
+        : chg5 > 0
+          ? `The spread has moved ${signed(chg5)} towards the prompt month: physical buyers are paying up for nearby barrels, which signals tightening. A widening prompt premium is one of the more reliable bullish confirmations.`
+          : `The spread has moved ${signed(chg5)} away from the prompt month: demand for nearby barrels is easing, which signals loosening. A narrowing prompt premium tends to precede weaker prices.`) +
+      ` Only a fifth of the score reflects the level of the ${structure}; the rest reflects its change.`,
   };
 }
 
@@ -344,14 +357,25 @@ function factorPositioning(f) {
   const c = f?.cot?.ok ? f.cot.data : null;
   if (!c) return null;
   const p = c.percentile3y;
-  const score = p <= 50 ? Math.pow((50 - p) / 50, 1.5) : -Math.pow((p - 50) / 50, 1.5);
+  // Flow: how unusual this week's change in net length is, versus the past year's weekly changes.
+  const hist = c.history || [];
+  const diffs = hist.slice(1).map((r, i) => r.net - hist[i].net);
+  const sd = diffs.length > 4 ? Math.sqrt(diffs.reduce((a, d) => a + d * d, 0) / diffs.length) : null;
+  const flowZ = sd && c.weeklyChange != null ? c.weeklyChange / sd : 0;
+  // Contrarian component only at genuine extremes (below the 15th or above the 85th percentile).
+  const extreme = p < 15 ? (15 - p) / 15 : p > 85 ? -(p - 85) / 15 : 0;
+  const score = clamp(0.6 * tanh(flowZ / 1.5) + 0.4 * extreme);
   return {
-    id: "positioning", name: "Speculative positioning (CFTC, WTI)", score: clamp(score),
+    id: "positioning", name: "Speculative positioning (CFTC, WTI)", score,
     reading: `Managed money net ${c.net >= 0 ? "long" : "short"} ${Math.abs(c.net).toLocaleString("en-US")} contracts (week to ${c.date}), ${signed(c.weeklyChange, 0)} on the week; ${ordinal(Math.round(p))} percentile of the last three years.`,
     explanation:
-      p < 20 ? "Hedge funds are unusually bearish. Crowded shorts are fuel for a squeeze if news stops getting worse, so this is a contrarian bullish factor."
-      : p > 80 ? "Hedge funds are unusually bullish. Crowded longs leave the market vulnerable to sharp liquidation on any disappointment, so this is a contrarian bearish factor."
-      : "Positioning is not at an extreme, so it carries little contrarian information.",
+      (Math.abs(flowZ) >= 1
+        ? `Funds ${c.weeklyChange > 0 ? "added" : "cut"} net length by an unusually large amount this week (${signed(flowZ, 1)} standard deviations). Large flows tend to carry prices in the same direction for a few days. `
+        : "This week's change in fund positioning is ordinary, so flows add little. ") +
+      (p < 15 ? "Positioning is also at an extreme low, which adds a small contrarian bullish element: crowded shorts can fuel a squeeze."
+      : p > 85 ? "Positioning is also at an extreme high, which adds a small contrarian bearish element: crowded longs can unwind sharply."
+      : "Positioning is not at an extreme, so there is no contrarian element.") +
+      " The data is weekly (Friday release, Tuesday positions), so it informs direction rather than timing.",
   };
 }
 
@@ -369,18 +393,26 @@ function factorDollar(market) {
   };
 }
 
-function factorNews(newsData, now) {
+function factorNews(newsData, now, tb) {
   if (!newsData || !newsData.items || !newsData.items.length) return null;
   const n = scoreNews(newsData.items, now);
-  const score = tanh(n.net / 4);
+  // Average headline score, shrunk towards zero when only a few relevant headlines exist.
+  const shrink = n.effectiveCount / (n.effectiveCount + 3);
+  const raw = tanh(n.avg / 1.5) * shrink;
+  // Price confirmation: if the news points one way but the price has moved clearly the other way over
+  // 24 hours, the market is discounting it (already priced, or outweighed), so it counts for half.
+  const ret = tb?.ret24h;
+  const disagrees = ret != null && Math.abs(ret) > 0.5 && Math.sign(ret) !== Math.sign(raw) && Math.abs(raw) > 0.1;
+  const score = disagrees ? raw * 0.5 : raw;
   const topTags = n.tagTotals.slice(0, 3).map(([t, v]) => `${t} (${signed(v, 1)})`).join(", ");
   return {
     id: "news", name: "News flow (last 24 to 48 hours)", score,
-    reading: `${n.recentCount} headlines in 24 hours: ${n.bullishCount} bullish, ${n.bearishCount} bearish. Recency-weighted net score ${signed(n.net, 1)}. Dominant themes: ${topTags || "none detected"}.`,
+    reading: `${n.recentCount} headlines in 24 hours: ${n.bullishCount} bullish, ${n.bearishCount} bearish. Recency-weighted average headline score ${signed(n.avg, 2)} across about ${Math.round(n.effectiveCount)} relevant headlines. Dominant themes: ${topTags || "none detected"}.${disagrees ? ` Price has moved ${signed(ret)}% the other way over 24 hours, so the news counts for half.` : ""}`,
     explanation:
-      score > 0.3 ? "The balance of recent headlines points to tighter supply or stronger demand. Newer headlines count for more (eight-hour half-life)."
-      : score < -0.3 ? "The balance of recent headlines points to looser supply or weaker demand. Newer headlines count for more (eight-hour half-life)."
-      : "Headlines are mixed or neutral. Keyword scoring cannot judge nuance, so read the top headlines yourself before acting.",
+      (disagrees ? "The news and the price disagree: the market is discounting these headlines, either because they are already priced in or because other forces outweigh them. Fading news the market ignores is usually wiser than trading it. " : "") +
+      (score > 0.3 ? "On balance, recent headlines point to tighter supply or stronger demand. Each headline is averaged rather than added, so a flood of stories on one theme does not count many times over."
+      : score < -0.3 ? "On balance, recent headlines point to looser supply or weaker demand. Each headline is averaged rather than added, so a flood of stories on one theme does not count many times over."
+      : "Headlines are mixed or neutral on balance. Keyword scoring cannot judge nuance, so read the top headlines yourself before acting."),
     detail: n,
   };
 }
@@ -416,20 +448,25 @@ function factorCrack(market, refining, benchmark) {
   const vals = cs.series.map((x) => x.c);
   const mean = vals.reduce((a, v) => a + v, 0) / vals.length;
   const sd = Math.sqrt(vals.reduce((a, v) => a + (v - mean) ** 2, 0) / vals.length) || 1;
-  const target = cs.series.at(-1).t - 5 * 24 * 3.6e6;
-  let ref = null;
-  for (const x of cs.series) { if (x.t <= target) ref = x; else break; }
-  const chg5 = ref ? cs.latest - ref.c : 0;
+  const changeOverH = (h) => {
+    const target = cs.series.at(-1).t - h * 3.6e6;
+    let ref = null;
+    for (const x of cs.series) { if (x.t <= target) ref = x; else break; }
+    return ref ? cs.latest - ref.c : 0;
+  };
+  const chg5 = changeOverH(120);
+  const chg2 = changeOverH(48);
   const z = (cs.latest - mean) / sd;
-  const score = clamp(0.5 * clamp(z / 2) + 0.5 * tanh(chg5 / 2.5));
+  // Mainly the two-day change, so a margin that has already fallen does not keep scoring bearish.
+  const score = clamp(0.25 * clamp(z / 2) + 0.75 * tanh(chg2 / 1.5));
   const name = BENCHMARKS[benchmark]?.name || "crude";
   return {
     id: "crack", name: `Refining margin (3-2-1 crack vs ${name})`, score,
-    reading: `Crack spread ${usd(cs.latest)}/bbl versus a one-month average of ${usd(mean)} (${signed(z, 1)} standard deviations); ${signed(chg5)} over five days.`,
+    reading: `Crack spread ${usd(cs.latest)}/bbl versus a one-month average of ${usd(mean)} (${signed(z, 1)} standard deviations); ${signed(chg2)} over two days and ${signed(chg5)} over five.`,
     explanation:
-      score > 0.25 ? "Refiners earn more than usual for turning crude into gasoline and diesel, so they run harder and keep bidding for crude. Strong and rising margins tend to lead crude prices higher."
-      : score < -0.25 ? "Refining margins are weak or falling, so refiners have less reason to buy crude and may cut runs. Weak margins tend to lead crude prices lower."
-      : "Refining margins are close to their recent average and give no clear lead on crude demand.",
+      score > 0.25 ? "Refining margins are improving, so refiners have more reason to run hard and bid for crude. Rising margins tend to lead crude prices higher. The score is driven mainly by the last two days' change."
+      : score < -0.25 ? "Refining margins are deteriorating, so refiners have less reason to buy crude and may cut runs. Falling margins tend to lead crude prices lower. The score is driven mainly by the last two days' change."
+      : "Refining margins are broadly stable over the last two days, so they give no clear lead on crude demand, whatever their level.",
     crack: cs.latest,
   };
 }
@@ -562,7 +599,7 @@ export function computeSignals({ market, curve, fundamentals, news, refining }, 
     factorTrend(tb),
     factorMomentum(tb),
     factorRsi(tb),
-    factorNews(news, nowMs),
+    factorNews(news, nowMs, tb),
     factorCurve(curve, benchmark),
     factorInventories(fundamentals),
     factorPositioning(fundamentals),
@@ -580,6 +617,7 @@ export function computeSignals({ market, curve, fundamentals, news, refining }, 
     factors,
     events,
     regime,
+    engineVersion: ENGINE_VERSION,
     factorScores: Object.fromEntries(factors.map((f) => [f.id, +f.score.toFixed(4)])),
     intraday: composite(factors, weights.intraday, "intraday", tb, events, bench.name, regime),
     swing: composite(factors, weights.swing, "swing", tb, events, bench.name, regime),

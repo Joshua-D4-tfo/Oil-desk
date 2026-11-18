@@ -36,6 +36,7 @@ export function snapshotFromSignals(sig, nowMs) {
     intraday: sig.intraday ? { label: sig.intraday.label, score: +sig.intraday.score.toFixed(4), conviction: sig.intraday.confidence } : null,
     swing: sig.swing ? { label: sig.swing.label, score: +sig.swing.score.toFixed(4), conviction: sig.swing.confidence } : null,
     ovx: sig.regime?.ovx ?? null,
+    engineVersion: sig.engineVersion ?? 1,
   };
 }
 
@@ -68,6 +69,7 @@ export function maybeOpenTrades(state, sig, nowMs) {
       sizeMultiplier: p.sizeMultiplier ?? null,
       ovx: sig.regime?.ovx ?? null,
       factorScores: sig.factorScores,
+      engineVersion: sig.engineVersion ?? 1,
     };
     state.open[key] = trade;
     opened.push(trade);
@@ -244,24 +246,24 @@ export const toCsv = (header, rows) => [header.join(","), ...rows.map((r) => r.m
 export function tradesCsv(state) {
   const header = ["trade_id", "benchmark", "horizon", "status", "label", "strength", "direction", "score", "conviction",
     "opened_utc", "entry", "stop", "target", "risk_per_bbl", "closed_utc", "exit", "outcome", "result_r", "mark_r",
-    "max_favourable_r", "max_adverse_r", "hours_held", "size_multiplier", "ovx", ...FACTOR_IDS.map((f) => `f_${f}`)];
+    "max_favourable_r", "max_adverse_r", "hours_held", "size_multiplier", "ovx", "engine_version", ...FACTOR_IDS.map((f) => `f_${f}`)];
   const all = [...state.closed.map((t) => ["closed", t]), ...Object.values(state.open || {}).filter(Boolean).map((t) => ["open", t])];
   const rows = all.map(([status, t]) => [
     t.id, t.benchmark, t.horizon, status, t.label, t.strength, t.direction, t.score, t.conviction,
     iso(t.opened), t.entry, t.stop, t.target, t.risk, iso(t.closed), t.exit, t.outcome, t.r, t.markR,
     t.mfeR, t.maeR, t.closed ? Math.round(((t.closed - t.opened) / 3.6e6) * 10) / 10 : "",
-    t.sizeMultiplier, t.ovx, ...FACTOR_IDS.map((f) => t.factorScores?.[f]),
+    t.sizeMultiplier, t.ovx, t.engineVersion ?? 1, ...FACTOR_IDS.map((f) => t.factorScores?.[f]),
   ]);
   return toCsv(header, rows);
 }
 
 export function readingsCsv(snapshots, fwdById) {
-  const header = ["snapshot_id", "time_utc", "benchmark", "price", "ovx",
+  const header = ["snapshot_id", "time_utc", "benchmark", "engine_version", "price", "ovx",
     "intraday_label", "intraday_score", "intraday_conviction", "swing_label", "swing_score", "swing_conviction",
     ...FACTOR_IDS.map((f) => `f_${f}`), "fwd_4h_return_pct", "fwd_48h_return_pct"];
   const rows = snapshots.map((s) => {
     const f = fwdById[s.id] || {};
-    return [s.id, iso(s.t), s.benchmark, s.price, s.ovx,
+    return [s.id, iso(s.t), s.benchmark, s.engineVersion ?? 1, s.price, s.ovx,
       s.intraday?.label, s.intraday?.score, s.intraday?.conviction, s.swing?.label, s.swing?.score, s.swing?.conviction,
       ...FACTOR_IDS.map((id) => s.factorScores?.[id]), f.intraday, f.swing];
   });

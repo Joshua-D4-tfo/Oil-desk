@@ -35,6 +35,11 @@ async function main() {
   await ensureDirs();
 
   const existing = await readBriefing(today);
+  if (existing && !FORCE) {
+    // Backup schedule run after a successful morning run: nothing to do, and no API cost.
+    console.log(`Briefing for ${today} already exists; nothing to do (set FORCE=1 to regenerate).`);
+    return;
+  }
   let briefing = existing;
 
   if (!existing || FORCE) {

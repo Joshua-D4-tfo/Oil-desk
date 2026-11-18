@@ -40,14 +40,16 @@ The weights below apply to Brent. WTI is priced at Cushing, Oklahoma, so for WTI
 | Factor | Measure | Intraday weight | Swing weight |
 |---|---|---|---|
 | Short-term trend | Price versus 20-hour EMA; 20-hour EMA versus 50-hour EMA, scaled by ATR | 24% | 14% |
-| News flow | Keyword-scored headlines with an eight-hour recency half-life | 22% | 16% |
+| News flow | Average keyword score across relevant headlines (eight-hour recency half-life), shrunk when few headlines exist, and halved when the price has moved clearly against the news over 24 hours | 22% | 16% |
 | Momentum | 24-hour and five-day returns | 18% | 8% |
-| Futures curve | Brent M1 to M2 spread level and its five-session change | 10% | 20% |
+| Futures curve | Mainly the five-session change in the M1 to M2 spread (80%), with a small weight on its level (20%) | 10% | 20% |
 | RSI | Fades overbought (above 70) and oversold (below 30) conditions only | 8% | 4% |
 | Dollar | Five-day change in the dollar index (inverse) | 8% | 8% |
 | Inventories | Weekly change versus the five-year seasonal average, the Cushing level and the stock level versus its five-year average | 6% | 16% |
-| Positioning | Three-year percentile of managed-money net length (contrarian at the extremes) | 4% | 14% |
-| Refining margin | 3-2-1 crack spread versus its one-month average and its five-day change | 5% | 10% |
+| Positioning | Mainly this week's change in managed-money net length versus normal weekly changes (60%), plus a contrarian element only below the 15th or above the 85th three-year percentile (40%) | 4% | 14% |
+| Refining margin | Mainly the two-day change in the 3-2-1 crack spread (75%), plus its position against the one-month average (25%) | 5% | 10% |
+
+**Model version 2 (18 November 2026).** Before this date, news was summed rather than averaged, and the curve, positioning and refining margin were scored mainly on their levels. In practice, those three barely changed from day to day and acted as a fixed tilt on every score. Snapshots and trades record an `engine_version`, so results from the two versions can be separated in the CSV exports.
 
 **Volatility regime (OVX).** OVX does not vote on direction. Instead it sets the suggested position size, which is 35 divided by the current OVX, capped at 100% and floored at 35%. When OVX is in the top 20% of its six-month range, or has risen 20% or more in five days, conviction is also reduced by 15%.
 

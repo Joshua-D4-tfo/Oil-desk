@@ -4,6 +4,10 @@ on:
   schedule:
     # 01:45 UTC = 05:45 Dubai, every day (weekend OPEC+ meetings and geopolitics still matter).
     - cron: "45 1 * * *"
+    # Backups: GitHub occasionally drops scheduled runs when busy. If the briefing already exists
+    # these finish in seconds without calling Claude, so they cost nothing.
+    - cron: "17 3 * * *"
+    - cron: "41 5 * * *"
   workflow_dispatch:
     inputs:
       force:
