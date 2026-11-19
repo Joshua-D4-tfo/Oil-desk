@@ -1,9 +1,19 @@
 {
- "updatedAt": 1794992417442,
- "latest": "2026-11-18",
+ "updatedAt": 1795080785089,
+ "latest": "2026-11-19",
  "retentionDays": 60,
  "archiveDocx": "docs/oil-briefing-archive.docx",
  "briefings": [
+  {
+   "date": "2026-11-19",
+   "headline": "Front-month Brent is steady near $92 as a surprise US crude and gasoline build and a hawkish Fed offset continuing Hormuz and Houthi attacks, with the Trump-Xi-Putin talks in Shenzhen the day's main swing factor.",
+   "verdict": {
+    "direction": "bearish",
+    "strength": -1
+   },
+   "developments": 8,
+   "docx": "docs/oil-briefing-2026-11-19.docx"
+  },
   {
    "date": "2026-11-18",
    "headline": "Brent is trading near $91 as a 5.28 million barrel API crude build outweighs a new ADNOC vessel attack in Hormuz and US-Iran strikes across the Gulf, so today's EIA report and the Trump-Xi-Putin summit are the next tests.",

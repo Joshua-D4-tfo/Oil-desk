@@ -1,0 +1,456 @@
+{
+ "date": "2026-11-19",
+ "headline": "Front-month Brent is steady near $92 as a surprise US crude and gasoline build and a hawkish Fed offset continuing Hormuz and Houthi attacks, with the Trump-Xi-Putin talks in Shenzhen the day's main swing factor.",
+ "overview": "Brent settled at $91.95 on Wednesday, down 1.3%, and WTI fell 3.2% to its lowest since 26 August, after the EIA reported a 3.4 million barrel crude build against expectations of little change. Hawkish Fed minutes and a dollar at a 19-month high added to the pressure. Front-month prices were broadly flat in Asian trade on Thursday. The dashboard shows Brent January at $92.63, about 0.7% above Wednesday's settle, and WTI December at $83.73. The dashboard headline Brent figure of $89.82 matches the February contract, not the front month. Tanker attacks and mine claims around Hormuz, and Houthi strikes on Riyadh, are holding a floor under prices, but they are not lifting them while Gulf export flows are recovering and the market is pricing a surplus.",
+ "developments": [
+  {
+   "title": "EIA reports 3.4 million barrel US crude build and a 5.2 million barrel gasoline build",
+   "category": "Inventories & data",
+   "summary": "The EIA reported commercial crude stocks up 3.38 million barrels to 417.8 million barrels in the week to 13 November. Reuters-sourced coverage put consensus at a build of about 58,000 barrels, while another outlet cited a forecast draw of 0.5 million barrels. Gasoline stocks rose 5.19 million barrels against a forecast of about 1.7 million, and distillates rose 1.57 million barrels. Cushing stocks fell 1.21 million barrels to 26.1 million, and the SPR fell 3.17 million barrels. This follows the API's 5.28 million barrel build in the previous briefing, and the official crude build was smaller than the API figure.",
+   "why_it_matters": "A broad build in crude and gasoline in a seasonally weak week supports the surplus narrative that drove Wednesday's sell-off, and it weighs most on WTI. The Cushing draw and the continued SPR release limit the damage to WTI spreads. The effect is likely to fade within a day or two unless next week's data repeat it.",
+   "direction": "bearish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Weekly Petroleum Status Report",
+     "publisher": "US Energy Information Administration",
+     "url": "https://www.eia.gov/petroleum/supply/weekly/"
+    },
+    {
+     "title": "Natural Gas, WTI Oil, Brent Oil Forecasts",
+     "publisher": "FXEmpire",
+     "url": "https://www.fxempire.com/forecasts/article/natural-gas-wti-oil-brent-oil-forecasts-oil-retreats-as-traders-focus-on-hawkish-interest-rate-outlook-1645554"
+    },
+    {
+     "title": "Brent Crude Oil Price Steadies at $92.12 After 3.4 Million Barrel EIA Build and Hormuz Mine Reports",
+     "publisher": "Trading and Investment News",
+     "url": "https://www.tradingandinvestmentnews.co.uk/brent-crude-oil-price-steadies-at-92-12-after-3-4-million-barrel-eia-build-and-hormuz-mine-reports/"
+    }
+   ]
+  },
+  {
+   "title": "Iran claims three more tankers disabled by mines east of Hormuz; flow estimates conflict",
+   "category": "Geopolitics & shipping",
+   "summary": "Iran's army said three oil tankers struck naval mines and caught fire in the eastern Strait of Hormuz on Wednesday, in an area it called off-limits. ADNOC confirmed on Wednesday that one of its vessels was attacked on Tuesday evening, with 11 crew injured and one missing. Reuters could not independently confirm the Iranian claim, according to a secondary report. CNBC/Reuters says crude shipments through the strait have returned to roughly pre-war levels, while OilPrice.com says tanker tracking shows Gulf flows still below pre-war levels. Vortexa data cited by Bloomberg show Suezmax and Aframax tankers moved 2 million bpd out of Hormuz in October, the most since the war began.",
+   "why_it_matters": "Repeated attacks keep a risk premium in the curve, shown by Brent's $2.81 January-February backwardation. The effect on prices is limited because physical flows are recovering and barrels are still reaching buyers. Supertanker avoidance raises freight and insurance costs more than it removes barrels. A confirmed large loss of cargo or a sustained halt to transits would change that.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "unconfirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "3 oil tankers disabled by mine blasts in Strait of Hormuz: Iranian army",
+     "publisher": "Anadolu Agency",
+     "url": "https://www.aa.com.tr/en/middle-east/3-oil-tankers-disabled-by-mine-blasts-in-strait-of-hormuz-iranian-army/4129906"
+    },
+    {
+     "title": "Adnoc L&S ship attacked in Strait of Hormuz with one crew member missing",
+     "publisher": "The National",
+     "url": "https://www.thenationalnews.com/business/energy/2026/11/18/adnoc-ls-ship-attacked-at-strait-of-hormuz-with-one-crew-member-missing/"
+    },
+    {
+     "title": "Oil prices steady as supply surplus softens sentiment though Gulf war supports",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/11/19/oil-brent-wti-price-hormuz.html"
+    },
+    {
+     "title": "Oil Prices Steady as Hormuz Tanker Threats Offset Supply Glut Fears",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Steady-as-Hormuz-Tanker-Threats-Offset-Supply-Glut-Fears.html"
+    },
+    {
+     "title": "Small Vessel Trade Thrives in Hormuz as Iran Targets Supertankers",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/Small-Vessel-Trade-Thrives-in-Hormuz-as-Iran-Targets-Supertankers.html"
+    },
+    {
+     "title": "Iran Claims 3 Tankers Hit Mines East of Hormuz After Muscat Talks Fail",
+     "publisher": "House of Saud",
+     "url": "https://houseofsaud.com/iran-3-tankers-mines-hormuz-nov18/"
+    }
+   ]
+  },
+  {
+   "title": "Hawkish Fed minutes lift dollar to 19-month high",
+   "category": "Macro",
+   "summary": "Minutes of the Fed's 27-28 October meeting showed nearly all officials expecting further rate rises, and a couple open to more than 25 basis points in December. Governor Waller called for a 50 basis point move in December without a signal of a January hike. Reuters reported the dollar at a fresh 19-month high on Thursday, and markets price about a 93-95% chance of a 25 basis point hike on 9 December. Secondary reports put the S&P 500 down for a fifth straight session, and Nvidia fell 2.9% after earnings.",
+   "why_it_matters": "A stronger dollar and higher real yields raise the cost of oil for non-dollar buyers and lower the demand outlook, which compounds the surplus narrative. Rate-hike repricing tends to weigh on crude for days rather than hours, and equity weakness adds to the risk-off tone. Further hawkish Fed speakers are the near-term risk.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "US dollar hits 19-month peak, Aussie drops after soft jobs data",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://za.investing.com/news/economy-news/us-dollar-hits-19month-peak-aussie-drops-after-soft-jobs-data-4585306"
+    },
+    {
+     "title": "Dollar eases after seven-session rally, rates and equities in focus",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://ca.investing.com/news/economy-news/dollar-eases-after-sevensession-rally-rates-and-equities-in-focus-4968931"
+    },
+    {
+     "title": "Fed Minutes Take a Hawkish Turn: December Rate Hike All but Certain",
+     "publisher": "BigGo Finance",
+     "url": "https://finance.biggo.com/news/6d24bcc3-a21e-4f0a-84b5-b44750c4a0dd"
+    },
+    {
+     "title": "Market Pulse - November 19, 2026",
+     "publisher": "NordFX",
+     "url": "https://nordfx.com/market-news/market-pulse-november-19-2026"
+    }
+   ]
+  },
+  {
+   "title": "Houthi missile damages PIF Tower in Riyadh; Saudi coalition reports further interceptions",
+   "category": "Geopolitics & shipping",
+   "summary": "A Houthi missile attack damaged the PIF Tower in Riyadh's financial district on Thursday, three people familiar with the matter told Reuters. The Saudi-led coalition said it had dealt with a missile launched towards Riyadh and that debris had caused material damage. It also reported intercepting a cruise missile and ballistic missiles aimed at the south. The Houthis had not claimed the attack. Saudi aircraft reportedly struck Sanaa early on Thursday. Reuters notes the Houthis have stepped up attacks on Saudi airports, ports and oil facilities, and that a 8 November strike damaged an Aramco building in Riyadh.",
+   "why_it_matters": "The target was financial, not energy infrastructure, so no barrels were lost. It raises the probability of strikes on Saudi export assets, including Red Sea terminals and the east-west pipeline that Gulf producers rely on to bypass Hormuz. The effect on the risk premium is modest unless oil facilities are hit.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Riyadh skyscraper housing Saudi wealth fund damaged in Houthi strike, sources say",
+     "publisher": "Reuters via Yahoo",
+     "url": "https://www.yahoo.com/news/articles/houthi-missile-threat-towards-riyadh-031757609.html"
+    },
+    {
+     "title": "Saudi sovereign wealth fund tower in Riyadh damaged in Houthi strike",
+     "publisher": "The National",
+     "url": "https://www.thenationalnews.com/news/gulf/2026/11/19/saudi-sovereign-wealth-fund-tower-in-riyadh-damaged-in-houthi-strike/"
+    },
+    {
+     "title": "Houthi missile fired towards Riyadh damages skyscraper",
+     "publisher": "Goulburn Post",
+     "url": "https://www.goulburnpost.com.au/story/9394288/houthi-missile-fired-towards-riyadh-damages-skyscraper/"
+    }
+   ]
+  },
+  {
+   "title": "Trump, Xi and Putin hold Shenzhen talks; Trump says US and China share interest in open Hormuz",
+   "category": "Geopolitics & shipping",
+   "summary": "The trilateral meeting began on Thursday on the sidelines of the APEC summit, after separate one-on-one meetings. After meeting Xi, Trump said the US and China both have an interest in energy flowing through Hormuz and agree that Iran cannot have a nuclear weapon. Al Jazeera reports US-Iran talks remain stuck on whether to address Hormuz and financial incentives first, or the nuclear programme. No agreement had been announced in the sources retrieved. This updates the previous briefing, which listed the summit as upcoming.",
+   "why_it_matters": "A Chinese commitment to press Iran on Hormuz would lower the war premium, but nothing concrete has been announced and analysts expected little. Any announcement on Hormuz access or Iran talks is a two-way gap risk for the day. Absent a concrete outcome, the premium is unlikely to change.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Trump Meets Xi, Putin in China for Talks on Iran, Ukraine, Nukes",
+     "publisher": "Fox News",
+     "url": "https://www.foxnews.com/live-news/trump-to-meet-xi-in-shenzhen-ahead-of-high-stakes-trilateral-talks-with-putin"
+    },
+    {
+     "title": "What do Trump, Putin and Xi want from their Shenzhen meeting?",
+     "publisher": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/11/19/what-do-trump-putin-and-xi-want-from-their-shenzhen-meeting"
+    },
+    {
+     "title": "Nuclear arms and ending wars in Iran and Ukraine set to top agenda at Trump-Xi-Putin meeting",
+     "publisher": "ABC7 Los Angeles",
+     "url": "https://abc7.com/story/nuclear-arms-ending-wars-iran-ukraine-set-top-agenda-trump-xi-putin-meeting/20054435/"
+    }
+   ]
+  },
+  {
+   "title": "IEA World Energy Outlook 2026 quantifies Hormuz losses and flags demand risk",
+   "category": "Demand",
+   "summary": "The IEA said cumulative losses from the Hormuz disruption stand at 2.8 billion barrels of oil and 60 bcm of gas, and that the crisis was unresolved as of November. Oil flows through Hormuz fell to 7.6 million bpd in August, 13.1 million bpd below pre-war levels. Bypass pipelines of about 7 million bpd would cost an estimated $40 billion. In its Additional Response Case, 2035 oil demand is 4.4 million bpd below the Stated Policies Scenario. The IEA also says a lasting resolution could produce a buyers' market with downward price pressure.",
+   "why_it_matters": "The data are largely backward-looking and do not change near-term balances. They do reinforce the view that a resolution would be sharply bearish and that infrastructure to bypass Hormuz will cap the long-term premium. The effect on a one-to-three-day horizon is small.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Executive summary - World Energy Outlook 2026",
+     "publisher": "IEA",
+     "url": "https://www.iea.org/reports/world-energy-outlook-2026/executive-summary"
+    },
+    {
+     "title": "IEA: Hormuz disruptions cut oil supply by 2.8bn barrels",
+     "publisher": "Shafaq News",
+     "url": "https://shafaq.com/en/Economy/IEA-Hormuz-disruptions-cut-oil-supply-by-2-8bn-barrels"
+    },
+    {
+     "title": "Middle East conflict triggers biggest disruption ever to global oil trade, IEA warns",
+     "publisher": "NBC News",
+     "url": "https://www.nbcnews.com/world/middle-east/middle-east-conflict-triggers-biggest-disruption-ever-global-oil-trade-rcna610171"
+    }
+   ]
+  },
+  {
+   "title": "Reuters: Ukrainian drones cut Russian refinery throughput by 45% since late October",
+   "category": "Refining & products",
+   "summary": "Reuters, citing two industry sources, reported that Russian crude processing fell to about 400,000 tonnes a day (about 3 million bpd) from over 700,000 tonnes at the end of October. Operations at 15 of Russia's 35 major refineries are disrupted or halted, up from nine in mid-November. Russia already faces regional fuel shortages and restricted port export capacity. Reuters said lower refining could tighten global fuel markets and hamper Russian diesel deliveries to the US. This updates the previous briefing's Krasnodar refinery strikes.",
+   "why_it_matters": "Lower Russian runs bullish for diesel and gasoline cracks and mildly bearish for crude if more crude is left unprocessed. Port strikes limit how much of that crude can be exported, so the net crude effect is ambiguous. Product-market support is more likely than a direct crude price effect, and it is the main reason the dashboard crack spread of $32.98 per barrel, 2.3 standard deviations below its one-month average, may find support.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Exclusive-Drone attacks nearly halve Russia's November oil refining, sources say",
+     "publisher": "Reuters via Yahoo",
+     "url": "https://www.yahoo.com/news/articles/exclusive-drone-attacks-nearly-halve-145826294.html"
+    },
+    {
+     "title": "Ukrainian drones slash Russia's oil refining nearly in half in 20 days",
+     "publisher": "Ukrainska Pravda",
+     "url": "https://www.pravda.com.ua/eng/news/2026/11/18/8063514/"
+    },
+    {
+     "title": "Ukrainian drone attacks have cut the amount of oil Russia refines by 45% since late October",
+     "publisher": "Meduza",
+     "url": "https://meduza.io/en/news/2026/11/19/ukrainian-drone-attacks-have-cut-the-amount-of-oil-russia-refines-by-45-since-late-october-reuters-reports"
+    }
+   ]
+  },
+  {
+   "title": "OPEC output back near pre-war levels on Saudi rebound",
+   "category": "OPEC+",
+   "summary": "WSJ reports OPEC crude output climbed toward pre-war levels in October, led by Saudi Arabia. The underlying monthly data were released on 12 November. Saudi Arabia self-reported 10.56 million bpd against 8.37 million in September. Secondary sources put Saudi output near 9.19 million bpd, and a Bloomberg survey put OPEC output at 22.8 million bpd, about 88% of February levels. OPEC kept its demand forecasts unchanged. The next OPEC+ ministerial meeting on 2027 production is due around 29 November.",
+   "why_it_matters": "This is not new information but it supports the surplus narrative. The gap between Saudi's self-reported figure and secondary estimates means the true supply rebound is uncertain. Higher Gulf output also raises the stakes of the Houthi attacks on Saudi infrastructure.",
+   "direction": "bearish",
+   "impact": "low",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "OPEC's Oil Production Nears Prewar Levels on Saudi Rebound",
+     "publisher": "WSJ",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbkZ3Y3c3WE51TWt2RUVhZUdxbk5PM3FCdjNERW94S3NEckxuUVBidkxiRHdHUnl6RGxLZnIwZjh1UTlmak1tOW50MmZWemFEQlY5UUs3Z2pISzVodWhiRjFZSHN0T2xLTkVIV3A0Y0xUbnJOVy1ZRDJYWlNPbGJ6M1VHa2VLN2xMRDlJdkpESnZLZzFoWHc2WFg0eE43dzZsTGlEU1JVQjBkUQ?oc=5"
+    },
+    {
+     "title": "Saudi oil production rebounds to near prewar levels",
+     "publisher": "Semafor",
+     "url": "https://www.semafor.com/article/11/12/2026/saudi-oil-production-rebounds-to-near-prewar-levels"
+    },
+    {
+     "title": "Saudi Arabia's Oil Output Jumps 26% in a Single Month",
+     "publisher": "Latin Times",
+     "url": "https://www.latintimes.com/saudi-oil-output-opec-production-rebound-october-601220"
+    }
+   ]
+  }
+ ],
+ "data_releases": [
+  {
+   "name": "EIA Weekly Petroleum Status Report, week to 13 November",
+   "result": "Commercial crude +3.38 million barrels to 417.8 million; gasoline +5.19 million; distillates +1.57 million; Cushing -1.21 million to 26.1 million; SPR -3.17 million.",
+   "vs_expectation": "Crude build well above consensus (about +58,000 barrels per Reuters coverage; a draw of 0.5 million barrels per another outlet). Gasoline above the +1.7 million forecast.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Weekly Petroleum Status Report",
+     "publisher": "US Energy Information Administration",
+     "url": "https://www.eia.gov/petroleum/supply/weekly/"
+    },
+    {
+     "title": "Natural Gas, WTI Oil, Brent Oil Forecasts",
+     "publisher": "FXEmpire",
+     "url": "https://www.fxempire.com/forecasts/article/natural-gas-wti-oil-brent-oil-forecasts-oil-retreats-as-traders-focus-on-hawkish-interest-rate-outlook-1645554"
+    }
+   ]
+  },
+  {
+   "name": "FOMC minutes, 27-28 October meeting",
+   "result": "Nearly all officials saw further rate rises as likely appropriate; a few were open to more than 25 basis points in December.",
+   "vs_expectation": "Read as more hawkish than expected; the dollar rose to a 19-month high and a 25 basis point December hike is about 93-95% priced.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "US dollar hits 19-month peak, Aussie drops after soft jobs data",
+     "publisher": "Reuters via Investing.com",
+     "url": "https://za.investing.com/news/economy-news/us-dollar-hits-19month-peak-aussie-drops-after-soft-jobs-data-4585306"
+    },
+    {
+     "title": "Fed Minutes Take a Hawkish Turn: December Rate Hike All but Certain",
+     "publisher": "BigGo Finance",
+     "url": "https://finance.biggo.com/news/6d24bcc3-a21e-4f0a-84b5-b44750c4a0dd"
+    }
+   ]
+  },
+  {
+   "name": "CFTC Commitments of Traders (latest, as of 10 November)",
+   "result": "Net speculative position of 25,714 contracts, up 3,986 on the week, at the 11.6th percentile of the past three years.",
+   "vs_expectation": "No consensus supplied. Positioning is thin by recent standards, leaving room for short-covering on supportive news.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Commitments of Traders",
+     "publisher": "CFTC",
+     "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    }
+   ]
+  }
+ ],
+ "analyst_views": [
+  {
+   "who": "FXEmpire (technical analysis)",
+   "view": "Brent is in a short-term negative trend with downside to $87-$88. For WTI, a break below $87 points to $78-$80, which is the key support region. The author notes Hormuz shipping remains a risk.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Crude Oil Price Forecast: WTI and Brent Slide as US Inventories Rise",
+     "publisher": "FXEmpire",
+     "url": "https://www.fxempire.com/forecasts/article/crude-oil-price-forecast-wti-and-brent-slide-as-us-inventories-rise-1645627"
+    }
+   ]
+  },
+  {
+   "who": "FinanceFeeds scenario table",
+   "view": "Bear case $88 if US stocks keep building and Hormuz traffic stays near normal; bull case $96. It says the surplus case won on Wednesday and the Iranian mine reports are holding prices steady rather than lifting them.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Brent Crude Oil Price: $92.12 Thursday After EIA Build and Hormuz Mine Reports, Bull $96, Bear $88",
+     "publisher": "FinanceFeeds",
+     "url": "https://financefeeds.com/brent-crude-oil-price-92-12-thursday-eia-build-hormuz-mines-bull-96-bear-88/"
+    }
+   ]
+  },
+  {
+   "who": "IEA (World Energy Outlook 2026)",
+   "view": "A lasting resolution of the Hormuz crisis could create a buyers' market with significant downward price pressure, while continued restrictions and depleted buffers could push prices higher and weaken demand. The agency stresses its scenarios are not forecasts.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Executive summary - World Energy Outlook 2026",
+     "publisher": "IEA",
+     "url": "https://www.iea.org/reports/world-energy-outlook-2026/executive-summary"
+    },
+    {
+     "title": "IEA calls the Hormuz crisis the largest energy supply shock in history in its World Energy Outlook",
+     "publisher": "MLQ.ai",
+     "url": "https://mlq.ai/news/iea-calls-the-hormuz-crisis-the-largest-energy-supply-shock-in-history-in-its-world-energy-outlook/"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "mixed",
+  "summary": "Retail commentary is thin and low quality. Tagged posts on USO lean slightly bearish, and the few technical posts on WTI futures describe a continuing downtrend with support near $82. Much of the sample is off-topic or promotional. The mild bearish tilt is consistent with the price trend and the inventory data but carries no evidential weight.",
+  "evidence": [
+   "StockTwits USO, last 30 hours: 30 posts, 8 tagged bullish, 12 tagged bearish, the rest untagged.",
+   "StockTwits CL_F, last 30 hours: 6 posts, 1 bullish, 1 bearish; technical posts cite a falling wave count from the 20 October high and support near $82.13.",
+   "One untagged USO post called for the price to be under $100 next month; several samples were unrelated to oil.",
+   "Reddit data was unavailable."
+  ],
+  "sources": []
+ },
+ "watch_today": [
+  {
+   "item": "Outcome statements from the Trump-Xi-Putin talks in Shenzhen, especially any wording on Hormuz access, Iran talks or sanctions",
+   "when_utc": "during the day",
+   "why": "A concrete commitment on Hormuz would cut the risk premium; a lack of one leaves attention on tanker attacks."
+  },
+  {
+   "item": "Further tanker incidents and any independent verification of Iran's mine claims (UKMTO, JMIC advisories, ship-tracking data)",
+   "when_utc": "during the day",
+   "why": "Verified cargo losses or a drop in transits would validate the bullish case; flows holding near pre-war levels support the surplus view."
+  },
+  {
+   "item": "Houthi and Saudi exchanges, including any strike on Saudi energy infrastructure or Red Sea terminals",
+   "when_utc": "during the day",
+   "why": "An oil-facility hit would be a direct supply risk, unlike the financial-district damage in Riyadh."
+  },
+  {
+   "item": "Fed speakers, US yields and the dollar",
+   "when_utc": "during the day",
+   "why": "Further hawkish signals before the 9 December meeting reinforce dollar strength and pressure crude."
+  },
+  {
+   "item": "Baker Hughes US rig count",
+   "when_utc": "2026-11-20T18:00:00.000Z",
+   "why": "Gives a read on US supply response at current prices."
+  },
+  {
+   "item": "CFTC Commitments of Traders",
+   "when_utc": "2026-11-20T20:30:00.000Z",
+   "why": "Shows whether speculators added or cut length during the recent sell-off from a low base."
+  }
+ ],
+ "verdict": {
+  "direction": "bearish",
+  "strength": -1,
+  "reasoning": "The strongest bullish argument is the war premium: continuing tanker attacks and mine claims around Hormuz, Houthi missiles reaching Riyadh, a $2.81 Brent January-February backwardation and speculative length at the 12th percentile of the past three years, which leaves room for short-covering. The strongest bearish argument is the combination of a surprise US crude and gasoline build, a hawkish Fed with the dollar at a 19-month high, and Gulf output and exports recovering toward pre-war levels, which has the market pricing a surplus. The trend is lower, with Brent down about 6% over seven days and WTI at its lowest since August. The dashboard's rule-based signals show no trade for Brent and a lean sell for WTI. For the next 24 hours the bearish factors dominate modestly, but with OVX near 50 and unverified claims at both ends, an unexpected Shenzhen outcome or a verified supply loss could reverse the move quickly. Position sizes should reflect that two-way gap risk."
+ },
+ "meta": {
+  "generatedAt": 1795080637425,
+  "model": "claude-sonnet-5-5",
+  "searches": 9,
+  "tokens": {
+   "input": 8,
+   "cacheWrite": 95198,
+   "cacheRead": 83937,
+   "output": 16257
+  },
+  "verification": {
+   "kept": 37,
+   "removed": 0,
+   "removedUrls": [],
+   "downgraded": []
+  },
+  "prices": {
+   "brent": {
+    "price": 89.82,
+    "priceTime": 1795079975000,
+    "chg24hPct": 0.7176493525836734,
+    "chg7dPct": -6.261740465386706,
+    "chg30dPct": -17.460025499088395
+   },
+   "wti": {
+    "price": 82.79,
+    "priceTime": 1795080035000,
+    "chg24hPct": -0.43295432263685063,
+    "chg7dPct": -6.7049785970287585,
+    "chg30dPct": -14.7812674218576
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 30,
+     "bullish": 8,
+     "bearish": 12
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 6,
+     "bullish": 1,
+     "bearish": 1
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: 100",
+    "Google News: OPEC+: 55",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 51",
+    "Google News: Russia and China oil: 36",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}
