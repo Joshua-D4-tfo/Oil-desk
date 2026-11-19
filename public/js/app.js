@@ -2,7 +2,7 @@ import { computeSignals, BENCHMARKS, crackSeries } from "./engine.js";
 
 // Refresh cadence per source (milliseconds). The CDN caches each endpoint for a similar period.
 const SOURCES = {
-  market: { url: "/api/market", every: 60_000 },
+  market: { url: "/api/market", every: 15_000 },
   news: { url: "/api/news", every: 5 * 60_000 },
   curve: { url: "/api/curve", every: 15 * 60_000 },
   fundamentals: { url: "/api/fundamentals", every: 30 * 60_000 },
@@ -153,6 +153,18 @@ function tile(name, val, chgPct, extra, time, sparkBars, id, selected = false) {
   </div>`;
 }
 
+// Live Capital.com quote: shows bid / ask and spread. Fallback Yahoo futures quote: marked as delayed.
+function priceTile(name, t, d, exchange, selected) {
+  const id = name.toLowerCase();
+  if (!t || !d) return tile(name, usd(null), null, exchange, "Unavailable", null, id, selected);
+  if (d.live) {
+    const quote = d.bid != null && d.ask != null ? `Sell ${d.bid.toFixed(2)} / Buy ${d.ask.toFixed(2)} · spread ${d.spread.toFixed(2)}` : "";
+    const status = d.marketStatus && d.marketStatus !== "TRADEABLE" ? `Market ${d.marketStatus.toLowerCase().replace(/_/g, " ")}` : `Live ${ago(t.priceTime)}`;
+    return tile(`${name} spot`, usd(t.price), t.ret24h, "Capital.com", `${status}${quote ? ` · ${quote}` : ""}`, d.bars, id, selected);
+  }
+  return tile(`${name} (front month)`, usd(t.price), t.ret24h, exchange, `Quote ${ago(t.priceTime)} · delayed about 10 min`, d.bars, id, selected);
+}
+
 function renderTiles() {
   const s = state.signals;
   const m = state.data.market;
@@ -163,8 +175,8 @@ function renderTiles() {
   const dxyBars = dxy?.bars || [];
   const dxyChg = dxyBars.length > 24 ? ((dxy.price - dxyBars[dxyBars.length - 24].c) / dxyBars[dxyBars.length - 24].c) * 100 : null;
   const html = [
-    tile("Brent (front month)", usd(b?.price), b?.ret24h, "ICE", b ? `Quote ${ago(b.priceTime)} · delayed` : "Unavailable", m?.brent?.data?.bars, "brent", bk === "brent"),
-    tile("WTI (front month)", usd(w?.price), w?.ret24h, "NYMEX", w ? `Quote ${ago(w.priceTime)} · delayed` : "Unavailable", m?.wti?.data?.bars, "wti", bk === "wti"),
+    priceTile("Brent", b, m?.brent?.data, "ICE", bk === "brent"),
+    priceTile("WTI", w, m?.wti?.data, "NYMEX", bk === "wti"),
     tile("Brent minus WTI", s.brentWtiSpread == null ? "n/a" : usd(s.brentWtiSpread), null, "spread", "Wider spread favours US exports", null, "bw"),
     tile(`${BENCHMARKS[bk].name} M1 to M2`, cb ? signed(cb.spread) : "n/a", null, cb ? `${cb.m1.label} / ${cb.m2.label}` : "", cb ? (cb.spread > 0 ? "Backwardation (tight)" : "Contango (loose)") : "Unavailable",
       cb ? cb.history.map((h) => ({ c: h.spread })) : null, "spread"),
@@ -396,5 +408,5 @@ for (const [name, s] of Object.entries(SOURCES)) {
   setInterval(() => (document.hidden ? null : refresh([name])), s.every);
 }
 document.addEventListener("visibilitychange", () => {
-  if (!document.hidden && Date.now() - (state.loadedAt.market || 0) > 60_000) refresh();
+  if (!document.hidden && Date.now() - (state.loadedAt.market || 0) > 15_000) refresh();
 });

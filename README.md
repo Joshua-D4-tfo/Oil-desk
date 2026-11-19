@@ -138,7 +138,8 @@ To use a different model, add a repository *variable* (not a secret) called `BRI
 
 ## 7. Limitations
 
-- Yahoo Finance futures quotes are delayed by roughly ten minutes, and the endpoint is unofficial and occasionally rate-limits cloud servers. The data sources panel shows when a source has failed, and the engine continues with the remaining factors. Execute against your broker's live quote.
+- Brent and WTI prices come live from Capital.com (OIL_BRENT and OIL_CRUDE spot CFDs, mid of bid and ask) when the Netlify environment variables CAPITAL_API_KEY, CAPITAL_IDENTIFIER and CAPITAL_API_PASSWORD are set. The code only reads prices; it never places or changes orders. One login session is reused for about eight minutes (stored in the Netlify Blobs store "oil-desk-capital"). The page refreshes the price every 15 seconds.
+- If Capital.com fails or the variables are missing, the page falls back to Yahoo Finance futures, which are delayed by roughly ten minutes and are labelled "delayed" on the tile. The dollar index, refined products (crack spread), the futures curve and OVX always come from Yahoo. The data sources panel shows when a source has failed, and the engine continues with the remaining factors.
 - Inventories update weekly (Wednesday) and positioning weekly (Friday, covering Tuesday's data). They set direction, not timing.
 - Keyword scoring cannot read nuance, sarcasm or a headline that reports a denial. Read the top headlines before acting on any one of them; the optional Claude review exists partly to catch these misreads.
 - CFTC positioning covers WTI. ICE publishes Brent positioning separately and it is not included.
