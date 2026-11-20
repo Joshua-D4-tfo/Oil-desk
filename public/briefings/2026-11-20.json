@@ -1,0 +1,386 @@
+{
+ "date": "2026-11-20",
+ "headline": "Oil is caught between Houthi strikes on Riyadh and unverified Hormuz mine claims on one side and a global equity rout, a stronger dollar and a likely Fed hike on the other, with Brent heading for a third weekly loss.",
+ "overview": "Wire reports from Asian hours on 20 November show Brent up 0.6% to 0.9% after Houthi missile attacks on Riyadh and Iranian claims of two more tankers hitting mines, but still on course for a weekly fall of about 3.5%. WTI is on course for a weekly fall of almost 6%. The dashboard shows a different picture: Brent at 88.63 dollars, down 1.4% over 24 hours and 7.5% over seven days. That price equals the February 2027 contract, while the January 2027 contract is at 91.05 dollars, so the dashboard's daily change may partly reflect a contract roll and should be treated with caution. The main downward forces are a risk-off move (Asia-Pacific equities heading for their worst week since 2020, the dollar near its 2025 highs, markets pricing a December Fed hike) and expectations of a surplus as Hormuz flows return to roughly pre-war levels. The main upward force is renewed attacks on Saudi Arabia and shipping around Hormuz.",
+ "developments": [
+  {
+   "title": "Equity rout, strong dollar and a near-certain Fed hike weigh on risk assets",
+   "category": "Macro",
+   "summary": "Reuters reported on 20 November that MSCI Asia-Pacific ex-Japan fell about 3.2% on the day and about 8.3% on the week, its worst week since March 2020. This followed losses of more than 2% for the S&P 500 and Nasdaq Composite on Thursday, linked to the AI trade unwinding. The dollar index was steady at 103.86 after hitting its highest level since April 2025 this week, and CME FedWatch implies a quarter-point Fed hike in December is essentially locked in. Euro Stoxx 50 futures were down 1.7% in the same report. Saxo analysts said near-term demand worries tied to the AI unwind and risk aversion are weighing on oil.",
+   "why_it_matters": "A stronger dollar and a hiking Fed raise the cost of holding dollar-priced crude for non-US buyers, and a growth scare cuts the demand outlook. This is the main reason the geopolitical bid is fading, and it is likely to persist while equities remain under pressure. It extends yesterday's hawkish Fed minutes item: the dollar is now steady near the high rather than rising, but the safe-haven bid has widened.",
+   "direction": "bearish",
+   "impact": "high",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Asian shares head for worst week since 2020 as AI rout deepens",
+     "publisher": "Reuters via MarketScreener",
+     "url": "https://www.marketscreener.com/news/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate-ce785ed2de8ef627"
+    },
+    {
+     "title": "Asian shares head for worst week since 2020 as AI rout deepens",
+     "publisher": "Reuters via KFGO",
+     "url": "https://kfgo.com/2026/11/19/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate/"
+    },
+    {
+     "title": "Oil up as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "RTE",
+     "url": "https://www.rte.ie/news/business/2026/1120/1599964-world-oil-prices/"
+    }
+   ]
+  },
+  {
+   "title": "Houthi missile damages PIF Tower in Riyadh; attacks on Saudi Arabia continue",
+   "category": "Geopolitics & shipping",
+   "summary": "Saudi civil defence said a tower in Riyadh's financial district was attacked on Thursday, causing material damage and no injuries. The Saudi-led coalition said it had dealt with a missile threat to Riyadh, that debris caused damage, and that it destroyed four ballistic missiles fired at the south and a launch platform in Yemen. Reuters, citing three sources, said the tower was struck by a Houthi missile. The Houthis claimed two attacks on the financial centre on Thursday, plus the airport, Khamis Mushait airbase and the SADAF petrochemical company. Saudi Arabia has not confirmed the wider list. This is the second strike on the district in under two weeks, after the 8 November damage to an Aramco building.",
+   "why_it_matters": "No oil production or export facility is reported hit, so no barrels are lost yet. The risk premium rises because strikes are now reaching Saudi economic targets and the Houthis claim a petrochemical site. The price response has been modest, and supply loss would need to be demonstrated for a sustained rally.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Saudi Arabia says Houthi attack hit wealth fund PIF tower in Riyadh",
+     "publisher": "The National",
+     "url": "https://www.thenationalnews.com/news/gulf/2026/11/19/saudi-sovereign-wealth-fund-tower-in-riyadh-damaged-in-houthi-strike/"
+    },
+    {
+     "title": "Houthi missile strikes Saudi Arabia's 80-storey PIF Tower, causing structural damage",
+     "publisher": "Kenya Today",
+     "url": "https://kenya-today.com/report-houthi-missile-strikes-saudi-arabias-80storey-pif-tower-causing-structural-damage-30396/"
+    },
+    {
+     "title": "Suspected Houthi Missile Damages PIF Tower in Riyadh Financial District",
+     "publisher": "House of Saud",
+     "url": "https://houseofsaud.com/suspected-houthi-missile-pif-tower-riyadh/"
+    }
+   ]
+  },
+  {
+   "title": "Iran says two more tankers hit mines in Hormuz; no independent verification",
+   "category": "Geopolitics & shipping",
+   "summary": "Iran's Revolutionary Guards Navy said on Thursday that two oil tankers struck naval mines in the Strait of Hormuz, exploded and were burning. Reuters said it could not verify the report. IRGC-linked media, as relayed by bne IntelliNews, said the vessels carried more than 4 million barrels and had used an unauthorised southern route. No names, flags or owners were given. Reuters also reported that crude shipments through Hormuz had returned to roughly pre-war levels.",
+   "why_it_matters": "Past IRGC claims of this kind have not been independently confirmed, so the barrel impact is unproven. If real, the incidents would hurt insurance and routing more than volume, since flows are reported near normal. This updates the previous item on three tankers: the claim count has risen to five over two days but still without third-party confirmation.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "unconfirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Iran's Revolutionary Guards: Two Oil Tankers Catch Fire in Strait of Hormuz After Hitting Naval Mines",
+     "publisher": "Sabq",
+     "url": "https://sabq.org/en/article/irans-revolutionary-guards-two-oil-tankers-catch-fire-in-strait-of-hormuz-after"
+    },
+    {
+     "title": "Iran's Guards say two supertankers carrying 4mn barrels hit mines in Hormuz",
+     "publisher": "bne IntelliNews",
+     "url": "https://www.intellinews.com/iran-s-guards-say-two-supertankers-carrying-4mn-barrels-hit-mines-in-hormuz-486659"
+    },
+    {
+     "title": "Oil prices gain as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "Reuters via Business Recorder",
+     "url": "https://www.brecorder.com/news/40449950/oil-prices-gain-as-houthi-attacks-on-riyadh-raise-supply-concerns"
+    }
+   ]
+  },
+  {
+   "title": "Iran probes blockade with ship-to-ship transfer as CENTCOM tightens enforcement",
+   "category": "Sanctions & policy",
+   "summary": "CENTCOM said on Wednesday that any vessel receiving cargo at sea from an Iran-loaded tanker will be treated as evading the blockade and may be boarded, diverted or seized. UANI and Kpler said the sanctioned Suezmax Olym transferred about 200,000 barrels to the tanker Hao Fan on Tuesday. An IRGC-affiliated outlet described as unofficial said dozens of tankers were preparing to sail for China, and TankerTrackers said Iran appeared to be preparing to ship oil again. Iran International, citing a ship-tracking service, described this as potentially the first Iranian crude export in four months.",
+   "why_it_matters": "The 200,000 barrel transfer is too small to matter for balances, and Rigzone's source judged it unlikely to be destined for global markets. A convoy to China would be the real test: it would add supply if it got through, or trigger a US seizure or Iranian retaliation against Gulf terminals if it did not. Both outcomes are tail risks for today, and the price effect is two-sided.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Gulf Sees Iran Oil Movement as US Widens Blockade",
+     "publisher": "Rigzone",
+     "url": "https://www.rigzone.com/news/wire/gulf_sees_iran_oil_movement_as_us_widens_blockade-20-nov-2026-185130-article/"
+    },
+    {
+     "title": "US Tightens Naval Blockade on Iran, Threatens to Seize Ships Carrying Its Oil",
+     "publisher": "Sabq",
+     "url": "https://sabq.org/en/article/us-tightens-naval-blockade-on-iran-threatens-to-seize-ships-carrying-its-oil"
+    },
+    {
+     "title": "Tanker loads Iranian crude in Persian Gulf as Tehran weighs resuming exports",
+     "publisher": "Iran International",
+     "url": "https://www.iranintl.com/en/202611192862"
+    },
+    {
+     "title": "Iran Moves to Restart Oil Exports Despite U.S. Naval Blockade",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Moves-to-Restart-Oil-Exports-Despite-US-Naval-Blockade.html"
+    }
+   ]
+  },
+  {
+   "title": "Trump reported to be in no rush on Iran strikes; Shenzhen declaration omits Iran and Hormuz",
+   "category": "Geopolitics & shipping",
+   "summary": "Axios, as relayed by Iran International, reported that Trump said he was not rushing a decision on Iran and would wait to see developments after the start of the new year. The Senate again rejected legislation that would have required him to end the war or seek congressional approval. The Trump-Xi-Putin declaration issued in Shenzhen did not mention Iran or Hormuz, although Trump said earlier that the US and China share an interest in energy flowing through Hormuz. Iran International also reported that Israel is pressing for new strikes.",
+   "why_it_matters": "A delay lowers the near-term probability of a US escalation that would shut Hormuz again, which trims the risk premium. The lack of any joint Iran language means no diplomatic path has been added either, so the geopolitical premium is reduced rather than removed. Weekend headlines on Israeli action remain a tail risk.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Trump says no rush on Iran decision, Israel presses for new strikes",
+     "publisher": "Iran International",
+     "url": "https://www.iranintl.com/en/liveblog/202611143682"
+    },
+    {
+     "title": "Trump, Xi, Putin Declaration Skips Iran After First-Ever Trilateral Summit",
+     "publisher": "Alhurra",
+     "url": "https://alhurra.com/en/56048"
+    },
+    {
+     "title": "Trump weighs another strike on Iran as Hormuz shipping risks mount",
+     "publisher": "InvestingLive",
+     "url": "https://investinglive.com/news/trump-weighs-another-strike-on-iran-as-hormuz-shipping-risks-mount-returns-to-washington-after-overseas-trip/"
+    }
+   ]
+  },
+  {
+   "title": "Ukrainian strikes on Russian refining and ports: crude pushed into export markets",
+   "category": "Supply",
+   "summary": "Reuters reported on 19 November that Russian crude output risks falling again as Ukrainian attacks on refineries and export infrastructure intensify. Reuters sources said disruptions now affect 15 of Russia's 35 major refineries, with November crude processing still above 500,000 tonnes a day, about 5% to 10% below September and October. Reuters separately reported a 45% cut in combined processing since late October. Bloomberg tracking data cited by OilPrice.com showed Russian seaborne crude exports at 4.32 million bpd in the week to 15 November, the highest since June. Ukraine's claim that drones hit 40 Russian oil and military targets in 50 days is an unverified claim from Kyiv.",
+   "why_it_matters": "The two Reuters processing figures differ markedly, so the true refinery loss is unclear. Lower refining pushes more crude into exports, which is bearish for crude in the short term. It tightens diesel and gasoline, supports cracks, and the Ust-Luga and Novorossiysk disruptions could cut export volumes if they persist. This updates the previous item with the export data.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Russia oil output risks fresh decline as Ukraine steps up attacks",
+     "publisher": "Reuters via Yahoo Finance UK",
+     "url": "https://uk.finance.yahoo.com/news/russia-oil-output-risks-fresh-110852546.html"
+    },
+    {
+     "title": "Exclusive-Drone Attacks Nearly Halve Russia's November Oil Refining, Sources Say",
+     "publisher": "Reuters via US News",
+     "url": "https://www.usnews.com/news/world/articles/2026-11-18/exclusive-drone-attacks-nearly-halve-russias-november-oil-refining-sources-say"
+    },
+    {
+     "title": "Russian Crude Exports Hit Four-Month High",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/Russian-Crude-Exports-Hit-Four-Month-High.html"
+    },
+    {
+     "title": "Ukraine says drones hit 40 Russian oil, military targets in last 50 days",
+     "publisher": "The Times of Israel",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOUTJTTVlaMUZHbnRiWElQMUVKRUgtNHR4OXgwME5BTFNyWmtRTFFSMGJ2WEUyVFBPUWhLNmV2WUlCbktxU1FIYlJxc0p0VHdETWlWd0VON0FrU0R0aFI2SnFhcVVTa1lFTXRQbTZVYXllQmtDNUdtSmVBbTRwMDM3MFFRQk03T1VrbjhFRDA1SFdDWTN3empkV0x5RzJZUVhzRzRNQkQwNTFqZTRwSkw4VWp2WE10Ykk5?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "OPEC+ capacity review complete; 2027 framework due on 29 November",
+   "category": "OPEC+",
+   "summary": "OPEC said its first independent review of maximum sustainable capacity is complete, and the Secretary General called it a historic milestone. The results will feed the 2027 baselines. The full 21-country group meets on 29 November, and Reuters reports ministers are expected to set 2027 quotas. OPEC+ kept December targets unchanged on 1 November, and one layer of cuts of about 2 million bpd covers most members through the end of 2026. A Nigerian outlet headline says OPEC October output rose 1.97 million bpd. I did not retrieve the underlying report. One aggregator mentions talk of an OPEC+ output cut on 29 November, but I found no credible source for it.",
+   "why_it_matters": "The baselines determine how fast Gulf barrels can return once Hormuz normalises, and therefore the size of the 2027 surplus. Positioning ahead of 29 November is likely to build over the weekend and the coming week. Leaks on baselines could move prices before the meeting.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "OPEC Wraps Up First Independent Oil Capacity Assessment",
+     "publisher": "Egypt Oil & Gas",
+     "url": "https://egyptoil-gas.com/news/opec-wraps-up-first-independent-oil-capacity-assessment/"
+    },
+    {
+     "title": "OPEC+ keeps December oil output targets steady ahead of tougher call for 2027",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/10/31/opec-oil-output-targets-december.html"
+    },
+    {
+     "title": "OPEC October Output Rises 1.97mbpd As Nigeria Produces At 1.51mbpd",
+     "publisher": "LEADERSHIP Newspapers",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQMlNEV1k2cHZvdUd1T3BBQnFYcGlQWWN0c2FzdEkzVTFWaUtwUGJXRUV4enN2ajZlZzBNU3pleEt3S2ZwLXV0bUZtTV9JV2o4OFVsZTByR2lTY0cxT3BVOHdwQkFrVU0wM2Y2YkZndGpaQXVHZDd2ZFpVTFlyY3VibmZYbjhFUTRMdW8wVTNMSU5zMkU?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "China's Gulf crude imports recover as producers cut prices",
+   "category": "Demand",
+   "summary": "The South China Morning Post headline of 20 November says China's Persian Gulf oil imports reached their highest since the start of the Iran war as producers cut prices. I did not retrieve the article text. Bloomberg reported on 10 November that China's October crude imports rose to a seven-month high of nearly 42 million tonnes, led by Iraqi cargoes, though still 13% below a year earlier.",
+   "why_it_matters": "Recovering Gulf arrivals confirm that Hormuz flows are normalising, which adds to surplus expectations. Producer price cuts suggest buyers have leverage, and imports remain below pre-war levels because Iranian barrels are missing. The price effect is small and mostly confirms the existing trend.",
+   "direction": "neutral",
+   "impact": "low",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "China's Persian Gulf oil imports hit high since start of Iran war as producers cut prices",
+     "publisher": "South China Morning Post",
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQZHB2a3ZMRkJCa0JJV1BwaXRMNkpoYVN4aUtyTWdTUHdzcUpycWR1NWVtaGF3aXRES25OZHRkdXlGbmU5aEtKaU9rem9NZG9ISXpIQjRfeHNCWVp3QUZ3SHFyQzlMVXVBUGpiYTBzMEdfNWVrWVZBZEJkTlBQS2hGUFpNQktWWGRhWFhKNmVueThjMnk4RXZwUWR0LWM2ZTVhZTVOczAtSjRXb3ViUnJnc1B2OVdySG81M1dWY2dudjVKRXVjYVViNlktTURhQzlZ?oc=5"
+    },
+    {
+     "title": "China Oil Imports Rebound as More Crude Flows From Persian Gulf",
+     "publisher": "Bloomberg",
+     "url": "https://www.bloomberg.com/news/articles/2026-11-10/china-oil-imports-rebound-as-more-crude-flows-from-persian-gulf"
+    }
+   ]
+  }
+ ],
+ "data_releases": [],
+ "analyst_views": [
+  {
+   "who": "Saxo analysts",
+   "view": "Supply disruptions remain a risk, but near-term demand concerns from the AI trade unwind and broader risk aversion are weighing on prices.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil up as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "RTE",
+     "url": "https://www.rte.ie/news/business/2026/1120/1599964-world-oil-prices/"
+    }
+   ]
+  },
+  {
+   "who": "Rakuten Securities (commodity analyst)",
+   "view": "The Houthi attack on Riyadh revived worries about Middle Eastern crude supply and prompted buying.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "Oil prices gain as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "Reuters via Business Recorder",
+     "url": "https://www.brecorder.com/news/40449950/oil-prices-gain-as-houthi-attacks-on-riyadh-raise-supply-concerns"
+    }
+   ]
+  },
+  {
+   "who": "Brett Erickson, Obsidian Risk Advisors",
+   "view": "Iran may try to export oil despite the US blockade, and the coming days in Hormuz are critical. He cited an unconfirmed Fars report and a TankerTrackers post.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "'Eyes on Hormuz': Analyst Warns Iran May Defy US Blockade With Oil Exports",
+     "publisher": "Benzinga",
+     "url": "https://www.benzinga.com/news/politics/26/11/63463938/eyes-on-hormuz-analyst-warns-iran-may-defy-us-blockade-with-oil-exports-flags-hormuz-vessel-strikes-as-trump-is-not-rushing-decisions"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "bearish",
+  "summary": "Retail commentary on StockTwits leans bearish, but the sample is small and some of it is promotional chart-pattern content. Bearish posters cite weak demand and the equity selloff. A few bullish posters point to inflation and the persistence of the war. Reddit data was unavailable. The lean is consistent with the price trend and the risk-off backdrop but adds no independent evidence.",
+  "evidence": [
+   "StockTwits USO, last 30 hours: 30 posts, 5 tagged bullish, 11 tagged bearish, the rest untagged.",
+   "StockTwits CL_F, last 30 hours: 13 posts, 0 tagged bullish, 2 tagged bearish. Several untagged posts are Elliott wave promotions, with one targeting 65 to 60 dollars on the downside and another expecting a three-wave bounce soon.",
+   "One USO post relays the TankerTrackers claim that Iran is preparing to ship oil again.",
+   "Reddit: unavailable."
+  ],
+  "sources": []
+ },
+ "watch_today": [
+  {
+   "item": "European open and US equities after the Asian rout",
+   "when_utc": "during the day",
+   "why": "Euro Stoxx 50 futures were down 1.7% in Asian hours. Further risk-off and dollar strength would reinforce the bearish pressure on crude into the weekend."
+  },
+  {
+   "item": "Iranian tanker movements and CENTCOM response",
+   "when_utc": "during the day",
+   "why": "Any Iranian cargo leaving the Gulf, or a US boarding or seizure, would be the first real test of the tightened blockade, with possible Iranian retaliation against regional terminals."
+  },
+  {
+   "item": "Houthi and Saudi interceptions, and any hit on oil infrastructure",
+   "when_utc": "during the day",
+   "why": "Attacks on Riyadh are frequent. A confirmed strike on an oil or export facility would move the risk premium far more than damage to office towers."
+  },
+  {
+   "item": "Baker Hughes US rig count",
+   "when_utc": "2026-11-20T18:00:00Z",
+   "why": "A secondary indicator of US supply response."
+  },
+  {
+   "item": "CFTC Commitments of Traders",
+   "when_utc": "2026-11-20T20:30:00Z",
+   "why": "Dashboard positioning is dated 10 November, with net length at the 12th percentile of three years. Updated figures show whether speculative length was cut further during the sell-off. Low positioning limits downside from forced liquidation."
+  },
+  {
+   "item": "Weekend risk: Trump's Iran decision, Israeli action, OPEC+ pre-meeting leaks",
+   "when_utc": "during the day",
+   "why": "Positions held over the weekend face gap risk from Iran headlines and from leaks on 2027 baselines before the 29 November meeting."
+  }
+ ],
+ "verdict": {
+  "direction": "bearish",
+  "strength": -1,
+  "reasoning": "The strongest bullish argument is the escalation in attacks on Saudi Arabia and shipping around Hormuz, together with the possible Iranian export test and weekend risk of a US or Israeli move on Iran. The strongest bearish argument is the macro backdrop: a global equity rout, a dollar near its highs, a December Fed hike that markets treat as certain, and a surplus narrative supported by Hormuz flows back near pre-war levels. For the next 24 hours the bearish macro pressure dominates, since the Houthi strikes so far have hit non-oil targets and the Hormuz mine claims remain unverified, and the dashboard signals are on sell for both benchmarks. Conviction is limited because positioning is already light, the market is in backwardation, and the dashboard's Brent series appears to mix contract months, so the size of the daily move is uncertain. A confirmed supply hit would flip the balance quickly."
+ },
+ "meta": {
+  "generatedAt": 1795165924382,
+  "model": "claude-sonnet-5-5",
+  "searches": 9,
+  "tokens": {
+   "input": 10,
+   "cacheWrite": 96106,
+   "cacheRead": 137225,
+   "output": 15595
+  },
+  "verification": {
+   "kept": 28,
+   "removed": 0,
+   "removedUrls": [],
+   "downgraded": []
+  },
+  "prices": {
+   "brent": {
+    "price": 88.63,
+    "priceTime": 1795165322000,
+    "chg24hPct": -1.3578169113408347,
+    "chg7dPct": -7.522951391266003,
+    "chg30dPct": -21.68419065652974
+   },
+   "wti": {
+    "price": 81.66,
+    "priceTime": 1795165322000,
+    "chg24hPct": -1.3768152291554947,
+    "chg7dPct": -7.791325371286876,
+    "chg30dPct": -17.904896956004315
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 30,
+     "bullish": 5,
+     "bearish": 11
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 13,
+     "bullish": 0,
+     "bearish": 2
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: 100",
+    "Google News: OPEC+: 88",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 45",
+    "Google News: Russia and China oil: 78",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}
