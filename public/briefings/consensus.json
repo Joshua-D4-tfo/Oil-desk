@@ -1,207 +1,200 @@
 {
- "date": "2026-11-20",
- "generatedAt": 1795166071810,
+ "date": "2026-11-21",
+ "generatedAt": 1795250927113,
  "model": "claude-sonnet-5-5",
  "week": {
   "direction": "bearish",
   "strength": -1,
   "confidence": "medium",
-  "summary": "The evidence for the week leaned modestly bearish. Brent fell from 91.70 to 88.63 dollars a barrel between 17 and 20 November (about 3.3%) and is heading for a third weekly loss. The confirmed bearish items were the IEA's 1.7 million bpd Q4 surplus, two consecutive US crude and gasoline builds (API +5.28 million barrels, EIA +3.38 million), a hawkish Fed with the dollar at a 19-month high, and Gulf exports recovering toward pre-war levels. The confirmed bullish items were real but mostly did not remove barrels: the ADNOC vessel attack, US strikes on Qeshm, Houthi gains near Bab el-Mandeb and missile strikes on Riyadh that hit non-oil targets. Iranian mine claims were unconfirmed and carried little weight. Confidence is medium rather than high because the sample is four briefings and the Brent series appears to mix contract months.",
+  "summary": "The weight of confirmed evidence leaned modestly bearish over the week, but the lean weakened by Saturday. Brent fell from $91.70 on 17 November to $89.95 on 21 November (-1.9%), within a range of $88.63 to $91.70. The bearish case rested on the IEA's 1.7 million bpd Q4 surplus, consecutive US crude and gasoline builds (EIA crude +3.38 mb to 417.8 mb, gasoline +5.19 mb), Gulf flows recovering, and a hawkish Fed with the dollar at a 19 to 20 month high. The bullish case was confirmed escalation: Hormuz tanker and vessel attacks, Houthi missiles at Riyadh for three nights, and Houthi gains near Bab el-Mandeb. The daily bearish calls scored 2 of 4, so the edge was small and the market was two-way. The final briefing moved to neutral because weekend events add upside gap risk at Monday's open.",
   "bullish_drivers": [
    {
-    "driver": "Confirmed Hormuz tanker attacks, including the ADNOC vessel hit with one crew member missing, and US strikes on the IRGC site on Qeshm",
+    "driver": "Confirmed attacks on shipping around Hormuz, including an ADNOC vessel (one crew member missing, 11 injured) and a further tanker strike on Saturday after Friday's close",
+    "dates": [
+     "2026-11-17",
+     "2026-11-18",
+     "2026-11-21"
+    ]
+   },
+   {
+    "driver": "Houthi missiles reaching Riyadh for a third night, damage to PIF Tower, and threats to Saudi Red Sea ports and a power station",
+    "dates": [
+     "2026-11-19",
+     "2026-11-20",
+     "2026-11-21"
+    ]
+   },
+   {
+    "driver": "Houthi control of the Bab el-Mandeb coast and advance towards Aden",
     "dates": [
      "2026-11-17",
      "2026-11-18"
     ]
    },
    {
-    "driver": "Houthi control of the Bab el-Mandeb coast, an advance towards Aden, and missile strikes on Riyadh (PIF Tower damaged, confirmed on 20 November)",
+    "driver": "Light speculative positioning (CFTC net long 15,814 contracts, 9.7th percentile of three years) and Brent backwardation of $2.45 to $2.81 on the front spread, which leave room for short-covering",
     "dates": [
      "2026-11-17",
-     "2026-11-18",
      "2026-11-19",
-     "2026-11-20"
-    ]
-   },
-   {
-    "driver": "Backwardation widening in the Brent January-February spread ($2.45, $2.64, then $2.81) and speculative length at about the 12th percentile of three years, leaving room for short-covering",
-    "dates": [
-     "2026-11-17",
-     "2026-11-18",
-     "2026-11-19"
-    ]
-   },
-   {
-    "driver": "Hormuz throughput described as fragile (ANZ: about 49% of pre-war), and the weekend risk of a US or Israeli move on Iran",
-    "dates": [
-     "2026-11-18",
-     "2026-11-20"
-    ]
-   },
-   {
-    "driver": "Iranian claims of further tankers hit by mines (unconfirmed, so low weight)",
-    "dates": [
-     "2026-11-19",
-     "2026-11-20"
+     "2026-11-21"
     ]
    }
   ],
   "bearish_drivers": [
    {
-    "driver": "IEA November report: Q4 2026 surplus of 1.7 million bpd and a 2027 surplus of 3.8 million bpd; Gulf exports recovering",
+    "driver": "IEA November report: Q4 2026 surplus of 1.7 million bpd and a 2027 surplus of 3.8 million bpd, with Gulf exports recovering",
     "dates": [
      "2026-11-17"
     ]
    },
    {
-    "driver": "API crude build of 5.28 million barrels and gasoline build of 5.12 million barrels, followed by an EIA crude build of 3.38 million barrels and gasoline build of 5.19 million barrels; WTI export arbitrage to Asia and Europe shut",
+    "driver": "US stock builds: API crude +5.28 mb, then EIA crude +3.38 mb and gasoline +5.19 mb; the WTI export arbitrage is shut",
     "dates": [
      "2026-11-18",
-     "2026-11-19"
+     "2026-11-19",
+     "2026-11-21"
     ]
    },
    {
-    "driver": "Hawkish FOMC minutes, dollar at a 19-month high, and by 20 November an equity rout with a December Fed hike treated as near certain (reported)",
+    "driver": "Hawkish Fed minutes, dollar at a multi-month high, a near-certain December hike and a global equity rout",
     "dates": [
      "2026-11-19",
-     "2026-11-20"
+     "2026-11-20",
+     "2026-11-21"
     ]
    },
    {
-    "driver": "Goldman expects Brent to average $88 in 2027 on a return to surplus; OPEC output back near pre-war levels on a Saudi rebound",
+    "driver": "OPEC output back near pre-war levels and Hormuz flows recovering, with Goldman expecting Brent at $88 in 2027 average and $78 by end-2027",
     "dates": [
      "2026-11-18",
      "2026-11-19"
-    ]
-   },
-   {
-    "driver": "De-escalatory signals: Iran's two-day Hormuz plan backed by a regional bloc, Vance ruling out a 'forever war', and Trump reported in no rush to strike Iran (reported)",
-    "dates": [
-     "2026-11-17",
-     "2026-11-20"
     ]
    }
   ],
-  "narrative_shift": "The week opened as a contest between a surplus narrative and a run of Hormuz attacks, with the market choosing the surplus. On 18 and 19 November inventory builds became the lead bearish argument, while the Shenzhen summit was the main swing event. By 20 November the dominant bearish driver was macro (equities, the dollar, the Fed), and the geopolitical focus had moved from Hormuz mines to Houthi strikes on Saudi Arabia. Persistent themes were light positioning, backwardation, the unverified status of Iranian claims, and the 29 November OPEC+ framework as the next scheduled catalyst. Reliance on unconfirmed Iranian mine reports faded as the week went on, since the market kept declining to price them.",
-  "price_vs_evidence": "Prices moved in line with the net evidence. Brent fell about 3.3% over the period and WTI reached its lowest since August. Confirmed escalation did not lift prices because it did not cut flows: the Houthi strikes hit non-oil targets and Hormuz volumes were reported to be recovering. Light positioning and backwardation argue that a premium was not heavily built, so the downside was driven by balance and macro evidence rather than by premium unwinding. The daily moves should be read with care. The 18 November briefing flagged a contract mismatch in the supplied data, and the 19 November headline put front-month Brent near $92 against a recorded 89.82. The 18 November scorecard miss (price up 1.27%) and the size of the daily moves may therefore partly reflect the series rather than the market.",
+  "narrative_shift": "The week opened on a stock and balance story, with the market selling tanker-attack headlines because supply was returning. By 19 and 20 November, macro (Fed, dollar, equities) had joined inventories as the main bearish force. By 21 November the geopolitical threat had moved from ships to Saudi territory and infrastructure threats, and the verdict moved from bearish (-1) to neutral. Persistent themes were the Hormuz attacks, Houthi activity, the surplus narrative, light positioning and the 29 November OPEC+ framework meeting. Claims of Iranian mine strikes were repeatedly unconfirmed, and the briefings gave them little weight.",
+  "price_vs_evidence": "Prices broadly followed the bearish evidence on net, but the path was choppy, with two of four directional calls wrong on next-day moves. The market gave back part of each sell-off, consistent with a war premium that has been partly retained and with positioning already light. The data series also has a contract-month mismatch flagged on 18 and 20 November, and the 21 November headline cites a $92.57 weekly close against $89.95 in the series. Daily percentage moves are therefore uncertain. The direction is reliable but the size is not.",
   "key_risks": [
-   "A confirmed supply loss, such as a verified mine strike that halts Hormuz flows or a hit on Gulf export infrastructure",
-   "A US or Israeli strike on Iran over the weekend, or an Iranian test of the US blockade with an export cargo",
-   "Escalating Houthi attacks that move from non-oil targets to Saudi oil facilities or Red Sea shipping",
-   "Short-covering from speculative length at about the 12th percentile, with OVX near 50 producing sharp two-way gaps",
-   "A relief rally in equities or a softer dollar that removes the macro pressure"
+   "A confirmed hit on Saudi export, port or power infrastructure, or a verified loss of Hormuz or Red Sea flows, would override the surplus narrative.",
+   "A Monday gap higher on the weekend Houthi and Hormuz events, with thin positioning allowing short-covering.",
+   "A US or Israeli move on Iran, or the Iranian export test around Kharg (currently unconfirmed).",
+   "The OPEC+ 2027 framework meeting on 29 November.",
+   "A hawkish Fed surprise or a deeper equity sell-off would add bearish pressure."
   ],
-  "what_would_change_it": "A verified loss of Gulf or Hormuz barrels, or a strike on Iran, would flip the view to bullish. A weaker dollar with a US crude draw would move it to neutral. On the downside, a break below the $87 to $88 technical support cited on 19 November would confirm the bearish view. A rebound towards $96, the bull case in the 19 November scenario table, would show that the premium is being rebuilt."
+  "what_would_change_it": "A confirmed barrel lost from Saudi or Gulf exports would move the view to bullish. A sustained Brent move back above about $92 without a fresh stock draw would also challenge it. A break below the $87 to $88 technical support, with further US builds, would reinforce the bearish view. The next EIA report and the weekend news flow at Monday's open are the nearest tests."
  },
  "month": {
   "direction": "bearish",
   "strength": -1,
   "confidence": "low",
-  "summary": "No briefings were supplied for days 8 to 31, so the monthly view rests on the same four briefings as the weekly view and adds no independent evidence. The only longer-run context comes from within those briefings: Brent had already fallen about 18% in 30 days by 18 November, and the 19 November briefing cited a roughly 6% fall over seven days. The balance of evidence was bearish: a projected Q4 surplus, inventory builds, recovering Gulf exports and a tightening Fed. The bullish case rested on confirmed attacks around Hormuz, Bab el-Mandeb and Riyadh, plus backwardation and light positioning, but these did not demonstrably cut supply. Confidence is low because the sample is thin and the Brent series mixes contract months.",
+  "summary": "Only five briefings, all from the last five days, cover the month. No briefings exist for days 8 to 31, so this view repeats the weekly one and rests on a narrow window. The 18 November briefing records a fall of about 18% in 30 days, and Brent is heading for a third weekly loss. That points to a month-long adjustment from a war premium to a surplus narrative, helped by recovering Gulf flows, US stock builds and a tighter macro backdrop. Brent was $91.70 at the start of the covered window and $89.95 at the end. The latest briefing is neutral, because Saudi-directed escalation adds upside gap risk. Confidence is low because earlier narrative stages cannot be observed.",
   "bullish_drivers": [
    {
-    "driver": "Confirmed attacks on shipping and Gulf states (ADNOC vessel, Qeshm strikes, Houthi missiles on Riyadh), with the Houthis holding the Bab el-Mandeb coast",
+    "driver": "Persistent attacks around Hormuz and the Red Sea, now extending to Riyadh, keep a war premium in the price",
     "dates": [
      "2026-11-17",
      "2026-11-18",
-     "2026-11-20"
+     "2026-11-20",
+     "2026-11-21"
     ]
    },
    {
-    "driver": "Steep and widening Brent backwardation ($2.45 to $2.81 on the January-February spread) and speculative length at the 12th percentile of three years",
+    "driver": "Hormuz throughput is only partly recovered (ANZ cited about 49% of pre-war levels), so supply remains fragile",
     "dates": [
-     "2026-11-17",
-     "2026-11-18",
-     "2026-11-19"
-    ]
-   },
-   {
-    "driver": "Fragile Hormuz recovery (about 49% of pre-war throughput per ANZ) and the US SPR at its lowest since 1982, which reduces buffers",
-    "dates": [
-     "2026-11-17",
      "2026-11-18"
     ]
    },
    {
-    "driver": "Stale but supportive EIA STEO forecast of about $100 for November and December, well above spot",
+    "driver": "Speculative length at the 10th to 12th percentile of three years and a backwardated curve make the market vulnerable to short-covering",
     "dates": [
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18",
+     "2026-11-19",
+     "2026-11-21"
     ]
    }
   ],
   "bearish_drivers": [
    {
-    "driver": "IEA forecast of a 1.7 million bpd Q4 surplus and 3.8 million bpd in 2027; Goldman sees Brent at $88 on average in 2027, easing to $78 by end-2027",
+    "driver": "IEA surplus forecasts (1.7 million bpd in Q4 2026, 3.8 million bpd in 2027) and Goldman's path to $78 by end-2027",
     "dates": [
      "2026-11-17",
      "2026-11-18"
     ]
    },
    {
-    "driver": "Consecutive large US crude and gasoline builds, and a shut WTI export arbitrage",
+    "driver": "Successive US crude and gasoline builds alongside a shut WTI export arbitrage",
     "dates": [
      "2026-11-18",
-     "2026-11-19"
+     "2026-11-19",
+     "2026-11-21"
     ]
    },
    {
-    "driver": "Hawkish Fed, dollar at a 19-month high and risk-off equities",
+    "driver": "Dollar strength, a near-certain December Fed hike and an equity rout weighing on demand",
     "dates": [
      "2026-11-19",
-     "2026-11-20"
+     "2026-11-20",
+     "2026-11-21"
     ]
    },
    {
-    "driver": "OPEC output and Gulf exports recovering toward pre-war levels",
+    "driver": "Gulf and OPEC output and exports returning towards pre-war levels",
     "dates": [
      "2026-11-17",
-     "2026-11-19",
-     "2026-11-20"
+     "2026-11-19"
     ]
    }
   ],
-  "narrative_shift": "With only four briefings in the window, any shift is confined to the final week. The market moved from pricing a supply shock to pricing a surplus, and the emphasis moved from tanker attacks to inventories and then to macro. The 29 November OPEC+ ministerial on the 2027 framework is the common forward catalyst across the briefings. No earlier-month narrative is available to compare against.",
-  "price_vs_evidence": "The decline in Brent matches the bearish balance evidence, and the earlier fall of about 18% in 30 days shows the market has been discounting the surplus thesis for some time. Confirmed geopolitical events have not stopped the slide because they did not reduce flows. The market is nonetheless backwardated with light positioning, so the price may be vulnerable to sharp rebounds. Contract-month mixing in the data makes the exact size of the monthly move uncertain.",
+  "narrative_shift": "The briefings cover only the last five days, so the full month's narrative shift cannot be traced. The available evidence shows a market that has fallen sharply, with the leading explanation moving from inventories and surplus to macro tightening. The geopolitical story then shifted from tanker incidents to attacks on Saudi territory and threats to Saudi infrastructure. The verdict moved from bearish to neutral on the last day. Constant themes were Hormuz, the Houthis, the surplus case and the 29 November OPEC+ meeting.",
+  "price_vs_evidence": "The roughly 18% fall over 30 days is consistent with the surplus and stock evidence. Over the final week prices fell only 1.9%, which suggests part of the bearish case was already priced in and that the war premium and light positioning were limiting further declines. The contract-month mismatch in the price series and the $92.57 weekly close cited on 21 November mean precise comparisons are unreliable. With a 50% hit rate on daily calls, the evidence gave direction but poor timing.",
   "key_risks": [
-   "A verified disruption to Hormuz, Red Sea or Saudi export infrastructure",
-   "An OPEC+ decision on 29 November that cuts 2027 output or disappoints surplus expectations",
-   "A US or Israeli military move against Iran, or a successful Iranian export run through the blockade",
-   "A shift in Fed expectations that weakens the dollar and lifts risk assets",
-   "Further Ukrainian strikes that change Russian product and crude export flows"
+   "A confirmed loss of Saudi or Gulf export capacity.",
+   "A failure of Hormuz flows to keep recovering, or a renewed fall in throughput.",
+   "OPEC+ policy surprises at the 29 November ministerial.",
+   "A US or Israeli strike on Iran, or a blockade confrontation at Kharg.",
+   "Short-covering from thin speculative positioning."
   ],
-  "what_would_change_it": "A confirmed fall in Gulf export volumes, or a hawkish OPEC+ outcome on 29 November, would turn the view bullish. Evidence that Hormuz flows have fully normalised alongside continued US stock builds would deepen the bearish case. A weekly close below $87 would confirm further downside, while sustained trade above $96 would point to a rebuilt premium."
+  "what_would_change_it": "Verified physical supply loss, or an OPEC+ decision that tightens supply, would turn the view bullish. A break below $87 to $88, together with further US inventory builds and a December Fed hike, would strengthen the bearish case. The 29 November OPEC+ meeting is the next scheduled catalyst."
  },
  "stats": {
   "week": {
-   "briefings": 4,
-   "directionalVerdicts": 3,
+   "briefings": 5,
+   "directionalVerdicts": 4,
    "correct": 2,
-   "hitRatePct": 67,
-   "neutralVerdicts": 0,
-   "avgStrength": -1,
+   "hitRatePct": 50,
+   "neutralVerdicts": 1,
+   "avgStrength": -0.8,
    "brentFirst": 91.7,
-   "brentLast": 88.63
+   "brentLast": 89.95
   },
   "month": {
-   "briefings": 4,
-   "directionalVerdicts": 3,
+   "briefings": 5,
+   "directionalVerdicts": 4,
    "correct": 2,
-   "hitRatePct": 67,
-   "neutralVerdicts": 0,
-   "avgStrength": -1,
+   "hitRatePct": 50,
+   "neutralVerdicts": 1,
+   "avgStrength": -0.8,
    "brentFirst": 91.7,
-   "brentLast": 88.63
+   "brentLast": 89.95
   },
   "scorecard": [
+   {
+    "date": "2026-11-21",
+    "verdict": "neutral",
+    "strength": 0,
+    "brentAtBriefing": 89.95,
+    "brentNext": null,
+    "changePct": null,
+    "hit": null
+   },
    {
     "date": "2026-11-20",
     "verdict": "bearish",
     "strength": -1,
     "brentAtBriefing": 88.63,
-    "brentNext": null,
-    "changePct": null,
-    "hit": null
+    "brentNext": 89.95,
+    "changePct": 1.49,
+    "hit": false
    },
    {
     "date": "2026-11-19",

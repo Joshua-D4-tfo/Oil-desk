@@ -1,0 +1,459 @@
+{
+ "date": "2026-11-21",
+ "headline": "Brent closed its third weekly loss at $92.57, but a third night of Houthi missiles at Riyadh and another Hormuz tanker strike after the close point to upside gap risk at Monday's open, against a surplus, strong-dollar and Fed-hike backdrop.",
+ "overview": "Markets are closed for the weekend, so the last move was Friday's session. On the supplied data, Brent (January contract) settled at $92.57, up from $91.98 on Thursday, and WTI (December, which expired Friday) settled at $83.98, up from $83.21. Over the week Brent fell about 3.4% from $95.84 and WTI about 5.2% from $88.56. Reuters had Brent at $91.31 in mid-afternoon on Friday, so the late recovery came as Houthi fire on Riyadh and a tanker fire off Khasab were reported. The weekly decline reflects reports that Gulf export flows have largely recovered, the IEA's surplus call, a sharp global equity sell-off and a firmer dollar. Further Houthi attacks and a Hormuz tanker strike on Saturday morning have not yet been priced.",
+ "developments": [
+  {
+   "title": "Houthi missiles at Riyadh for a third night; coalition strikes Hodeidah port; Houthis threaten Red Sea ports",
+   "category": "Geopolitics & shipping",
+   "summary": "The Saudi-led coalition said it intercepted three ballistic missiles fired at Riyadh early on Saturday. This was the third consecutive day of emergency alerts in the capital. A Reuters witness saw a projectile and heard a bang. On Friday the coalition said it struck Hodeidah port and military targets in Sanaa, Saada and Taiz, and intercepted five drones and three missiles, two of them aimed at Jazan. The Houthis responded by threatening Jeddah, other Saudi Red Sea ports and the Al-Shuqaiq power station, and by warning airlines that Saudi airspace is unsafe. No damage from Saturday's missiles has been reported in the sources retrieved.",
+   "why_it_matters": "Attacks on Riyadh have so far been intercepted and have not removed barrels. An explicit threat to Red Sea ports and a power station is the first step toward Saudi export infrastructure, which would matter if any strike got through. Until then the effect is a risk premium of a few dollars at most, and it has faded within sessions in recent weeks.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Saudi-led coalition intercepts three Houthi missiles headed for Riyadh",
+     "publisher": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/11/21/saudi-led-coalition-intercepts-three-houthi-missiles-headed-for-riyadh"
+    },
+    {
+     "title": "Saudi Arabia says it intercepted three Houthi missiles targeting Riyadh",
+     "publisher": "GMA News (Reuters)",
+     "url": "https://www.gmanetwork.com/news/topstories/world/1010283/saudi-arabia-says-it-intercepted-three-houthi-missiles-targeting-riyadh/story/"
+    },
+    {
+     "title": "Saudi-led coalition intercepts three Houthi missiles targeting Riyadh",
+     "publisher": "The Business Standard",
+     "url": "https://www.tbsnews.net/worldbiz/middle-east/saudi-led-coalition-intercepts-three-houthi-missiles-targeting-riyadh-1609256"
+    }
+   ]
+  },
+  {
+   "title": "Another tanker struck in the Strait of Hormuz on Saturday; Friday's tanker fire claimed by IRGC as a mine strike",
+   "category": "Geopolitics & shipping",
+   "summary": "UKMTO said an outbound tanker was hit on the stern by an unknown projectile 11 nautical miles north of Khasab, Oman, on Saturday. No injuries were reported and the environmental impact was unknown. On Friday UKMTO reported a tanker on fire 8 nautical miles north of Khasab. Iran's Revolutionary Guards said that vessel hit a mine, per Iranian state media cited by Reuters. The National reported an Adnoc Logistics and Services vessel was attacked in the strait on Friday, leaving eleven seafarers injured and one missing. This update adds the Saturday strike to the previous briefing's mine claims.",
+   "why_it_matters": "Attacks have continued at roughly one a day without stopping flows, so the market treats them as a headline premium rather than a physical loss. Escalation to a vessel loss, spill or insurance withdrawal would change that. The attacks also keep freight and war-risk costs high.",
+   "direction": "bullish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Tanker hit by unknown projectile near Oman's Khasab, UKMTO says",
+     "publisher": "Reuters via Yahoo News",
+     "url": "https://www.yahoo.com/news/articles/tanker-hit-unknown-projectile-near-075656148.html"
+    },
+    {
+     "title": "Oil tanker struck by 'unknown projectile' near Oman: UK maritime agency",
+     "publisher": "Anadolu Agency",
+     "url": "https://www.aa.com.tr/en/middle-east/oil-tanker-struck-by-unknown-projectile-near-oman-uk-maritime-agency/4132768"
+    },
+    {
+     "title": "Tanker catches fire after projectile strike near Strait of Hormuz, UKMTO says",
+     "publisher": "Reuters via Yahoo News",
+     "url": "https://www.yahoo.com/news/world/articles/tanker-catches-fire-projectile-strike-170458570.html"
+    },
+    {
+     "title": "Oil on track to post weekly decline despite Middle East tension",
+     "publisher": "The National",
+     "url": "https://www.thenationalnews.com/business/energy/2026/11/20/oil-on-track-to-post-weekly-decline-despite-middle-east-tension/"
+    }
+   ]
+  },
+  {
+   "title": "Hormuz flow recovery is the market's bearish anchor, but estimates of its size conflict",
+   "category": "Supply",
+   "summary": "Reuters reported on Friday that crude shipments through Hormuz have returned to roughly pre-war levels, which raised surplus expectations. The IEA's November report, as cited by secondary outlets, said Gulf crude exports reached 82% of pre-war levels in October and that the market returns to surplus this quarter, with a larger build in 2027. The same coverage said world supply rose 2.3 mb/d to 105.4 mb/d in October. A Joint Maritime Information Center update cited by WWD recorded about 28 US-facilitated transits a day against a 2025 baseline of about 138. Hormuz.now, citing Kpler, put crude and product flows through and around the strait at about 48% of pre-war in the week to 11 November. A DNE Africa headline says shipping remains 65% down; I could not verify it.",
+   "why_it_matters": "The surplus narrative depends on Gulf barrels continuing to move, so the figure that matters is cargo volume, not vessel count or incident count. The estimates range from near 100% (crude, including bypass routes) to under 50% (Hormuz crude and products), which leaves the surplus call open to challenge. A visible drop in loadings would reprice the market quickly.",
+   "direction": "bearish",
+   "impact": "high",
+   "verification": "reported",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Oil Prices Drop for Third Week Straight",
+     "publisher": "MarineLink (Reuters)",
+     "url": "https://www.marinelink.com/news/oil-prices-drop-third-week-straight-544510"
+    },
+    {
+     "title": "IEA Sees No Return to Pre-War Normalcy in Hormuz After Tanker Attacks",
+     "publisher": "WWD Sourcing Journal",
+     "url": "https://wwd.com/sourcing-journal/logistics/strait-of-hormuz-tanker-attacks-container-shipping-port-congestion-1239425422/"
+    },
+    {
+     "title": "Oil heads for a third weekly loss as Brent slips toward $90 and Hormuz shipments return to about pre-war levels",
+     "publisher": "MLQ.ai",
+     "url": "https://mlq.ai/news/oil-heads-for-a-third-weekly-loss-as-brent-slips-toward-90-and-hormuz-shipments-return-to-about-pre-war-levels/"
+    },
+    {
+     "title": "Strait of Hormuz Oil & LNG: How Much Flows Now vs Before the War",
+     "publisher": "hormuz.now",
+     "url": "https://hormuz.now/oil"
+    },
+    {
+     "title": "Hormuz tanker attack off Oman as shipping stays 65% down",
+     "publisher": "DNE Africa",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB1UjZpZ2JzUjlhZlo4Q2tIQnM1aUltbjc0QmJFUXBiemRfMDNoZXRfcHU0bjlJeXpIak9ELUh2bXBPaUpBdG91X1Z6LXlLa014alFIc0w2RDBzejF5NG9RcWZoR2Vmdw?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "Global equity rout, dollar at 20-month high and a near-certain December Fed hike",
+   "category": "Macro",
+   "summary": "Asian shares were on course for their worst week since 2020 on Friday, with MSCI Asia-Pacific ex-Japan down 8.3% on the week at one point and the AI trade under pressure. Reuters said Japan's Nikkei fell 5% and the dollar held near its highest in 20 months. The dollar index was about 103.86, heading for a fourth weekly gain. CME FedWatch priced a 97.3% chance of a 25 basis point hike in December. Philadelphia Fed President Anna Paulson said on Thursday that rates need to rise again. The 10-year Treasury yield fell below 5% as investors sought safe havens. The FOMC decision is on 9 December.",
+   "why_it_matters": "A stronger dollar raises the local-currency cost of crude for importers, and the risk-off tone cuts speculative demand for oil. Saxo analysts said broader market weakness could weigh on oil. This was the main bearish force on Friday and is likely to carry into Monday's open if equities fall further.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Stocks slide as AI selloff deepens, Asia has worst week since 2020",
+     "publisher": "MarketScreener (Reuters)",
+     "url": "https://www.marketscreener.com/news/stocks-slide-as-ai-selloff-deepens-asia-has-worst-week-since-2020-ce785ed3db89f623"
+    },
+    {
+     "title": "Asian shares head for worst week since 2020 as AI rout deepens",
+     "publisher": "KFGO (Reuters)",
+     "url": "https://kfgo.com/2026/11/19/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate/"
+    },
+    {
+     "title": "Gold set for worst week in eight months as firm dollar, Fed hike bets weigh",
+     "publisher": "MarketScreener (Reuters)",
+     "url": "https://www.marketscreener.com/news/gold-set-for-worst-week-in-eight-months-as-firm-dollar-fed-hike-bets-weigh-ce785ed2de80f42d"
+    },
+    {
+     "title": "Oil prices rise amid fresh Middle East tensions",
+     "publisher": "Daily Times",
+     "url": "https://dailytimes.com.pk/1584378/oil-prices-rise-amid-fresh-middle-east-tensions/"
+    }
+   ]
+  },
+  {
+   "title": "Ukrainian strikes have cut Russian refinery runs by 45%, pushing crude into export markets",
+   "category": "Refining & products",
+   "summary": "Reuters, citing two industry sources, reported that Russian crude processing fell to about 3 mb/d from more than 700,000 tonnes a day at the end of October. Fifteen of Russia's 35 major refineries were damaged or halted. Ukraine confirmed strikes on the Ilsky and Afipsky refineries earlier this week. A National Security Journal piece, citing Reuters, said Ust-Luga was hit again and that traders report disrupted exports from Novorossiysk. That second point is a single secondary source and I have not verified it. This continues the previous briefing's item.",
+   "why_it_matters": "Lower Russian runs release crude for export, which is bearish for crude, while a loss of Russian product exports supports diesel and gasoline cracks. The US-listed crack spread in the supplied data is $33.32/bbl, 1.8 standard deviations below its one-month average, so the product signal is currently weak. Any hit to port loadings would reverse the crude effect.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Ukraine drone strikes 'wiped out 45% of Russia's oil refining' in November",
+     "publisher": "BusinessDay (Reuters)",
+     "url": "https://www.businessday.co.za/world/europe/2026-11-18-ukraine-drone-strikes-wiped-out-45-of-russias-oil-refining-in-november/"
+    },
+    {
+     "title": "Ukrainian drone strikes cut oil refining in Russia by 45% in two weeks",
+     "publisher": "UNN (citing Reuters)",
+     "url": "https://unn.ua/en/news/ukrainian-drone-strikes-cut-oil-refining-in-russia-by-45percent-reuters"
+    },
+    {
+     "title": "Ukraine Strikes Afipsky, Ilsky Refineries Again as Russian Fuel Crisis Deepens",
+     "publisher": "Kyiv Post",
+     "url": "https://kyivpost.com/post/90455"
+    },
+    {
+     "title": "Ukraine Has Found Putin's Greatest Weakness",
+     "publisher": "National Security Journal",
+     "url": "https://nationalsecurityjournal.org/ukraine-has-found-putins-greatest-weakness-drones-attacks-have-cut-russias-refinery-output-by-nearly-half"
+    }
+   ]
+  },
+  {
+   "title": "Iran blockade test: tankers reported massing at Kharg; Trump says he wants a lasting deal",
+   "category": "Sanctions & policy",
+   "summary": "HNGN reported that CENTCOM warned ships taking Iranian cargo at sea face boarding or force, and that data show 14 or more tankers at Kharg Island. Iran has not confirmed any plan to run the blockade. The same report says Trump told Fox he wants a deal a future president could not reverse and that Washington is in contact with Tehran. I found no confirmation of these claims from a primary or wire source.",
+   "why_it_matters": "If Iranian cargoes broke the blockade, they would add barrels to a market already expecting surplus. A forceful US interdiction would raise the risk of Iranian retaliation against Gulf infrastructure. Neither is confirmed, so the effect is a two-way tail risk rather than a base case.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "unconfirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "U.S. Tightens Iran Blockade as Tankers Mass at Kharg",
+     "publisher": "HNGN",
+     "url": "https://www.hngn.com/articles/273897/20261120/us-tightens-iran-blockade-tankers-mass-kharg.htm"
+    },
+    {
+     "title": "Will the US Stop Iran's Oil Tankers or Back Down?",
+     "publisher": "WANA News Agency",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1abVc5ekFfWVlxa0JOalhRMmNmQ2lqS3dOeWVtVGRjS1hHNEdwQzFvZDdDMk9IRkl3YjRWSWlkRjNmanZuajlQdWJfZlZ2ZVJ2Z2hoSk9YS2s1VTV1R3R3LTZiVjZNOXcxLU41VnB6RDB5QjhpOEE?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "Saudi Arabia and Japan agree reserve purchase and a tripling of Saudi crude storage in Japan",
+   "category": "Demand",
+   "summary": "A joint statement carried by the Saudi Press Agency said Japan will buy up to 8 million barrels of Saudi crude for its national reserve if market conditions are favourable. Saudi Arabia gains temporary use of storage for 16 million barrels on top of the 8 million barrels it already has. The statement said Saudi Arabia has begun refilling the Japanese tanks. NHK also reported the storage arrangement.",
+   "why_it_matters": "The volumes are small against global stock changes, but they signal that importers intend to rebuild depleted reserves as flows recover. That is a modest source of demand that could limit declines. It also places Saudi barrels closer to Asian buyers in case Hormuz is disrupted again.",
+   "direction": "bullish",
+   "impact": "low",
+   "verification": "confirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "Japan agrees to buy up to 8M barrels of Saudi crude to rebuild oil reserves",
+     "publisher": "Bytes Europe",
+     "url": "https://www.byteseu.com/2533786/"
+    },
+    {
+     "title": "Japan agrees to store more crude for Saudi Arabia, NHK says",
+     "publisher": "Arab News Japan",
+     "url": "https://www.arabnews.jp/en/business/japan-agrees-to-store-more-crude-for-saudi-arabia-nhk-says-3001544"
+    }
+   ]
+  },
+  {
+   "title": "IRGC claims 58th US MQ-9 drone shot down over Hormuz",
+   "category": "Geopolitics & shipping",
+   "summary": "Iran's Revolutionary Guards claimed to have downed a US MQ-9 drone over the Strait of Hormuz, the 58th by its count. Iranian outlets Tasnim and WANA, along with ANI and AzerNews, carried the claim. I found no US confirmation or denial.",
+   "why_it_matters": "The claim shows continuing military friction around the strait, but a single drone loss rarely changes supply. It matters only if Washington responds with strikes, which Trump has so far signalled he is not rushing.",
+   "direction": "bullish",
+   "impact": "low",
+   "verification": "unconfirmed",
+   "follow_up_of_previous": false,
+   "sources": [
+    {
+     "title": "IRGC Downs 58th US MQ-9 Drone over Strait of Hormuz",
+     "publisher": "Tasnim",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWVB3ck45RnFpa3NnY3J6OWlobWxYWkFyNjhTR0dtTjFoaGhBbU9IMXVWY2JuMF84ckpPNXFSdVJrR3o1X3I5M3BiZGFvc2xSVlJRa2VPWFliVXVQZWVwMXl0M0R1UjFZek1fYVh6UUNmajFjalNUeFVDdkRtOWg5N1BGLW44MUVrSlU5b1RNeDVBbTA5Sy02MjRZYlg0enpSLVlETVFEY9IBrAFBVV95cUxPZXRSZlhIcnI2QXZ3UVQtSkJjWENwUlY1U05GV2tvWC1TdjkzVDQ4aVdtNzQyWFNYOUpaeFB0a3l2bHh4dmdZVVFVU3JxTk4tNHNpa3VTM3VPWl9ocy1OUEtWVE5uMVl5WnViZDNQVGtKTUhmWXRlLXpFTEh6QzRxaEx0bXRFdmxTWE1mb2hyeHJqYy1QRGZfZW1kT2lHZjFNSTVKLUZfWmhUYWMt?oc=5"
+    },
+    {
+     "title": "IRGC claims downing of US MQ-9 drone over Strait of Hormuz",
+     "publisher": "ANI News",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQdkFnRjUxZnZaWWVzV1NSbTJZb25ieWZpVkpQMkZaQ29TY0tZRk5TdWlFT3JveXllUmNtQmRRQmtZbFloeEhuNU83U3NWSDc1UnRFWEswcHI1QmZVVEJzMXc1X0hEZF8xRlg1aUpmdGtpM25LTW9ZOVZZVlFQRFJzb3JYUmx2WFpKcHdFNWlpWTQ4TFJtLWVwMkdUMmcwQXFQS1lJUE1KWWJDZUJvVndiZmhWelpDWXJRdXc?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "OPEC+ 2027 framework meeting on 29 November: no new decision, capacity review still the key input",
+   "category": "OPEC+",
+   "summary": "The full 21-member OPEC+ group meets on 29 November to set 2027 production levels. Reuters, via BOE Report, said officials discussed the capacity review at an online meeting on 16 November, and that its completion was delayed by the war. About 2 mb/d of cuts covering most members remain in place until the end of 2026. The previous briefing described the review as complete. The retrieved sources say only that it was discussed on 16 November, not that it was finalised.",
+   "why_it_matters": "The capacity baselines decide how much quota room producers get in 2027. With the IEA expecting a surplus, a decision to hold back supply would be supportive, and an unwinding of the remaining cuts would be bearish. Rakuten's analyst said on Friday that expectations of continued coordinated cuts supported prices.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Brent Crude Price $92.57: 8 Days to OPEC+ 2027 Quota Call",
+     "publisher": "FinanceFeeds",
+     "url": "https://financefeeds.com/brent-crude-oil-price-92-57-saturday-week-ahead-opec-plus-29-november-bull-96-bear-89/"
+    },
+    {
+     "title": "OPEC+ holds December output steady as 2027 call looms",
+     "publisher": "bne IntelliNews",
+     "url": "https://www.intellinews.com/opec-holds-december-output-steady-as-2027-call-looms-480729"
+    }
+   ]
+  }
+ ],
+ "data_releases": [
+  {
+   "name": "CFTC Commitments of Traders (as of 17 November)",
+   "result": "Net position 15,814 contracts, down 9,900 on the week; 9.7th percentile of the past three years.",
+   "vs_expectation": "No consensus figure supplied.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "CFTC Commitments of Traders",
+     "publisher": "CFTC",
+     "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    }
+   ]
+  },
+  {
+   "name": "EIA Weekly Petroleum Status Report (week to 13 November; released earlier this week)",
+   "result": "Commercial crude +3.38 mb to 417.8 mb; Cushing -1.21 mb to 26.1 mb; gasoline +5.19 mb; distillates +1.57 mb; SPR -3.17 mb to 276.4 mb.",
+   "vs_expectation": "Crude, gasoline and distillate builds compare with five-year average changes of -1.36 mb, +0.87 mb and -0.21 mb. No analyst consensus supplied.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Weekly Petroleum Status Report",
+     "publisher": "EIA",
+     "url": "https://www.eia.gov/petroleum/supply/weekly/"
+    }
+   ]
+  }
+ ],
+ "analyst_views": [
+  {
+   "who": "Satoru Yoshida, Rakuten Securities",
+   "view": "Houthi attacks on Riyadh revived concerns about Middle East supply and prompted buying on Friday. He added that expectations of continued OPEC+ coordinated cuts also supported prices.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "Oil prices rise amid fresh Middle East tensions",
+     "publisher": "Daily Times",
+     "url": "https://dailytimes.com.pk/1584378/oil-prices-rise-amid-fresh-middle-east-tensions/"
+    },
+    {
+     "title": "Natural Gas and Oil Forecast: Riyadh Attacks Lift Oil but Third Weekly Loss Looms",
+     "publisher": "FXEmpire (Reuters)",
+     "url": "https://www.fxempire.com/forecasts/article/natural-gas-and-oil-forecast-riyadh-attacks-lift-oil-but-third-weekly-loss-looms-can-brent-break-93-56-1645957"
+    }
+   ]
+  },
+  {
+   "who": "Saxo analysts",
+   "view": "Broader market weakness and uncertainty over AI investment could weigh on oil.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil prices rise amid fresh Middle East tensions",
+     "publisher": "Daily Times",
+     "url": "https://dailytimes.com.pk/1584378/oil-prices-rise-amid-fresh-middle-east-tensions/"
+    }
+   ]
+  },
+  {
+   "who": "JM Financial (headline only; report text not retrieved)",
+   "view": "Global crude prices may fall to $70 by the end of 2027.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Global crude oil prices may fall to $70 by end-2027, says JM Financial report",
+     "publisher": "BusinessLine",
+     "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNLWNrMDk1bmVxcTZKZmVsZWZ5SHl6SGk3aGFTZUNwbmZBNFQ3MUxDcXlxREdRTXY1RC1sd1lFRlo4VWh2dlFxOVFZVG45VHhvVTROVVpxN2V6dEY3NDIzb29hSVpTN0JtZDl5d2RqLTZnSHRTSlRHMnhEbl82QzZjRUduZk13c1BSQ3BWZWNNQXhwakFKemJHUmpFVHd0Z0RsVG1GdU5saDBXV1ZNcm9qQUJRVUNENjhXejlLdngyUzZodVdfMjFVUUhYR0hsWk1pMGk2dUM4Q0NhTjhYU3U4ekhIbzJvUdIB7AFBVV95cUxPMVc0SktXR194cEFuZFROaHNxZERpVlU4QXpUXzFTSzdIdjA1YzdydjJ2UTYxRXpvSndhZWFmTEV1VzQyVENDTHc4RHo3REdUREF2ZG9nQkRwZDd4cUhkY19YcnVjRG5IVE1TR3F5UTZLTUdXX3lyV0oyOENrZ3d5QnZ0WERPNHFNdEhPS0o1bTRMakhGdG1odnh3QU1mUnJmdzRJWUNOcDFjYlNCWVBKN2pxZVdRMzlfMjZZQ2JxanlZYTRsZU9UcHdhM1VTTmhoVUs5REhZU2k0eEtLVmt5S256dExVR3pqZ0p1Tw?oc=5"
+    }
+   ]
+  },
+  {
+   "who": "IEA (as reported by RTE/Reuters, 19 November)",
+   "view": "The Middle East conflict is the biggest disruption ever to global oil and gas trade. The agency said it could cut world oil demand by more than 4% by 2035 if governments accelerate electrification and efficiency. This is a long-horizon view with little bearing on the next few days.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil set for third weekly decline on strong export flows",
+     "publisher": "RTE",
+     "url": "https://www.rte.ie/news/business/2026/1120/1599964-world-oil-prices/"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "bearish",
+  "summary": "Retail commentary is thin and leans bearish. The few tagged StockTwits posts on USO are mostly bearish, and several posts discuss a trend break or a completed downward wave count. One bullish post argues that continued SPR drawdowns contradict the surplus story. This agrees with the weekly price trend, but the sample is too small to carry weight.",
+  "evidence": [
+   "StockTwits USO, last 30 hours: 30 posts, 5 tagged bullish, 12 tagged bearish, the rest untagged.",
+   "StockTwits CL_F: 4 posts, none tagged. One post sees $80 support and a technical bounce to about $82; another cites a five-wave decline from the 20 October peak.",
+   "One bullish USO post points to SPR depletion as a counter to the supply-surge narrative.",
+   "Reddit data was unavailable."
+  ],
+  "sources": []
+ },
+ "watch_today": [
+  {
+   "item": "Houthi follow-through on threats to Jeddah, Red Sea ports and the Al-Shuqaiq power station, and any further Saudi-Houthi strikes",
+   "when_utc": "during the day",
+   "why": "Any hit on export or power infrastructure would turn a headline premium into a supply question before Monday's open."
+  },
+  {
+   "item": "New UKMTO incident reports in Hormuz and any change in loadings or insurance",
+   "when_utc": "during the day",
+   "why": "Attacks run at about one a day; a vessel loss or a halt to transits would challenge the surplus narrative."
+  },
+  {
+   "item": "Futures reopen for the new week; check the gap against Friday's settlements of $92.57 (Brent) and the WTI curve after the December expiry",
+   "when_utc": "2026-11-22T22:00:00Z",
+   "why": "The Saturday tanker strike and Riyadh missiles came after Friday's close, so the opening gap reflects weekend risk against the equity and dollar backdrop."
+  },
+  {
+   "item": "US-Iran contact, blockade enforcement and any Kharg tanker movements",
+   "when_utc": "during the day",
+   "why": "An Iranian export breakout or a US interdiction would move prices in opposite directions."
+  },
+  {
+   "item": "API weekly inventory estimate",
+   "when_utc": "2026-11-24T21:30:00Z",
+   "why": "Follows last week's 3.4 mb commercial crude build and large product builds."
+  },
+  {
+   "item": "OPEC+ ministerial meeting on the 2027 framework",
+   "when_utc": "2026-11-29T12:00:00Z",
+   "why": "Quota baselines and the treatment of remaining cuts set the supply path into a forecast surplus."
+  }
+ ],
+ "verdict": {
+  "direction": "neutral",
+  "strength": 0,
+  "reasoning": "I move from the previous briefing's bearish (-1) to neutral because weekend events add upside risk before the market reopens. The strongest bullish argument is escalation on two fronts: a third night of Houthi missiles at Riyadh, explicit threats to Saudi Red Sea ports and a power station, and another Hormuz tanker strike on Saturday that was not in Friday's settlement. The strongest bearish argument is that the market has repeatedly sold such headlines: Reuters and the IEA point to recovering Gulf flows and a coming surplus, and the dollar, the equity rout and a near-certain Fed hike weigh on demand. US crude and product inventories also built last week, and the dashboard's rule-based swing signals lean sell. For the next 24 hours there is no trading, so what matters is the Monday gap. I expect a modestly higher open if no Saudi infrastructure is hit, with the bearish trend resuming unless a barrel is actually lost. Neither side clearly dominates, and the gap risk argues against a short bias going into the open."
+ },
+ "meta": {
+  "generatedAt": 1795250765975,
+  "model": "claude-sonnet-5-5",
+  "searches": 9,
+  "tokens": {
+   "input": 10,
+   "cacheWrite": 94635,
+   "cacheRead": 157859,
+   "output": 17773
+  },
+  "verification": {
+   "kept": 35,
+   "removed": 1,
+   "removedUrls": [
+    "https://talkmarkets.com/article/i-thought-oil-would-go-to-the-moon-i-was-wrong"
+   ],
+   "downgraded": []
+  },
+  "prices": {
+   "brent": {
+    "price": 89.95,
+    "priceTime": 1795211958000,
+    "chg24hPct": -0.11105280218628216,
+    "chg7dPct": -6.145655846151149,
+    "chg30dPct": -20.51780378601884
+   },
+   "wti": {
+    "price": 83.41,
+    "priceTime": 1795211999000,
+    "chg24hPct": 0.30062088369595485,
+    "chg7dPct": -5.815263889530228,
+    "chg30dPct": -16.14557255817193
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 30,
+     "bullish": 5,
+     "bearish": 12
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 4,
+     "bullish": 0,
+     "bearish": 0
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: 100",
+    "Google News: OPEC+: 47",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 36",
+    "Google News: Russia and China oil: 36",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}
