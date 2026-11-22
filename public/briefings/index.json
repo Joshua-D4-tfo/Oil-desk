@@ -1,9 +1,19 @@
 {
- "updatedAt": 1795250927296,
- "latest": "2026-11-21",
+ "updatedAt": 1795337632246,
+ "latest": "2026-11-22",
  "retentionDays": 60,
  "archiveDocx": "docs/oil-briefing-archive.docx",
  "briefings": [
+  {
+   "date": "2026-11-22",
+   "headline": "Weekend escalation (two more Hormuz tankers hit, an Iranian strike on Bahrain, a Houthi missile toward the Makkah region) points to an upside gap at the open, but the surplus, strong-dollar and Fed-hike backdrop has so far absorbed similar news.",
+   "verdict": {
+    "direction": "neutral",
+    "strength": 0
+   },
+   "developments": 7,
+   "docx": "docs/oil-briefing-2026-11-22.docx"
+  },
   {
    "date": "2026-11-21",
    "headline": "Brent closed its third weekly loss at $92.57, but a third night of Houthi missiles at Riyadh and another Hormuz tanker strike after the close point to upside gap risk at Monday's open, against a surplus, strong-dollar and Fed-hike backdrop.",

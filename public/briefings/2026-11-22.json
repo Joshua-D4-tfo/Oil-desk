@@ -1,0 +1,443 @@
+{
+ "date": "2026-11-22",
+ "headline": "Weekend escalation (two more Hormuz tankers hit, an Iranian strike on Bahrain, a Houthi missile toward the Makkah region) points to an upside gap at the open, but the surplus, strong-dollar and Fed-hike backdrop has so far absorbed similar news.",
+ "overview": "Exchanges are closed until the Sunday evening open, so the supplied quotes are still Friday's. The supplied curve shows front-month Brent (Jan 27) at 92.57 dollars a barrel and Feb 27 at 89.95, a backwardation of 2.62 dollars. The dashboard's headline Brent field (89.95) matches the Feb contract, not the front month. WTI is 83.98 (Dec) and 83.41 (Jan). Brent rose about 0.6% on Friday after a tanker fire near Hormuz and Houthi attacks on Riyadh, but still ended a third weekly loss. Reuters attributed the weekly loss to Hormuz crude flows returning to roughly pre-war levels, expectations of a surplus, and weak equities (Asian shares heading for their worst week since 2020). Since Friday's close the news flow has been bullish: two more tankers were hit in Hormuz, Bahrain accused Iran of striking an industrial site, and a Houthi missile was aimed at western Saudi Arabia. Iran has also restated that Hormuz stays shut until its conditions are met.",
+ "developments": [
+  {
+   "title": "Two more tankers hit in Hormuz; Bahrain says Iran struck an industrial site",
+   "category": "Geopolitics & shipping",
+   "summary": "UKMTO said two tankers were struck separately by unknown projectiles early on Saturday while exiting the Strait of Hormuz, one in the stern and one in the engine room, with no casualties reported. Tasnim separately reported a tanker hitting a mine east of the strait and catching fire. Bahrain's interior ministry said an Iranian attack caused a fire at a civilian industrial facility with no injuries. AFP reported residents seeing smoke over Sitra Island, which hosts a Bapco refinery, but the facility hit was not named. Iran's Revolutionary Guards said they struck US positions in Bahrain and claimed a US drone was shot down over Qeshm. The US denied an Iranian claim that it damaged an F-16.",
+   "why_it_matters": "Attacks on tankers have run at roughly one a day in November and the market has largely looked through them, because flows are recovering. The new element is the strike on Bahraini territory near refining assets, which widens the target set from ships to Gulf infrastructure. That is the type of escalation that can re-add a risk premium, so a gap higher at the open is plausible. Whether it holds depends on tanker-tracking data showing a fall in loadings.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Bahrain says Iran struck industrial site as tankers hit in Hormuz",
+     "publisher": "France 24 (AFP)",
+     "url": "https://www.france24.com/en/live-news/20261122-bahrain-says-iran-struck-industrial-site-as-tankers-hit-in-hormuz"
+    },
+    {
+     "title": "Iran live updates: US denies Iranian claim it struck, damaged F-16 jet over Gulf",
+     "publisher": "ABC News",
+     "url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071"
+    },
+    {
+     "title": "Tanker struck in strait as Bahrain says Iran hit facility",
+     "publisher": "RTE",
+     "url": "https://www.rte.ie/news/middle-east/2026/1122/1600172-middle-east-iran/"
+    },
+    {
+     "title": "Bahrain says Iran struck industrial site as tankers hit in Hormuz",
+     "publisher": "Manila Times (AFP)",
+     "url": "https://www.manilatimes.net/2026/11/22/world/bahrain-says-iran-struck-industrial-site-as-tankers-hit-in-hormuz/2475616"
+    }
+   ]
+  },
+  {
+   "title": "Houthi missile fired toward western Saudi Arabia; Saudi-Houthi escalation continues",
+   "category": "Geopolitics & shipping",
+   "summary": "The Saudi-led coalition said early on Sunday that it intercepted a Houthi ballistic missile aimed at western Saudi Arabia, and Saudi Civil Defence issued an alert for the Makkah region. This follows Friday's coalition strikes on Hodeidah port and Sanaa, after which the Houthis threatened Jeddah and other Saudi Red Sea ports and warned airlines to avoid Saudi airspace. Maritime security firm Marisks said the risk of attacks on Saudi ports, energy installations and Saudi-affiliated vessels in the Red Sea remains elevated. Houthi-run al-Masirah TV reported further Saudi strikes on Hodeidah on Saturday evening, which is a single-source claim. No Houthi attack on a Saudi Red Sea port has been verified so far.",
+   "why_it_matters": "Saudi Red Sea loading is a Hormuz bypass, so a verified hit on Jeddah or another Red Sea terminal would remove barrels at a time when the market is relying on Gulf flow recovery. Until that happens, the effect is a modest risk premium. A strike on port or energy infrastructure would be a high-impact upside event.",
+   "direction": "bullish",
+   "impact": "high",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Saudi-led coalition says it intercepted Houthi ballistic missile targeting western Saudi Arabia",
+     "publisher": "Express Tribune",
+     "url": "https://tribune.com.pk/story/2641660/saudi-led-coalition-says-it-intercepted-houthi-ballistic-missile-targeting-western-saudi-arabia"
+    },
+    {
+     "title": "Saudi coalition and Houthis exchange threats to bomb key ports",
+     "publisher": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/11/20/saudi-coalition-and-houthis-exchange-threats-to-bomb-key-ports"
+    },
+    {
+     "title": "Iran live updates: US denies Iranian claim it struck, damaged F-16 jet over Gulf",
+     "publisher": "ABC News",
+     "url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071"
+    },
+    {
+     "title": "New Saudi Strikes on Hodeidah, Houthis Threaten Saudi Ports",
+     "publisher": "House of Saud",
+     "url": "https://houseofsaud.com/coalition-strikes-hodeidah-nov22/"
+    }
+   ]
+  },
+  {
+   "title": "Iran says Hormuz stays shut until its conditions are met; Trump seeks a permanent deal",
+   "category": "Geopolitics & shipping",
+   "summary": "Foreign Minister Araghchi said on Saturday that reopening Hormuz is not difficult if the US accepts Iran's conditions, but that discussion of the strait is pointless until they are met. Iran's conditions include ending the war on all fronts, unfreezing assets, lifting oil sanctions and ending the US blockade of Iranian ports. Iran says Qatari mediators visited Tehran, and Deputy Foreign Minister Gharibabadi called the blockade an act of war. Trump told Fox News he intends to reach a permanent deal that prevents Iran obtaining nuclear weapons. Iran's state electricity company said rolling power cuts begin on Sunday because of fuel supply problems.",
+   "why_it_matters": "Neither side has moved: Iran ties any Hormuz reopening to lifting the blockade and sanctions, and Washington wants a permanent nuclear settlement. Mediation keeps a deal tail alive, which caps the upside premium. A breakthrough would be bearish, because it would add Iranian barrels and remove the shipping threat. Continued stalemate leaves attack risk in place.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Iran says held talks with Qatari mediators, urges US to accept conditions",
+     "publisher": "Al Jazeera",
+     "url": "https://www.aljazeera.com/news/2026/11/21/iran-says-held-talks-with-qatari-mediators-urges-us-to-accept-conditions"
+    },
+    {
+     "title": "Iran launches attacks in Bahrain, Hormuz and moves against US blockade",
+     "publisher": "Euronews",
+     "url": "https://euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade"
+    },
+    {
+     "title": "Iran says reopening Hormuz not difficult if US accepts Tehran's conditions",
+     "publisher": "Middle East Monitor",
+     "url": "https://middleeastmonitor.com/20261122-iran-says-reopening-hormuz-not-difficult-if-us-accepts-tehrans-conditions"
+    },
+    {
+     "title": "Bahrain says Iran struck industrial site as tankers hit in Hormuz",
+     "publisher": "France 24 (AFP)",
+     "url": "https://www.france24.com/en/live-news/20261122-bahrain-says-iran-struck-industrial-site-as-tankers-hit-in-hormuz"
+    }
+   ]
+  },
+  {
+   "title": "Dollar near multi-month highs and a December Fed hike fully priced; equity rout continues",
+   "category": "Macro",
+   "summary": "FXStreet said the dollar was set for a fourth straight weekly gain on hawkish Fed bets and flagged the PCE price index as next week's key release. Futures priced a 97.3% probability of a 25 basis point hike at the 8 to 9 December meeting, according to TradingNews. Reuters reported that Asian shares were heading for their worst week since 2020. Saxo analysts said near-term demand concerns tied to the AI trade unwind and risk-off sentiment are weighing on oil.",
+   "why_it_matters": "A stronger dollar and tighter policy weigh on dollar-priced crude and on growth expectations. The hike is already priced, so guidance and the PCE print matter more than the decision. A hot PCE would add to the bearish pressure and could offset some of the weekend's geopolitical premium.",
+   "direction": "bearish",
+   "impact": "medium",
+   "verification": "confirmed",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "The US Dollar is set for a fourth straight weekly gain on hawkish Fed bets",
+     "publisher": "FXStreet",
+     "url": "https://www.fxstreet.com/analysis/the-us-dollar-is-set-for-a-fourth-straight-weekly-gain-on-hawkish-fed-bets-202611201401"
+    },
+    {
+     "title": "Oil Price Forecast: WTI and Brent upside targets on OPEC+",
+     "publisher": "TradingNews",
+     "url": "https://www.tradingnews.com/news/oil-forecast-wti-holsd-81-ud-and-brent-91-usd-into-3rd-weekly-loss"
+    },
+    {
+     "title": "Oil prices gain as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "Reuters via Missoulian/MVariety",
+     "url": "https://www.mvariety.com/business/business_news/oil-prices-gain-as-houthi-attacks-on-riyadh-raise-supply-concerns/article_838a1ac2-9114-4ea2-b0e2-101eae8e3dc4.html"
+    }
+   ]
+  },
+  {
+   "title": "Ukraine keeps striking Russian oil infrastructure: Ust-Luga raid and renewed Afipsky refinery attack",
+   "category": "Supply",
+   "summary": "Ukrainian drones attacked Russia's Leningrad region overnight on 20 to 21 November, with explosions reported near the Baltic export port of Ust-Luga. The governor said 61 drones were downed and did not confirm damage at the port. Ukraine's General Staff confirmed strikes on the Kaleykino-1 pumping station and on the Afipsky and Ilsky refineries. Lower-tier outlets report another attack on Afipsky on the night of 21 to 22 November. Earlier, Reuters sources estimated that refinery runs have fallen by 45% since late October.",
+   "why_it_matters": "Refinery outages leave more Russian crude for export, which is bearish for crude, but they tighten diesel and product markets. A confirmed outage at Ust-Luga or at pumping infrastructure would cut crude exports and flip the net effect bullish. No confirmed port damage yet.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "Drones Target Russia's Ust-Luga Baltic Port Amid 275-UAV Overnight Raid",
+     "publisher": "Kyiv Post",
+     "url": "https://www.kyivpost.com/post/90796"
+    },
+    {
+     "title": "Ukrainian Drones Hit Key Russian Oil Hub 1,300 Kilometers From Ukraine",
+     "publisher": "Kyiv Post",
+     "url": "https://www.kyivpost.com/post/90575"
+    },
+    {
+     "title": "Exclusive-Drone attacks nearly halve Russia's November oil refining, sources say",
+     "publisher": "Reuters via Yahoo",
+     "url": "https://www.yahoo.com/news/articles/exclusive-drone-attacks-nearly-halve-145826294.html"
+    },
+    {
+     "title": "Ukrainian Drones Strike Afipskyi Refinery, Smoke Visible Near Krasnodar",
+     "publisher": "Time News",
+     "url": "https://time.news/ukrainian-drones-strike-afipskyi-refinery-smoke-visible-near-krasnodar/"
+    }
+   ]
+  },
+  {
+   "title": "OPEC+ meets 29 November on 2027 framework; no new decision since the last briefing",
+   "category": "OPEC+",
+   "summary": "The 21-member group is due to meet on 29 November, when analysts expect 2027 quotas to be set. The seven core members held December targets at September levels on 1 November, and about 2 million bpd of cuts cover most members through end-2026. The capacity review that sets 2027 baselines was discussed at an online meeting on 16 November, according to Reuters via BOE Report. I found no confirmation that the review is final. FinanceFeeds notes the January Brent contract expires the next day.",
+   "why_it_matters": "Baselines will determine how fast the 2 million bpd layer can be unwound. With Gulf flows recovering and forecasters warning of a 2027 surplus, a loose framework is the bearish risk, while a restrained one would support the back of the curve. Pre-meeting delegate leaks are the main source of price moves this week.",
+   "direction": "neutral",
+   "impact": "medium",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "OPEC+ keeps December oil output targets steady ahead of tougher call for 2027",
+     "publisher": "CNBC",
+     "url": "https://www.cnbc.com/2026/10/31/opec-oil-output-targets-december.html"
+    },
+    {
+     "title": "Brent Crude Price $92.57 Before OPEC+ Sets 2027 Quotas",
+     "publisher": "FinanceFeeds",
+     "url": "https://financefeeds.com/brent-crude-oil-price-92-57-sunday-week-ahead-opec-plus-29-november-2027-quotas-bull-97-bear-88/"
+    },
+    {
+     "title": "Brent Crude Price $92.57: 8 Days to OPEC+ 2027 Quota Call",
+     "publisher": "FinanceFeeds",
+     "url": "https://financefeeds.com/brent-crude-oil-price-92-57-saturday-week-ahead-opec-plus-29-november-bull-96-bear-89/"
+    }
+   ]
+  },
+  {
+   "title": "Iranian 'line-breaker' tanker signal was a spoof, tracking firm says; blockade test still unproven",
+   "category": "Sanctions & policy",
+   "summary": "A vessel named Khat Shekan appeared on MarineTraffic early Sunday moving at 8.5 knots, prompting social-media claims that Iran was running the US blockade. TankerTrackers said satellite imagery showed no such vessel and called the signal a spoof, and Iran International noted its call sign matched a Liberian-flagged tanker. Separately, TankerTrackers' Samir Madani told Reuters on Thursday that a tanker was loading Iranian crude from another vessel, which would be Iran's first successful seaborne export since mid-July if it cleared. Araghchi said the blockade must be broken, and Iranian officials have not confirmed a convoy.",
+   "why_it_matters": "This corrects the previous briefing's blockade-test item: the headline signal is not evidence of a breakout. A genuine run would test US enforcement and could trigger a naval confrontation or add Iranian barrels. Until a cargo clears the blockade, the market effect is limited.",
+   "direction": "neutral",
+   "impact": "low",
+   "verification": "reported",
+   "follow_up_of_previous": true,
+   "sources": [
+    {
+     "title": "'Line-breaker' tanker signal near Hormuz was fake, tracking firm says",
+     "publisher": "Iran International",
+     "url": "https://www.iranintl.com/en/202611211549"
+    },
+    {
+     "title": "The mystery of 'Khat Shekan': Alleged Iranian oil tanker challenging US blockade 'does not exist'",
+     "publisher": "The Week",
+     "url": "https://www.theweek.in/news/middle-east/2026/11/22/the-mystery-of-khat-shekan-alleged-iranian-oil-tanker-challenging-us-blockade-does-not-exist.html"
+    },
+    {
+     "title": "Iran Readies Blockade Run As Oil Prices Log Third Weekly Loss",
+     "publisher": "Benzinga",
+     "url": "https://www.benzinga.com/markets/commodities/26/11/63516268/iran-readies-tankers-to-challenge-u-s-blockade-raising-risk-to-gulf-oil-flows"
+    }
+   ]
+  }
+ ],
+ "data_releases": [
+  {
+   "name": "EIA Weekly Petroleum Status Report (week to 13 November, as supplied)",
+   "result": "Commercial crude (ex-SPR) rose 3.380 million barrels to 417.797 million. Cushing fell 1.209 million to 26.147 million. Gasoline rose 5.192 million and distillates rose 1.571 million. The SPR fell 3.174 million to 276.361 million. A feed headline shows a crude build of 4.657 million against a 1.109 million draw expected; I could not verify which report or week that refers to.",
+   "vs_expectation": "Crude and gasoline builds are well above the five-year average changes (crude -1.358 million, gasoline +0.868 million). Cushing's draw was larger than its five-year average (-0.064 million).",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "EIA Weekly Petroleum Status Report",
+     "publisher": "EIA",
+     "url": "https://www.eia.gov/petroleum/supply/weekly/"
+    },
+    {
+     "title": "Crude oil inventories +4.657 million versus -1.109 million estimate",
+     "publisher": "investingLive",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQS3hVZFc3QVdnTG8xZDdjVDcwSW55ZzBlQmhTdzl4cEVGVTlfYVlFLVplWXg5d0x4Y2gxSV9tNjF6VHdaUHpBeHhWOUVNUHNwR0xUU1U3SnlheE83WU1oMWx3eE9YSTNNYkdEazA0NzJ3NFBKTVVjWWVTbGR1cUtYbGFjRl9hYnhuX0U0blRrbUppWktPQ3YwS2duWWxzSEhudVFhMDY5Zw?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "CFTC Commitments of Traders (as of 17 November, as supplied)",
+   "result": "Net position of 15,814 contracts, down 9,900 on the week. This sits at the 9.7th percentile of the past three years.",
+   "vs_expectation": "No consensus available. Positioning is very light by recent history.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "Commitments of Traders",
+     "publisher": "CFTC",
+     "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    }
+   ]
+  },
+  {
+   "name": "India oil and gas import bill, October",
+   "result": "Headlines report the bill rose 60% to about 16 billion dollars in October as Brent surged, while LPG consumption fell. I did not retrieve the full articles.",
+   "vs_expectation": "No expectation available.",
+   "direction": "neutral",
+   "sources": [
+    {
+     "title": "India's oil, gas import bill jumps 60% to $16 billion in October amid West Asia conflict; LPG use falls",
+     "publisher": "The New Indian Express",
+     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOMF9MT3RKVVd0T1RFTTYzaTBPTWRYVXctQ0dzLUZ2MWt5cEs2aWRUS3RRcnpDa0Jzd3hoVlpNLUFTRmFuYmIwQ2hpX0pjLUUtSnplLVYzTk5uWWlaTFV3MXA1NE11cXhuTmllZFlyV2tNS3c0RTJLZ3M3MzVSRXI4TXQzcTE3cXNHR29LMHo5Yk5KUHJ4YTZiSDQ4dW1HS3RuN2R0d09nSFIxdXNZeFBqaWktc3hTMV80RURheFUxZ0hxRU5nMHpfcGl0V2QtaHJGT1BtcDJnWkNqWE1MRUtXd05QOWxKVm_SAfQBQVVfeXFMT0IxazFOYy16UlVHMVhJcnltcEFlYkNSVGhxSk01U2FDRG80OU4zZ3RGQW1EY2wxUG45Q3ZFX1V1RlBHbFo4TGxMUVVMX1ZzMXRiWHZkOW50bEZZc180RXlxZWRXbzk2b0dKS2hCSlRkSUFPejFsT1ZqVHJCSU5qOVM4RFhOcy1rLVRnVXpiSkZobkNSY3JyWXNZT2tmZWV1cDdXa0pPd3ZiQXFmVjNJbEoxV254aDBkUWZxMkFGYzA5UHdnR2xDRzlBd05CRzllZXViZVZka0pOdmkxWEpJSHB0ejl4OUc3VUk2RE5KUnNHa1lpMw?oc=5"
+    }
+   ]
+  }
+ ],
+ "analyst_views": [
+  {
+   "who": "UOB Group (client note, Reuters)",
+   "view": "Iranian attacks on Hormuz tankers, running at roughly one incident a day in November, still add a meaningful geopolitical risk premium.",
+   "direction": "bullish",
+   "sources": [
+    {
+     "title": "Oil prices gain as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "Reuters via MVariety",
+     "url": "https://www.mvariety.com/business/business_news/oil-prices-gain-as-houthi-attacks-on-riyadh-raise-supply-concerns/article_838a1ac2-9114-4ea2-b0e2-101eae8e3dc4.html"
+    }
+   ]
+  },
+  {
+   "who": "Saxo analysts (client note, Reuters)",
+   "view": "Supply disruptions remain a risk, but near-term demand concerns tied to the AI trade unwind and risk-off sentiment are weighing on prices.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil prices gain as Houthi attacks on Riyadh raise supply concerns",
+     "publisher": "Reuters via MVariety",
+     "url": "https://www.mvariety.com/business/business_news/oil-prices-gain-as-houthi-attacks-on-riyadh-raise-supply-concerns/article_838a1ac2-9114-4ea2-b0e2-101eae8e3dc4.html"
+    }
+   ]
+  },
+  {
+   "who": "ING commodity strategists (note of 18 November)",
+   "view": "Hormuz disruption remains an upside risk, but rising OPEC+ output, resilient Russian exports and US inventory builds point to a more comfortable supply picture, with gradual rebalancing limiting upside.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil Prices Steady as Hormuz Tanker Threats Offset Supply Glut Fears",
+     "publisher": "OilPrice.com",
+     "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Steady-as-Hormuz-Tanker-Threats-Offset-Supply-Glut-Fears.html"
+    }
+   ]
+  },
+  {
+   "who": "Goldman Sachs (reported 16 November, older than 24 hours)",
+   "view": "A 2 million bpd surplus is possible in 2027 even after 1 million bpd of conflict disruption. Goldman projects Brent averaging 88 dollars in early 2027 and 78 dollars by year-end.",
+   "direction": "bearish",
+   "sources": [
+    {
+     "title": "Oil Down 3%; Supply Surplus Signs Offset Hormuz Worries",
+     "publisher": "DTN",
+     "url": "https://www.dtnpf.com/agriculture/web/ag/news/world-policy/article/2026/11/16/oil-3-supply-surplus-signs-offset"
+    }
+   ]
+  }
+ ],
+ "public_sentiment": {
+  "lean": "unclear",
+  "summary": "Retail commentary is thin and mostly untagged, so there is no usable directional signal. The few posts split between a call for an oil spike at Monday's open and a bearish comment that Iran is under pressure. Several posts spread the 'line-breaker' tanker claim, which TankerTrackers says was a spoofed signal. Retail views are opinion and do not change the assessment above.",
+  "evidence": [
+   "StockTwits USO, last 30 hours: 21 posts, 2 tagged bullish, 1 tagged bearish, the rest untagged.",
+   "StockTwits CL_F: 3 posts, none tagged bullish or bearish.",
+   "One USO post expects a 'huge oil spike' on Monday; another says bears should look at Iran being 'on life support'.",
+   "A USO post treated the 'Khat Shekan' tanker as a real blockade-breaker, which tracking firm TankerTrackers disputes.",
+   "Reddit data unavailable."
+  ],
+  "sources": [
+   {
+    "title": "'Line-breaker' tanker signal near Hormuz was fake, tracking firm says",
+    "publisher": "Iran International",
+    "url": "https://www.iranintl.com/en/202611211549"
+   }
+  ]
+ },
+ "watch_today": [
+  {
+   "item": "Sunday evening Asian open: size of any weekend gap and whether it holds",
+   "when_utc": "2026-11-22T23:00:00Z",
+   "why": "Weekend news (two tankers hit, Bahrain strike, Houthi missile) arrives in one gap. Earlier gaps on Hormuz attacks have faded."
+  },
+  {
+   "item": "Houthi follow-through on threats to Saudi Red Sea ports and Saudi retaliation around Hodeidah",
+   "when_utc": "during the day",
+   "why": "A verified hit on a port or energy site would turn a threat into lost barrels."
+  },
+  {
+   "item": "Iran-US mediation via Qatar and any attempt to run the blockade",
+   "when_utc": "during the day",
+   "why": "A deal signal would be bearish. A confirmed export cargo or naval clash would be bullish."
+  },
+  {
+   "item": "Hormuz tanker incidents (UKMTO) and tanker-tracking data on Gulf loadings",
+   "when_utc": "during the day",
+   "why": "Flow recovery is the bearish anchor. Falling loadings would weaken it."
+  },
+  {
+   "item": "US PCE price index (date not confirmed in sources) and Fed speakers",
+   "when_utc": "during the week",
+   "why": "A hot print would reinforce dollar strength ahead of the 9 December FOMC."
+  },
+  {
+   "item": "API weekly inventory estimate",
+   "when_utc": "2026-11-24T21:30:00Z",
+   "why": "Follows a run of crude, gasoline and distillate builds."
+  },
+  {
+   "item": "OPEC+ ministerial meeting on 2027 framework (29 November) and delegate leaks beforehand; Jan Brent expiry on 30 November",
+   "when_utc": "2026-11-29T12:00:00Z",
+   "why": "Baselines set the pace of unwinding the remaining cuts, and the front-month roll will distort spreads."
+  }
+ ],
+ "verdict": {
+  "direction": "neutral",
+  "strength": 0,
+  "reasoning": "The strongest bullish argument is the weekend escalation: two more tankers hit, an Iranian strike on Bahrain near refining assets, a Houthi missile toward the Makkah region and explicit threats to Saudi Red Sea ports, with CFTC net positioning at the 9.7th percentile of three years, so a squeeze on an upside gap is plausible. The strongest bearish argument is that the market has repeatedly looked through attacks (Brent fell 3.6% on 16 November despite reported tanker fires) because Hormuz crude flows are near pre-war levels, forecasters expect a 2027 surplus, builds are showing in US stocks, and the dollar and a fully priced Fed hike weigh on risk assets. Over the next 24 hours I expect an upside gap at the open that is fragile unless it is followed by verified supply loss, such as a Saudi port hit or a clear drop in Hormuz loadings. Those two forces roughly balance, so I stay neutral with the risk skewed to a higher open and a fade."
+ },
+ "meta": {
+  "generatedAt": 1795337473577,
+  "model": "claude-sonnet-5-5",
+  "searches": 9,
+  "tokens": {
+   "input": 10,
+   "cacheWrite": 99628,
+   "cacheRead": 172308,
+   "output": 16987
+  },
+  "verification": {
+   "kept": 34,
+   "removed": 0,
+   "removedUrls": [],
+   "downgraded": []
+  },
+  "prices": {
+   "brent": {
+    "price": 89.95,
+    "priceTime": 1795211958000,
+    "chg24hPct": -0.11105280218628216,
+    "chg7dPct": -6.145655846151149,
+    "chg30dPct": -20.51780378601884
+   },
+   "wti": {
+    "price": 83.41,
+    "priceTime": 1795211999000,
+    "chg24hPct": 0.30062088369595485,
+    "chg7dPct": -5.815263889530228,
+    "chg30dPct": -16.14557255817193
+   }
+  },
+  "sentimentData": {
+   "stocktwits": [
+    {
+     "symbol": "USO",
+     "messages": 21,
+     "bullish": 2,
+     "bearish": 1
+    },
+    {
+     "symbol": "CL_F",
+     "messages": 3,
+     "bullish": 0,
+     "bearish": 0
+    }
+   ],
+   "redditPosts": null,
+   "errors": [
+    "Reddit: HTTP 403"
+   ]
+  },
+  "sourceStatus": {
+   "market": true,
+   "curve": true,
+   "eia": true,
+   "cot": true,
+   "refining": true,
+   "newsFeeds": [
+    "Google News: oil prices: 100",
+    "Google News: OPEC+: 38",
+    "Google News: Hormuz and Gulf supply: 100",
+    "Google News: inventories and policy: 31",
+    "Google News: Russia and China oil: 27",
+    "OilPrice.com: 15"
+   ],
+   "sentimentErrors": [
+    "Reddit: HTTP 403"
+   ]
+  }
+ }
+}
