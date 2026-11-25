@@ -72,7 +72,11 @@ Conviction combines three things: the size of the score, how far the factors agr
 
 Closing by 23:59 avoids Capital.com's overnight funding, which is charged at 02:00 Dubai at about 0.011% of the position's value per night. The simulated track record follows the same rule: intraday trades open only inside the window and are closed at the first price at or after 23:59. The swing view is not restricted.
 
-**Prime hours marker.** The intraday card shows a green **Prime hours** marker during the London open (08:00 to 10:00 London time) and the US session (08:00 to 12:00 New York time). These are when oil moves most relative to the spread, measured on two years of Capital.com 15-minute prices. In Dubai winter time they are 12:00 to 14:00 and 17:00 to 21:00; during UK and US summer time each starts an hour earlier, and the marker adjusts automatically. Outside them the card shows "Off-peak" and the next prime window. On Wednesdays it also shows the EIA report time in Dubai time. Edit `PRIME_SESSIONS` in `public/js/engine.js` to change them.
+**Entry window (engine v3, from 25 November 2026).** New intraday trades are only suggested in the US session, **08:00 to 13:00 New York time**: 17:00 to 22:00 Dubai in winter and 16:00 to 21:00 during US summer time (`PRIME_SESSIONS` in `public/js/engine.js`). Inside the trading window but outside the entry window, the card shows **OFF-PEAK** and the reading is for information only. Two years of Capital.com prices and the first two weeks of live logging both showed the other hours moving too little relative to the spread. The card shows a green **Entry window** marker while it is open, and on Wednesdays the EIA report time.
+
+**Stretched readings.** An intraday reading with conviction above 50 (`STRETCHED_CONVICTION`) is labelled **STRETCHED BUY** or **STRETCHED SELL** in amber. In the first two weeks of live logging, 8 of 9 such trades lost, which suggests the score peaks after the move has happened. It is a warning, not a ban: these trades are still logged, with strength "stretched", so the pattern can be checked.
+
+**Cooling-off rule (track record).** After the logger opens an intraday trade, it opens no new intraday trade in the same market for two hours, whatever the signal says. This cuts re-entries straight after a stop and the spread they cost.
 
 The intraday label switches to **WAIT** when a high-impact release, such as the EIA report or an OPEC+ meeting, is less than two hours away.
 

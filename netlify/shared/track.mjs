@@ -16,7 +16,9 @@ export const HORIZONS = {
   swing: { forwardH: 48, maxHoldH: 120 },
 };
 export const FACTOR_THRESHOLD = 0.25;
-const TRADEABLE = new Set(["BUY", "LEAN BUY", "SELL", "LEAN SELL"]); // OUTSIDE HOURS, TOO LATE, WAIT and NO TRADE never open trades
+const TRADEABLE = new Set(["BUY", "LEAN BUY", "SELL", "LEAN SELL", "STRETCHED BUY", "STRETCHED SELL"]); // OUTSIDE HOURS, OFF-PEAK, TOO LATE, WAIT and NO TRADE never open trades
+// After an intraday trade opens, no new intraday trade in the same market for this long (cuts re-entries and spread costs).
+const INTRADAY_COOLDOWN_MS = 2 * 3.6e6;
 const MAX_CLOSED = 600;
 const MAX_PENDING = 2000;
 
@@ -47,6 +49,8 @@ export function maybeOpenTrades(state, sig, nowMs) {
     const c = sig[h];
     const key = `${sig.benchmark}:${h}`;
     if (!c || !c.plan || state.open[key] || !TRADEABLE.has(c.label)) continue;
+    state.lastOpened ||= {};
+    if (h === "intraday" && state.lastOpened[key] && nowMs - state.lastOpened[key] < INTRADAY_COOLDOWN_MS) continue;
     const p = c.plan;
     const trade = {
       id: `${key}:${nowMs}`,
@@ -54,7 +58,7 @@ export function maybeOpenTrades(state, sig, nowMs) {
       benchmark: sig.benchmark,
       horizon: h,
       label: c.label,
-      strength: c.label.startsWith("LEAN") ? "lean" : "strong",
+      strength: c.label.startsWith("LEAN") ? "lean" : c.label.startsWith("STRETCHED") ? "stretched" : "strong",
       direction: p.direction,
       score: +c.score.toFixed(4),
       conviction: c.confidence,
@@ -73,6 +77,7 @@ export function maybeOpenTrades(state, sig, nowMs) {
       engineVersion: sig.engineVersion ?? 1,
     };
     state.open[key] = trade;
+    state.lastOpened[key] = nowMs;
     opened.push(trade);
   }
   return opened;
@@ -222,6 +227,7 @@ export function buildSummary(state, nowMs) {
         stats: tradeStats(closed),
         strong: tradeStats(closed.filter((t) => t.strength === "strong")),
         lean: tradeStats(closed.filter((t) => t.strength === "lean")),
+        stretched: tradeStats(closed.filter((t) => t.strength === "stretched")),
         equity: closed.map((t) => ({ t: t.closed, c: r2((cum += t.r)) })),
         open: state.open[`${bm}:${h}`] || null,
         recent: closed.slice(-20).reverse(),

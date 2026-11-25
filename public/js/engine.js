@@ -29,7 +29,13 @@ export const BENCHMARKS = {
 // Bump when factor definitions change, so the track record can separate results by model version.
 // v2 (18 Nov 2026): news averaged across headlines and checked against price reaction;
 // curve, positioning and refining margin scored mainly on change rather than level.
-export const ENGINE_VERSION = 2;
+// v3 (25 Nov 2026): new intraday trades only in the US entry window (08:00-13:00 New York, 17:00-22:00
+// Dubai in winter); intraday readings with conviction above 50 are labelled STRETCHED (the move may be done).
+export const ENGINE_VERSION = 3;
+
+// Conviction above this marks an intraday reading as STRETCHED: in the first two weeks of live logging,
+// 8 of 9 such trades lost, consistent with the score peaking after the move has already happened.
+export const STRETCHED_CONVICTION = 50;
 
 // Your intraday trading window, in Dubai time (UTC+4, no daylight saving). New intraday trades are
 // only suggested inside it, and every intraday position must be closed by the end time. Overnight
@@ -48,13 +54,13 @@ export function windowState(nowMs = Date.now()) {
 }
 
 // Prime hours: when oil moves most relative to the spread (measured on two years of Capital.com
-// 15-minute prices). Defined in London and New York local time so daylight saving is handled
-// automatically: London 08:00-10:00 (European open) and New York 08:00-12:00 (US data, the NYMEX
-// open and, on Wednesdays, the 10:30 EIA report). In Dubai winter time these are 12:00-14:00 and
-// 17:00-21:00; during US and UK summer time each starts an hour earlier.
+// 15-minute prices, then confirmed by live logging). Defined in New York time so daylight saving is
+// handled automatically: 08:00-13:00 New York covers US data, the NYMEX open, the London afternoon and,
+// on Wednesdays, the 10:30 EIA report. In Dubai that is 17:00-22:00 in winter and 16:00-21:00 in summer.
+// From 25 Nov 2026 this is also the intraday entry window: new intraday trades are only suggested inside it.
+// The London open was dropped: in live logging only the US session was profitable.
 export const PRIME_SESSIONS = [
-  { name: "London open", tz: "Europe/London", fromMin: 8 * 60, toMin: 10 * 60 },
-  { name: "US session", tz: "America/New_York", fromMin: 8 * 60, toMin: 12 * 60 },
+  { name: "US session", tz: "America/New_York", fromMin: 8 * 60, toMin: 13 * 60 },
 ];
 
 function tzOffsetMin(tz, ms) {
@@ -586,9 +592,14 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
 
   const cls = classify(S);
   const win = horizon === "intraday" ? windowState(nowMs) : null;
+  const prime = horizon === "intraday" ? primeHours(nowMs) : null;
+  const offPeak = !!(win && win.inWindow && !win.tooLate && prime && !prime.active);
+  const stretched = horizon === "intraday" && cls.label !== "NO TRADE" && confidence > STRETCHED_CONVICTION;
   let action = imminent ? { label: "WAIT", tone: "neutral" } : cls;
   if (win && !win.inWindow) action = { label: "OUTSIDE HOURS", tone: "neutral" };
   else if (win && win.tooLate) action = { label: "TOO LATE", tone: "neutral" };
+  else if (offPeak) action = { label: "OFF-PEAK", tone: "neutral" };
+  else if (!imminent && stretched) action = { label: cls.tone === "bull" ? "STRETCHED BUY" : "STRETCHED SELL", tone: "wait" };
 
   // Trade levels, based on the selected benchmark.
   let plan = null;
@@ -605,7 +616,7 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
       riskPct: (dist / tb.price) * 100,
       basis: horizon === "intraday" ? "1.5 x 14-hour ATR" : "1.2 x daily ATR",
       sizeMultiplier: regime ? regime.sizeMultiplier : null,
-      active: cls.label !== "NO TRADE" && !(win && (!win.inWindow || win.tooLate)),
+      active: cls.label !== "NO TRADE" && !(win && (!win.inWindow || win.tooLate || offPeak)),
       closeBy: win ? win.closeBy : null,
       minutesLeft: win ? win.minutesLeft : null,
     };
@@ -615,14 +626,14 @@ function composite(factors, weights, horizon, tb, events, benchName = "Brent", r
   const oppose = rows.filter((r) => Math.sign(r.contribution) !== Math.sign(S) && Math.abs(r.contribution) > 0.005);
   const missing = Object.keys(weights).filter((id) => !used.find((f) => f.id === id));
 
-  const reasoning = buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win });
+  const reasoning = buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win, offPeak, prime, stretched });
 
   return { horizon, score: S, label: action.label, tone: action.tone, underlying: cls.label, confidence, agreement, coverage, rows, plan, riskEvents, missing, reasoning, window: win };
 }
 
 const NAMES = { crack: "refining margins", trend: "short-term trend", momentum: "momentum", rsi: "RSI", news: "news flow", curve: "futures curve", inventories: "inventories", positioning: "positioning", dollar: "dollar" };
 
-function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win }) {
+function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence, agreement, coverage, support, oppose, missing, plan, riskEvents, imminent, tb, win, offPeak, prime, stretched }) {
   const h = horizon === "intraday" ? "an intraday (holding period of hours)" : "a short swing (holding period of one to five days)";
   const p = [];
   p.push(`For ${h} trade in ${benchName}, the weighted composite score is ${signed(S)} on a scale of -1 to +1, which maps to ${cls.label}. Conviction is ${confidence} on a 0 to 100 scale (capped at 90, because no model reading justifies certainty). It is not a probability of success; it reflects the size of the score, the degree to which factors agree (${Math.round(agreement * 100)}% of the weighted evidence points the same way) and data coverage (${Math.round(coverage * 100)}% of factor weight available).`);
@@ -643,10 +654,16 @@ function buildReasoning({ regime, benchName, horizon, S, cls, action, confidence
   if (win && !win.inWindow) {
     const t = new Date(win.opensAt + 4 * 3.6e6).toISOString().slice(11, 16);
     p.push(`Action is OUTSIDE HOURS: your trading window is ${TRADING_WINDOW.label}, so no new intraday trade is suggested now. The window reopens at ${t} Dubai. The reading above is shown for information only.`);
+  } else if (offPeak) {
+    const w = prime?.windows?.[0];
+    p.push(`Action is OFF-PEAK: new intraday trades are only suggested in the US session${w ? `, ${w.from} to ${w.to} Dubai` : ""}. In two years of Capital.com prices and in the dashboard's own live record, the other hours moved too little relative to the spread to pay. ${prime?.tradingDay ? (prime.next ? `The window opens at ${prime.next.from} Dubai.` : "The window has closed for today.") : "No window today (weekend)."} The reading above is shown for information only.`);
   } else if (win && win.tooLate) {
     p.push(`Action is TOO LATE: only ${win.minutesLeft} minutes remain before every intraday position must be closed at 23:59 Dubai, which is too little time for the target to be reached. Overnight funding is charged at 02:00 Dubai.`);
   } else if (win && cls.label !== "NO TRADE") {
     p.push(`Any intraday position must be closed by 23:59 Dubai (${Math.floor(win.minutesLeft / 60)} h ${win.minutesLeft % 60} min from now), whether or not the stop or target has been reached.`);
+  }
+  if (stretched && action.label.startsWith("STRETCHED")) {
+    p.push(`Action is ${action.label}: conviction of ${confidence} is above ${STRETCHED_CONVICTION}. Readings this extreme usually appear after a large move has already happened, and in the first two weeks of live logging 8 of 9 such trades lost. Treat it as a warning that the move may be exhausted rather than as a stronger signal. If you trade it at all, use a smaller size. The dashboard still logs these trades separately so the pattern can be checked.`);
   }
   if (imminent) p.push(`Action is WAIT because "${imminent.name}" is due within two hours. Event releases routinely move crude by more than a full stop distance in minutes; it is better to trade the reaction than to gamble on the number.`);
   else if (riskEvents.length) p.push(`Event risk inside the holding window (${riskEvents.map((e) => e.name).join("; ")}) has reduced confidence by 30%. Consider a smaller size or exiting beforehand.`);

@@ -76,13 +76,13 @@ function render() {
   renderTrack();
 }
 
-const ICON = { BUY: "▲", "LEAN BUY": "▲", SELL: "▼", "LEAN SELL": "▼", "NO TRADE": "■", WAIT: "⏸", "OUTSIDE HOURS": "☾", "TOO LATE": "⏱" };
+const ICON = { BUY: "▲", "LEAN BUY": "▲", SELL: "▼", "LEAN SELL": "▼", "NO TRADE": "■", WAIT: "⏸", "OUTSIDE HOURS": "☾", "TOO LATE": "⏱", "OFF-PEAK": "◌", "STRETCHED BUY": "⚠", "STRETCHED SELL": "⚠" };
 
 function renderCard(h, title) {
   const c = state.signals[h];
   const el = $(`card-${h}`);
   if (!c) { el.innerHTML = `<div class="skeleton">Waiting for price data. If this persists, check the data sources panel.</div>`; return; }
-  const tone = ["WAIT", "TOO LATE"].includes(c.label) ? "wait" : c.tone;
+  const tone = ["WAIT", "TOO LATE"].includes(c.label) || c.label.startsWith("STRETCHED") ? "wait" : c.tone;
   const pos = ((c.score + 1) / 2) * 100;
   const p = c.plan;
   const planHtml = p ? `
@@ -120,7 +120,7 @@ function primePill(p) {
   if (!p) return "";
   const eia = p.eiaToday ? ` EIA report at ${p.eiaToday} Dubai today.` : "";
   if (p.active) {
-    return `<div class="prime on" title="Oil moves most relative to the spread in these hours (two years of Capital.com 15-minute prices).${eia}"><span class="dot" aria-hidden="true"></span>Prime hours: ${esc(p.current.name)}, ${p.current.from} to ${p.current.to} Dubai (${p.current.minutesLeft} min left)${eia ? ` · EIA ${p.eiaToday}` : ""}</div>`;
+    return `<div class="prime on" title="Oil moves most relative to the spread in these hours (two years of Capital.com 15-minute prices).${eia}"><span class="dot" aria-hidden="true"></span>Entry window: ${esc(p.current.name)}, ${p.current.from} to ${p.current.to} Dubai (${p.current.minutesLeft} min left)${eia ? ` · EIA ${p.eiaToday}` : ""}</div>`;
   }
   const when = p.next ? `next: ${esc(p.next.name)} from ${p.next.from}` : p.tradingDay ? "none left today" : "none today (weekend)";
   return `<div class="prime off" title="Prime hours today: ${p.windows.map((w) => `${w.name} ${w.from} to ${w.to}`).join(", ")} Dubai.${eia}"><span class="dot" aria-hidden="true"></span>Off-peak · ${when}${eia ? ` · EIA ${p.eiaToday}` : ""}</div>`;
@@ -318,7 +318,7 @@ function renderTrack() {
         <div><div class="k">Total</div><div class="v">${signed(s.totalR)}R</div></div>
       </div>
       ${d.equity.length > 1 ? sparkline(d.equity, "eq-" + h) + `<p class="muted small">Cumulative result in R (multiples of the amount risked per trade).</p>` : ""}
-      <p class="small">Strong signals: ${d.strong.trades} trades, ${pct(d.strong.winRate)} wins, ${d.strong.avgR == null ? "n/a" : signed(d.strong.avgR) + "R"} average. Lean signals: ${d.lean.trades} trades, ${pct(d.lean.winRate)} wins, ${d.lean.avgR == null ? "n/a" : signed(d.lean.avgR) + "R"} average.</p>
+      <p class="small">Strong signals: ${d.strong.trades} trades, ${pct(d.strong.winRate)} wins, ${d.strong.avgR == null ? "n/a" : signed(d.strong.avgR) + "R"} average. Lean signals: ${d.lean.trades} trades, ${pct(d.lean.winRate)} wins, ${d.lean.avgR == null ? "n/a" : signed(d.lean.avgR) + "R"} average.${d.stretched?.trades ? ` Stretched signals (conviction above 50): ${d.stretched.trades} trades, ${pct(d.stretched.winRate)} wins, ${d.stretched.avgR == null ? "n/a" : signed(d.stretched.avgR) + "R"} average.` : ""}</p>
       ${few ? `<p class="small warn-text">Fewer than 30 closed trades: treat these figures as anecdotal, not evidence.</p>` : ""}
       ${open}
       ${rows ? `<div class="table-wrap"><table class="factors compact"><thead><tr><th>Opened</th><th>Signal</th><th class="num">Entry</th><th>Outcome</th><th class="num">Result</th></tr></thead><tbody>${rows}</tbody></table></div>` : ""}
